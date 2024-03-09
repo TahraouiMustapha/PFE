@@ -2,6 +2,7 @@
 
 :root {
     --font-clr: white;
+    --transp-bg: rgba(255, 255, 255, 0.4);
 }
 
 *{
@@ -132,4 +133,24 @@ header {
 
 .image img {
     width: 100%;
+}
+
+.points {
+    display: flex;
+    gap : 10px;
+    position:absolute;
+    bottom: 90px;
+    left: 50%;
+}
+
+.point {
+    width: 10px;
+    height: 8px;
+    border-radius: 8px;
+    background-color: var(--transp-bg);
+}
+
+.active {
+    background-color: var(--font-clr);
+    width: 16px;
 }
