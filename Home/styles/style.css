@@ -156,12 +156,20 @@ header {
 .line {
     background-color: var(--transp-bg);
     opacity: 0.5;
-    height: 1px;
+    height: 1.8px;
     width: 45%;
     position: absolute;
 }
 
-.popular-services {
+.line.top {
+    top:0;
+}
+
+.line.bottom {
+    bottom:0;
+}
+
+.popular-services, .categories {
     height: 70vh;
     width: 100%;
     display: flex;
@@ -183,10 +191,13 @@ header {
     margin-top:3rem;
     padding:0 3rem;
     width: 100%;
-    flex:1;
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.services-main, .categories-main {
+    flex:1;
 }
 
 .left-click, .right-click {
