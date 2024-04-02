@@ -190,10 +190,18 @@ header {
 }
 
 .left-click, .right-click {
+    width: 10%;
+    text-align: center;
     color: var(--font-clr);
     font-size: 4em;
     cursor: pointer;
     transition : font-size 0.3s ease ;
+}
+
+/* for the arrow's hover */
+.left-click:hover .hover, 
+.right-click:hover .hover{
+    font-size: 1.2em;
 }
 
 .services {
@@ -239,3 +247,4 @@ header {
     display:block;
     font-size: 0.8em;
 }
+
