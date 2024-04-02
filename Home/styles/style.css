@@ -148,7 +148,7 @@ header {
     background-color: var(--transp-bg);
 }
 
-.active {
+.point.active {
     background-color: var(--font-clr);
     width: 16px;
 }
@@ -201,6 +201,8 @@ header {
     grid-template-columns: repeat(5, 200px);
     grid-template-rows: 30vh;
     column-gap: 40px;
+    height:45vh;
+    align-content: center;
 }    
 
 .service {
@@ -223,4 +225,17 @@ header {
 
 .service .service-desc {
     display: none;
+}
+
+.service.active {
+    background-color: var(--font-clr);
+    transform:scaleY(1.2) scaleX(1.05);
+    color:#011121;
+    font-weight: 600;
+    line-height: 0.6;
+}
+
+.service.active > .service-desc {
+    display:block;
+    font-size: 0.8em;
 }
