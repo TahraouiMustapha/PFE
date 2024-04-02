@@ -188,16 +188,16 @@ header {
 }
 
 .services-main {
-    margin-top:3rem;
-    padding:0 3rem;
-    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding:0 3rem;
 }
 
 .services-main, .categories-main {
     flex:1;
+    width: 100%;
+    margin-top:3rem;
 }
 
 .left-click, .right-click {
@@ -259,3 +259,31 @@ header {
     font-size: 0.8em;
 }
 
+.categories-main {
+    padding: 0 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 220px);
+    gap:20px;
+    justify-content: center;
+}
+
+.categorie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+}
+
+.categorie-icon {
+    background-color: var(--transp-bg);
+    width:50%;
+    height: 50%;
+    border-radius: 16px;
+}
+
+.categorie-name {
+    color: var(--font-clr);
+    font-size: 1.2em;
+    margin-top:12px;
+    cursor: pointer;
+}
