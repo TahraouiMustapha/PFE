@@ -297,13 +297,13 @@ header {
 }
 
 .top-services {
-    height: 100vh;
+    height: 120vh;
 }
 
 .top-services-main  {
     display: grid;
     grid-template-columns: repeat(3, 30%);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 320px);
     justify-content: center;
 
     row-gap: 2rem;
@@ -311,21 +311,56 @@ header {
 }
 
 .service-card {
-    background-color: var(--transp-bg);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
 
+    color:white;
 }
 
 .service-card > .services-gallery {
     background-color:#fff;
-    flex:1;
+    flex:1 0 auto;
     width:95%;
+    height: 50%;
     border-radius: 24px;
 }
 
+.profile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:60%;
+    margin:6px 0;
+}
 
+.profile > .photo-profile {
+    background-color: #fff;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+}
+
+.profile >.profile-name {
+    text-transform: uppercase;
+}
+
+.profile-desc , .service-rate{
+    padding-left: 1em;
+}
+
+.profile-desc {
+    font-size: 0.9em;
+    font-weight: 300;
+    width: 80%;
+}
+
+.service-rate {
+    display: flex;
+    gap:0.5em;
+    margin-bottom: 6px;
+    align-items: flex-end;
+}
 
 
