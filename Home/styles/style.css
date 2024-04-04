@@ -142,7 +142,7 @@ header {
 }
 
 .point {
-    width: 10px;
+    width: 0.6em;
     height: 8px;
     border-radius: 8px;
     background-color: var(--transp-bg);
@@ -293,7 +293,8 @@ header {
 .top-services >.see-more {
     color:var(--font-clr);
     align-self: flex-end;
-    padding: 24px 4rem;
+    font-size: 1.2em;
+    padding: 24px 6rem;
 }
 
 .top-services {
@@ -320,11 +321,14 @@ header {
 }
 
 .service-card > .services-gallery {
-    background-color:#fff;
+    background-color:var(--transp-bg);
     flex:1 0 auto;
     width:95%;
     height: 50%;
     border-radius: 24px;
+
+    position: relative;
+    overflow:hidden;
 }
 
 .profile {
@@ -340,6 +344,11 @@ header {
     width:40px;
     height:40px;
     border-radius: 50%;
+    overflow:hidden;
+}
+
+.photo-profile  > img {
+    width:100%;
 }
 
 .profile >.profile-name {
@@ -363,4 +372,41 @@ header {
     align-items: flex-end;
 }
 
+.services-gallery > .points{
+    bottom: 0.8em;
+    left:45%;
+}
 
+.gallery-main {
+    height : 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gallery-main > .left-click, 
+.gallery-main >.right-click {
+    font-size: 1.5em;
+} 
+
+.gallery-main > .work-image {
+    width:75%;
+    height:90%;
+    margin-top: 1em;
+}
+
+.work-image img {
+    width:100%;
+    height:100%;
+}
+
+.services-gallery .point {
+    width: 0.4em;
+    height: 0.4em;
+    border-radius:50%;
+    background-color: var(--transp-bg);
+}
+
+.services-gallery .point.active {
+    background-color: var(--font-clr);
+}
