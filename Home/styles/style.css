@@ -169,8 +169,8 @@ header {
     bottom:0;
 }
 /* for sections */
-.popular-services, .categories, .top-services , .best-sellers, .tips , .comments{
-    height: 70vh;
+.popular-services, .categories, .top-services , .best-sellers, .tips , .comments, .about-us{
+    height: 80vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -193,11 +193,14 @@ header {
     align-items: center;
 }
 
-.services-main {
+.services-main , .about-us-main{
     padding:0 3rem;
 }
 
-.services-main, .categories-main, .top-services-main , .best-sellers-main , .tips-main, .comments-main{
+.services-main, .categories-main, 
+.top-services-main, .best-sellers-main, 
+.tips-main, .comments-main, 
+.about-us-main {
     flex:1;
     width: 100%;
     margin-top:3rem;
@@ -517,4 +520,42 @@ header {
     height:80%;
     width:60%;
     flex-direction: row-reverse;
+}
+
+.about-us {
+    height:100vh;
+}
+
+.about-us-main {
+    display: grid;
+    grid-template-columns: repeat(4, max(240px, 18%)); 
+    grid-template-rows: repeat(2, min(240px, 40%));
+    grid-template-areas: "p1 p1 p3 p4"
+                         "p2 p2 p3 p4"; 
+
+    row-gap: 3em;
+    column-gap: 2em;
+
+    justify-content: center;
+}
+
+.about {
+    background-color: #fff;
+    border-radius: 40px;
+}
+
+.p1 {
+    grid-area: p1;
+}
+
+.p2 {
+    grid-area: p2;
+}
+
+.p3 {
+    grid-area: p3;
+}
+
+.p4 {
+    grid-area: p4;
 }
