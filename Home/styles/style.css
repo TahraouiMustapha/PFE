@@ -169,7 +169,7 @@ header {
     bottom:0;
 }
 /* for sections */
-.popular-services, .categories, .top-services , .best-sellers {
+.popular-services, .categories, .top-services , .best-sellers, .tips {
     height: 70vh;
     width: 100%;
     display: flex;
@@ -197,7 +197,7 @@ header {
     padding:0 3rem;
 }
 
-.services-main, .categories-main, .top-services-main , .best-sellers-main {
+.services-main, .categories-main, .top-services-main , .best-sellers-main , .tips-main{
     flex:1;
     width: 100%;
     margin-top:3rem;
@@ -459,4 +459,49 @@ header {
 .seller-card > .profile-desc {
     font-size: 0.8em;
     text-align: center;
+}
+
+.tips {
+    height: 90vh;
+}
+
+.tips-main {
+    background-color: rgba(255, 255, 255, 0.1);
+    width:70%;
+    margin-top: 2em;
+    margin-bottom: 4em;
+    border-radius: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.8em;
+}
+
+.tips-content {
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    gap:2em;
+    color: var(--font-clr);
+}
+
+.tips-content > .title {
+    margin-top: 0;
+}
+
+.tips-content > p {
+    font-weight: 300;
+    letter-spacing: 1.1px;
+    line-height: 1.5;
+}
+
+.tips-image {
+    background-color: #fff;
+    width:35%;
+    height:75%;
+    border-radius: 32px;
+    box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
 }
