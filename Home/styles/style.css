@@ -2,6 +2,7 @@
 :root {
     --font-clr: white;
     --transp-bg: rgba(255, 255, 255, 0.4);
+    --card-sz:calc(80vh / 3);
 }
 
 *{
@@ -597,7 +598,7 @@ header {
 
 .opinion-card {
     background-color: #fff;
-    height:calc(80vh / 3);
+    height:var(--card-sz);
     border-radius: 32px;
     width:55vw;
 
@@ -606,7 +607,7 @@ header {
     justify-content: center;
     align-items: center;
     gap:1.8em;
-    padding:0 4em;
+    padding:0 5em;
 }
 
 .opinion-card > button {
@@ -615,4 +616,23 @@ header {
     border:none;
     border-radius: 16px;
     padding:8px 24px
+}
+
+.opinion-image {
+   background-color: red;
+   height:calc(var(--card-sz) + 48px);
+   width:calc(var(--card-sz) + 48px);
+
+   overflow: hidden;
+   position: absolute;
+   left:24vw;
+   bottom:42%;
+   border-radius: 32px;
+   box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
+}
+
+.opinion-image > img {
+    width:100%;
 }
