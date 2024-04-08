@@ -540,8 +540,26 @@ header {
 }
 
 .about {
-    background-color: #fff;
+    color: #fff;
     border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 2em;
+
+    background-image: url('../images/jacinto-diego-D0dgXgDCi1k-unsplash.jpg');
+    background-size : cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+.about > .title {
+    font-size: 1.8em;
+}
+
+.about > p {
+    font-size: 0.9em;
+    font-weight: 500;
 }
 
 .p1 {
