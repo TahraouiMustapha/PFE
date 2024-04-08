@@ -169,7 +169,7 @@ header {
     bottom:0;
 }
 /* for sections */
-.popular-services, .categories, .top-services , .best-sellers, .tips {
+.popular-services, .categories, .top-services , .best-sellers, .tips , .comments{
     height: 70vh;
     width: 100%;
     display: flex;
@@ -187,7 +187,7 @@ header {
     margin-top: 30px;
 }
 
-.services-main , .best-sellers-main {
+.services-main , .best-sellers-main , .comments-main{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -197,7 +197,7 @@ header {
     padding:0 3rem;
 }
 
-.services-main, .categories-main, .top-services-main , .best-sellers-main , .tips-main{
+.services-main, .categories-main, .top-services-main , .best-sellers-main , .tips-main, .comments-main{
     flex:1;
     width: 100%;
     margin-top:3rem;
@@ -461,11 +461,11 @@ header {
     text-align: center;
 }
 
-.tips {
+.tips , .comments{
     height: 90vh;
 }
 
-.tips-main {
+.tips-main , .comment{
     background-color: rgba(255, 255, 255, 0.1);
     width:70%;
     margin-top: 2em;
@@ -477,7 +477,7 @@ header {
     padding: 0 1.8em;
 }
 
-.tips-content {
+.tips-content, .comment-content{
     width: 50%;
     height: 70%;
     display: flex;
@@ -496,12 +496,25 @@ header {
     line-height: 1.5;
 }
 
-.tips-image {
+.tips-image ,.comment-image{
     background-color: #fff;
     width:35%;
     height:75%;
     border-radius: 32px;
+}
+
+.comment-image {
+    box-shadow: 5px 5px 30px;
+}
+
+.tips-image {
     box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 16px 27px 0px rgba(0,0,0,0.75);
+}
+
+.comment {
+    height:80%;
+    width:60%;
+    flex-direction: row-reverse;
 }
