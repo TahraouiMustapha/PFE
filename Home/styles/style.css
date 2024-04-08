@@ -577,3 +577,42 @@ header {
 .p4 {
     grid-area: p4;
 }
+
+.opinion {
+    height:75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.opinion-main {
+    transform: translateX(25%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:2.8em;
+}
+
+.opinion-card {
+    background-color: #fff;
+    height:calc(80vh / 3);
+    border-radius: 32px;
+    width:55vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:1.8em;
+    padding:0 4em;
+}
+
+.opinion-card > button {
+    align-self: end;
+    background-color: #011121;
+    border:none;
+    border-radius: 16px;
+    padding:8px 24px
+}
