@@ -101,12 +101,87 @@ header > .left {
 
 .main {
     flex: 8;
+    display: flex;
+    flex-direction: column;
+    padding:24px 2.8em;
+    gap:32px;
 }
 
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    grid-template-rows: 100px;
+    gap: 16px;
+}
+
+.categorie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.categorie .categorie-icon {
+    background-color: var(--transp-bg);
+    width:65px;
+    height:65px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+.categorie .categorie-icon ,  
+.categorie .categorie-name  {
+    cursor: pointer;
+}
+
+.categorie-icon svg {
+    width: 40px;
+    height: 40px;
+}
 
 
 footer {
     background-color: #011121;
     color:#fff;
     flex:1;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer > p {
+    font-size: 0.9em;
+    color:var(--font-clr);
+    width:25%;
+    padding-left:1.5em;
+}
+
+.social-media-nav {
+    width:25%;
+}
+
+.social-media-nav > ul {
+    display:flex;
+    justify-content: space-around;
+    padding-right:1.5em;
+}
+
+.social-media-nav > ul > li {
+    border:3px solid blue;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+li a svg {
+    width:1em;
+    fill: blue;
 }
