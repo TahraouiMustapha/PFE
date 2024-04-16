@@ -53,6 +53,13 @@ header {
     font-size: 20px;
 }
 
+.navigation li a:hover,
+.navigation a.active
+{
+    color:#011121;
+    font-weight: 600;
+} 
+
 .logo {
     color: var(--font-clr);
     font-size: 2em;
