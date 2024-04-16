@@ -157,6 +157,7 @@ header > .left {
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 287px);
     grid-template-rows: repeat(2, 320px);
+    grid-auto-rows: 320px;
     row-gap: 2em;
     column-gap: 3em;
 }
