@@ -6,11 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    sign in
+    <div>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+
+
+        <input type="submit" id="signIn" >
+    </div>
 </body>
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getDatabase} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
     // https://firebase.google.com/docs/web/setup#available-libraries
   
     // Your web app's Firebase configuration
@@ -26,5 +35,28 @@
   
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    const auth = getAuth();
+    const signIn = document.querySelector('#signIn');
+    signIn.addEventListener('click', () => {
+        let email = document.querySelector('#email').value;
+        let password = document.querySelector('#password').value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+            // Signed in 
+                const user = userCredential.user;   
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+
+            });
+
+    })
+
+
   </script>
 </html>
