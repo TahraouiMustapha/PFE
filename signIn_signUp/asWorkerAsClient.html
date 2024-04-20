@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .displayNone {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <button id="worker"><a href="">as worker</a></button>
-    <button id="client"><a href="">as client</a></button>
+    <div class="btnsContainer">
+        <button class="btn" id="worker">as worker</button>
+        <button class="btn" id="client">as client</button>
+    </div>
 
     <!-- <div class="ma3lomatClient"></div>  hadi ndirolha display none 7tan yudrob lfaw9-->
-    <div>
+    <div class="info displayNone" >
         <input type="email" id="email" name="email" placeholder="E-mail">
         <input type="password" id="password" name="password" placeholder="Password">
 
@@ -62,6 +69,18 @@
                 const errorMessage = error.message;
                 //Catch the errors
             });
+    });
+
+    //jibt les button (as worker w as client)
+    const btns = document.querySelectorAll('.btn');
+    const info = document.querySelector('.info');
+    const btnsContainer = document.querySelector('.btnsContainer');
+
+    btns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            btnsContainer.classList.toggle('displayNone');
+            info.classList.toggle('displayNone');
+        });
     });
 
     
