@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- file css -->
-    <link rel="stylesheet" href="css2/email.css" />
+    <title>Sign Up or Login</title>
+    <link rel="stylesheet" href="css2/google.css" />
     <!-- render all element normally -->
     <link rel="stylesheet" href="../css/normlize.css" />
     <!-- font awesome library -->
@@ -19,15 +18,52 @@
     />
   </head>
   <body>
-    <div>
-      <form action="">
-        <h3>Sign In</h3>
-        <input class="email" type="email" placeholder="Email" />
-        <input class="pass" type="password" placeholder="password" />
-        <p>Already have an account? <a href="">Sign in</a></p>
-        <!-- <input type="submit" value="Sign Up" /> -->
-        <button>Sign Up</button>
-      </form>
+    <div class="container">
+      <div>
+        <img class="googleph" src="images/google.jpg" alt="" />
+      </div>
+      <div>
+        <h1>Create a new account</h1>
+        <p>Already have an account? <a href="#">Sign in</a></p>
+
+        <div class="social-buttons">
+          <button class="social-btn google">
+            <a href="https://www.google.com/"
+              ><i class="fa-brands fa-google"></i> Continue with Google</a
+            >
+          </button>
+          <button class="social-btn email">
+            <a href="https://www.email.com/">
+              <i class="fa-solid fa-envelope"></i> Continue with email</a
+            >
+          </button>
+        </div>
+
+        <div class="divider">
+          <span>or</span>
+        </div>
+        <div class="social-buttons">
+          <button class="social-btn apple">
+            <a href="https://www.apple.com/"
+              ><i class="fa-brands fa-apple"></i> apple</a
+            >
+          </button>
+          <button class="social-btn facebook">
+            <a href="https://www.facebook.com/"
+              ><i class="fab fa-facebook"></i>Facebook</a
+            >
+          </button>
+        </div>
+      </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
+
+<!-- <ps class="tagline">The journey starts here</ps>
+<p class="info">
+  Over 200 artisans • Pay per work not per hour • Talents across the
+  country
+</p>
+<p>By joining us you agree our Terms of services.</p>
+      <button id="myButton">Start your adventure</button> -->
