@@ -1,0 +1,123 @@
+/* start global rules*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* meme code fremwork of botstrap version 4 */
+  /*small*/
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  /*medium*/
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  
+  /*large*/
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+  /*end global rules */
+  /* form {
+    background-color: black;
+    width: 800px;
+    height: 700px;
+    margin: 110px auto;
+    border-radius: 20px;
+  }
+  form .full-name {
+    padding: 20px;
+    margin: 20px;
+  }
+  label {
+    color: gray;
+    margin-right: 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 20px;
+  }
+  input {
+    padding: 20px;
+    margin: 20px;
+    width: 250px;
+    height: 50px;
+    border-radius: 20px;
+    border: 2px solid white;
+    background-color: black;
+  }
+  .brthday input {
+    color: gray;
+  }
+  .adresse input {
+    width: 160px;
+  } */
+  form {
+    width: fit-content;
+    height: fit-content;
+    background-color: black;
+    display: grid;
+    margin: 110px auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5 1fr);
+    border-radius: 20px;
+  }
+  label {
+    color: gray;
+    margin: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 20px;
+  }
+  input {
+    padding: 20px;
+    margin: 20px;
+    width: 250px;
+    height: 50px;
+    border-radius: 20px;
+    border: 2px solid white;
+    background-color: black;
+  }
+  .adresse input {
+    width: 160px;
+  }
+  .brthday input {
+    color: gray;
+  }
+  .description textarea {
+    width: 600px;
+    height: 150px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 20px;
+    display: inline-flex;
+    align-content: flex-end;
+    justify-content: flex-end;
+  }
+  .description label {
+    transform: translateY(-10px);
+    float: left;
+    clear: both;
+  }
+  

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/asWorkerAsClient.css">
     <style>
         .displayNone {
             display: none;
@@ -12,16 +13,52 @@
 </head>
 <body>
     <div class="btnsContainer">
-        <button class="btn" id="worker">as worker</button>
-        <button class="btn" id="client">as client</button>
+      <div class="image-container">
+        <img src="images/worker.png" alt="Image A" class="image" id="image1" />
+        <img src="images/buyer.png" alt="Image B" class="image" id="image2" />
+      </div>
+      <button class="btn">as Worker</button>
     </div>
 
     <!-- <div class="ma3lomatClient"></div>  hadi ndirolha display none 7tan yudrob lfaw9-->
     <div class="info displayNone" >
-        <input type="email" id="email" name="email" placeholder="E-mail">
-        <input type="password" id="password" name="password" placeholder="Password">
-
+      <form action="">
+        <div class="full-name">
+          <label for="">full name</label>
+          <input type="text" placeholder="first name" />
+          <input type="text" placeholder="last name" />
+        </div>
+        <div class="brthday">
+          <label for="">birthday</label>
+          <input type="date" />
+        </div>
+        <div class="tel">
+          <label for="">telphone</label>
+          <input type="text" placeholder="telephone number" />
+        </div>
+        <div class="mail">
+          <label for="">email</label>
+          <input type="email" placeholder="email" required />
+        </div>
+  
+        <div class="speciality">
+          <label for="">speciality</label>
+          <input type="text" placeholder="speciality" />
+        </div>
+        <div class="adresse">
+          <label for="">adresse</label>
+          <input type="text" placeholder="city" />
+          <input type="text" placeholder="province" />
+          <input type="text" placeholder="street" />
+        </div>
+        <div class="description">
+          <label for="">description</label>
+          <textarea name="" id="" cols="30" rows="10">
+            tell about you share your skills project that have did
+          </textarea>
+        </div>
         <input type="submit" id="signUp" >
+      </form>
     </div>
 </body>
 
@@ -72,16 +109,16 @@
     });
 
     //jibt les button (as worker w as client)
-    const btns = document.querySelectorAll('.btn');
+    const btn = document.querySelector('.btn');
     const info = document.querySelector('.info');
     const btnsContainer = document.querySelector('.btnsContainer');
 
-    btns.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-            btnsContainer.classList.toggle('displayNone');
-            info.classList.toggle('displayNone');
-        });
+
+    btn.addEventListener('click', (e) => {
+        btnsContainer.classList.toggle('displayNone');
+        info.classList.toggle('displayNone');
     });
+
 
     
   </script>
