@@ -9,6 +9,10 @@
   }
   body {
     font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
   .container {
     padding-left: 15px;
@@ -71,15 +75,57 @@
     width: 160px;
   } */
   form {
-    width: fit-content;
-    height: fit-content;
     background-color: black;
     display: grid;
-    margin: 110px auto;
+    margin: 60px auto;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5 1fr);
     border-radius: 20px;
   }
+
+  .btnsContainer {
+    background-color: black;
+    width: 60vw;
+    height: 70vh;
+    border-radius: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .images-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap:16px;
+  }
+
+  .image-container {
+    height:80%;
+    width:40%;
+    border:3px solid #fff ;
+    border-radius: 16px;
+  }
+
+  .image-container img {
+    width:300px;
+    padding-bottom:8px;
+  }
+
+
+  .btn {
+    padding: 10px 24px;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    color:#fff;
+    cursor: pointer;
+  }
+
   label {
     color: gray;
     margin: 20px;
@@ -88,11 +134,12 @@
     padding: 20px;
   }
   input {
+    color:#fff;
     padding: 20px;
     margin: 20px;
     width: 250px;
     height: 50px;
-    border-radius: 20px;
+    border-radius: 12px;
     border: 2px solid white;
     background-color: black;
   }

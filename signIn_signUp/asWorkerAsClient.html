@@ -13,11 +13,11 @@
 </head>
 <body>
     <div class="btnsContainer">
-      <div class="image-container">
-        <img src="images/worker.png" alt="Image A" class="image" id="image1" />
-        <img src="images/buyer.png" alt="Image B" class="image" id="image2" />
+      <div class="images-container">
+        <div class="image-container"><img src="images/worker.png" alt="Image A" class="image" id="image1" /></div>
+        <div class="image-container"><img class="img-right" src="images/buyer.png" alt="Image B" class="image" id="image2" /></div>
       </div>
-      <button class="btn">as Worker</button>
+      <button class="btn">as worker</button>
     </div>
 
     <!-- <div class="ma3lomatClient"></div>  hadi ndirolha display none 7tan yudrob lfaw9-->
@@ -112,11 +112,15 @@
     const btn = document.querySelector('.btn');
     const info = document.querySelector('.info');
     const btnsContainer = document.querySelector('.btnsContainer');
+    console.log(btn);
 
 
     btn.addEventListener('click', (e) => {
+      console.log(btnsContainer);
+      console.log(btnsContainer.classList);
+      
         btnsContainer.classList.toggle('displayNone');
-        info.classList.toggle('displayNone');
+        info.classList.remove('displayNone');
     });
 
 
