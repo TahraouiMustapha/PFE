@@ -108,12 +108,20 @@
     width:40%;
     border:3px solid #fff ;
     border-radius: 16px;
+    cursor: pointer;
   }
 
   .image-container img {
     width:300px;
     padding-bottom:8px;
   }
+
+  .clicked {
+    border:3px solid blue ;
+
+  }
+
+
 
 
   .btn {

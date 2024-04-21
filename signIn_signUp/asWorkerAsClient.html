@@ -22,7 +22,7 @@
 
     <!-- <div class="ma3lomatClient"></div>  hadi ndirolha display none 7tan yudrob lfaw9-->
     <div class="info displayNone" >
-      <form action="">
+      <form>
         <div class="full-name">
           <label for="">full name</label>
           <input type="text" placeholder="first name" />
@@ -112,15 +112,29 @@
     const btn = document.querySelector('.btn');
     const info = document.querySelector('.info');
     const btnsContainer = document.querySelector('.btnsContainer');
-    console.log(btn);
 
 
     btn.addEventListener('click', (e) => {
-      console.log(btnsContainer);
-      console.log(btnsContainer.classList);
-      
         btnsContainer.classList.toggle('displayNone');
         info.classList.remove('displayNone');
+    });
+
+    let myImg1 = document.getElementById("image1");
+    let myImg2 = document.getElementById("image2");
+    let myButton = document.querySelector(".btn");
+
+    const imageContainers = document.querySelectorAll('.image-container');
+
+    myImg1.onclick = function () {
+      myButton.textContent = "worker";
+      imageContainers[0].classList.toggle('clicked');
+      imageContainers[1].classList.remove('clicked');
+    };
+    myImg2.addEventListener("click", () => {
+      myButton.textContent = "client";
+      imageContainers[1].classList.toggle('clicked');
+      imageContainers[0].classList.remove('clicked');
+
     });
 
 
