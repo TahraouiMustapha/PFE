@@ -3,23 +3,26 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
+
   html {
     scroll-behavior: smooth;
   }
   /* meme code fremwork of botstrap version 4 */
   /*small*/
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     .container {
       width: 750px;
     }
-  }
+  } */
   /*medium*/
-  @media (min-width: 992px) {
+  /* @media (min-width: 992px) {
     .container {
       width: 970px;
     }
-  }
+  } */
   
   /*large*/
   @media (min-width: 1200px) {
@@ -30,28 +33,36 @@
   /*end global rules */
   body {
     font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     background-color: #f5f5f5;
   }
   
   .container {
     background-color: #fff;
-    padding: 50px;
     border-radius: 16px;
     text-align: center;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
-    /* width: 800px; */
+    width: 50vw; 
+    height: 480px;
+    overflow: hidden;
   }
   
+.image-container {
+  width:50%;
+  height:100%;
+  background-image: url('../images/google.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 62%;
+}
+
+.info-container {
+  padding:3em 1em;
+}
+
   h1 {
     font-size: 2em;
     margin-bottom: 15px;
@@ -63,16 +74,30 @@
   }
   
   a {
-    color: #007bff;
+    color: #000;
+    font-size: 1.2em;
     text-decoration: none;
   }
   
-  .social-buttons {
+  .social-buttons.above {
     display: flex;
+    flex-direction: column;
+    gap:1em;
     justify-content: center;
     margin: 20px 0;
   }
+
+  .social-buttons.bottom {
+    display: flex;
+    justify-content: center;
+    
+  }
+  .sign-up-btn {
+    text-decoration:underline ;
+  }
+
   .social-btn {
+    width:100%;
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 10px 20px;
@@ -83,7 +108,8 @@
   }
   
   .social-btn:hover {
-    background-color: blue;
+    background-color: rgba(0, 0, 255, 0.132);
+    color:#fff;
   }
   
   .google {
@@ -131,11 +157,7 @@
     padding: 10px 20px;
     border: none;
   } */
-  img {
-    width: 500px;
-    margin-right: 20px;
-    /* height: 100%; */
-  }
+
   i {
     color: initial;
     margin-right: 10px;
