@@ -17,45 +17,41 @@
         <div class="image-container"><img src="images/worker.png" alt="Image A" class="image" id="image1" /></div>
         <div class="image-container"><img class="img-right" src="images/buyer.png" alt="Image B" class="image" id="image2" /></div>
       </div>
-      <button class="btn">as worker</button>
+      <button class="btn">as client</button>
     </div>
 
     <!-- <div class="ma3lomatClient"></div>  hadi ndirolha display none 7tan yudrob lfaw9-->
     <div class="info displayNone" >
-      <form>
-        <div class="full-name">
-          <label for="">full name</label>
-          <input type="text" placeholder="first name" />
-          <input type="text" placeholder="last name" />
-        </div>
-        <div class="brthday">
-          <label for="">birthday</label>
-          <input type="date" />
-        </div>
-        <div class="tel">
-          <label for="">telphone</label>
-          <input type="text" placeholder="telephone number" />
-        </div>
-        <div class="mail">
-          <label for="">email</label>
-          <input type="email" placeholder="email" required />
-        </div>
-  
-        <div class="speciality">
-          <label for="">speciality</label>
-          <input type="text" placeholder="speciality" />
-        </div>
-        <div class="adresse">
-          <label for="">adresse</label>
-          <input type="text" placeholder="city" />
-          <input type="text" placeholder="province" />
-          <input type="text" placeholder="street" />
-        </div>
-        <div class="description">
-          <label for="">description</label>
-          <textarea name="" id="" cols="30" rows="10">
-            tell about you share your skills project that have did
-          </textarea>
+      <form >
+        <div class="myForm">
+          <div class="mail">
+            <label for="email">email</label>
+            <input id="email" type="email" placeholder="E-mail" required />
+          </div>
+          <div >
+            <label for="password">password</label>
+            <input id="password" type="password" placeholder="new password" required />
+          </div>
+          <div class="full-name">
+            <label >full name</label>
+            <input id="fist-name" type="text" placeholder="first name" required/>
+            <input id="last-name" type="text" placeholder="last name" required/>
+          </div>
+          <div class="tel">
+            <label for="phone-number">telphone</label>
+            <input id="phone-number" type="text" placeholder="telephone number" required/>
+          </div>
+          <div class="wilaya">
+            <label for="wilaya">wilaya</label>
+            <input id="wilaya" type="number" placeholder="number of wilaya" min="1" max="58" required/>
+          </div>
+
+          <!-- <div class="description">
+            <label for="">description</label>
+            <textarea name="" id="" cols="30" rows="10">
+              tell about you share your skills project that have did
+            </textarea>
+          </div> -->
         </div>
         <input type="submit" id="signUp" >
       </form>
@@ -91,6 +87,7 @@
         let email = document.querySelector('#email').value;
         let password = document.querySelector('#password').value;
 
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed up 
@@ -112,11 +109,62 @@
     const btn = document.querySelector('.btn');
     const info = document.querySelector('.info');
     const btnsContainer = document.querySelector('.btnsContainer');
-
+    let state = 'client';
 
     btn.addEventListener('click', (e) => {
         btnsContainer.classList.toggle('displayNone');
         info.classList.remove('displayNone');
+        const myForm = document.querySelector('.myForm');
+        if(state === 'client') {
+          myForm.innerHTML += `
+              <div class="adresse">
+                <label for="">adresse</label>
+                <input type="text" placeholder="city" />
+                <input type="text" placeholder="province" />
+                <input type="text" placeholder="street" />
+              </div> 
+          `; 
+        } else {
+          myForm.innerHTML += `
+
+            <div class="description">
+              <label for="">description</label>
+              <textarea name="" id="" cols="30" rows="10">
+                tell about you share your skills project that have did
+              </textarea>
+            </div> 
+
+            <div class="transport">
+              <label>transport</label>
+              
+                <div class="choice">                  
+                  <label for="choice1">available</label>
+                  <input type="radio" value="available" name="transport" />
+                </div>
+
+                <div class="choice">
+                  <label for="choice2">not available</label>
+                  <input type="radio" value="not" name="transport"/>
+                </div>
+              
+            </div> 
+
+            <div class="tools">
+              <label>tools</label>
+              
+                <div class="choice">                  
+                  <label for="choice1">available</label>
+                  <input type="radio" value="available" name="transport" />
+                </div>
+
+                <div class="choice">
+                  <label for="choice2">not available</label>
+                  <input type="radio" value="not" name="transport"/>
+                </div>
+              
+            </div> 
+          `; 
+        }
     });
 
     let myImg1 = document.getElementById("image1");
@@ -124,14 +172,15 @@
     let myButton = document.querySelector(".btn");
 
     const imageContainers = document.querySelectorAll('.image-container');
-
     myImg1.onclick = function () {
-      myButton.textContent = "worker";
+      state = 'worker';
+      myButton.textContent = "as worker";
       imageContainers[0].classList.toggle('clicked');
       imageContainers[1].classList.remove('clicked');
     };
     myImg2.addEventListener("click", () => {
-      myButton.textContent = "client";
+      state = 'client';
+      myButton.textContent = "as client";
       imageContainers[1].classList.toggle('clicked');
       imageContainers[0].classList.remove('clicked');
 

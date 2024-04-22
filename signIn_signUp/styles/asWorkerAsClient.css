@@ -74,10 +74,16 @@
   .adresse input {
     width: 160px;
   } */
+
+  .info {
+    min-height: 100vh;
+    padding-top:200px;
+  }
+
   form {
+    padding:2em 0;
     background-color: black;
     display: grid;
-    margin: 60px auto;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5 1fr);
     border-radius: 20px;
@@ -120,10 +126,7 @@
     border:3px solid blue ;
 
   }
-
-
-
-
+  
   .btn {
     padding: 10px 24px;
     background-color: #2563eb;
@@ -175,4 +178,22 @@
     float: left;
     clear: both;
   }
+
+.transport , .tools{
+  display: flex;
+  gap: 1em;
+  width:80%;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+.choice input {
+  width: 16px;
+  margin-left: -24px;
+}
   
