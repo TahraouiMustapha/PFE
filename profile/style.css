@@ -102,7 +102,7 @@ header > .left {
 section div {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30Px;
+  margin-bottom: 30px;
 }
 .sec svg {
   width: 32px;
@@ -110,31 +110,42 @@ section div {
   cursor: pointer;
   margin: auto 20px;
 }
-.sec p{
-margin: auto auto 0;
+.sec p {
+  margin: auto auto 0;
 }
-div button{
+div button {
   background-color: blue;
-color: white;
-border: none;
-border-radius: 5px;
-width: 50px;
-height:25px;
-margin: auto 20px ;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 50px;
+  height: 25px;
+  margin: auto 20px;
 }
 .sec2,
-.sec3{
+.sec3 {
   display: flex;
   justify-content: center;
 }
-.sec2 div{
+.sec2 div {
   background-color: black;
-  width:400px ;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
 }
-.sec3 h3{
-
+.sec3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* margin-bottom: 10px; */
+  text-align: center;
+  margin-bottom: 30px;
+}
+.sec3 div {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: bold;
 }
 footer {
   background-color: #011121;
