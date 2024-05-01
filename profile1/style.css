@@ -103,6 +103,7 @@ header > .left {
 section div {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   margin-bottom: 30px;
 }
 .sec svg {
@@ -140,7 +141,7 @@ div button {
   align-items: center;
   flex-direction: column;
   /* margin-bottom: 10px; */
-  text-align: center;
+  text-align: left;
   margin-bottom: 30px;
 }
 .sec3 div {
@@ -148,6 +149,22 @@ div button {
   font-size: 20px;
   font-weight: bold;
 }
+section {
+  display: flex;
+  justify-content: space-between; /* Pour aligner les éléments de la section */
+}
+
+.ymin {
+  width: calc(
+    50% - 10px
+  ); /* Réglage de la largeur de la moitié de la section avec un espace de 10px */
+}
+.ysar {
+  width: calc(
+    50% - 10px
+  ); /* Réglage de la largeur de la moitié de la section avec un espace de 10px */
+}
+
 /* end section */
 /* start footer */
 footer {
