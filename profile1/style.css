@@ -151,18 +151,18 @@ div button {
 }
 section {
   display: flex;
-  justify-content: space-between; /* Pour aligner les éléments de la section */
+  justify-content: space-between; 
 }
 
 .ymin {
   width: calc(
     50% - 10px
-  ); /* Réglage de la largeur de la moitié de la section avec un espace de 10px */
+  ); 
 }
 .ysar {
   width: calc(
     50% - 10px
-  ); /* Réglage de la largeur de la moitié de la section avec un espace de 10px */
+  );
 }
 
 /* end section */
