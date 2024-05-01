@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="asWorkerAsClient.css" />
+    <style>
+      .displayNone {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btnsContainer">
+      <div class="images-container">
+        <div class="image-container">
+          <img
+            src="./images/worker.png"
+            alt="Image A"
+            class="image"
+            id="image1"
+          />
+        </div>
+        <div class="image-container">
+          <img
+            class="img-right"
+            src="./images/buyer.png"
+            alt="Image B"
+            class="image"
+            id="image2"
+          />
+        </div>
+      </div>
+      <button class="btn">as client</button>
+    </div>
+
+    <!-- <div class="ma3lomatClient"></div>  hadi ndirolha display none 7tan yudrob lfaw9-->
+    <div class="info displayNone">
+      <form>
+        <div class="myForm">
+          <div class="mail">
+            <label for="email">email</label>
+            <input id="email" type="email" placeholder="E-mail" required />
+          </div>
+          <div>
+            <label for="password">password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="new password"
+              required
+            />
+          </div>
+          <div class="full-name">
+            <label>full name</label>
+            <input
+              id="fist-name"
+              type="text"
+              placeholder="first name"
+              required
+            />
+            <input
+              id="last-name"
+              type="text"
+              placeholder="last name"
+              required
+            />
+          </div>
+          <div class="tel">
+            <label for="phone-number">telphone</label>
+            <input
+              id="phone-number"
+              type="text"
+              placeholder="telephone number"
+              required
+            />
+          </div>
+          <div class="wilaya">
+            <label for="wilaya">wilaya</label>
+            <input
+              id="wilaya"
+              type="number"
+              placeholder="number of wilaya"
+              min="1"
+              max="58"
+              required
+            />
+          </div>
+
+          <!-- <div class="description">
+            <label for="">description</label>
+            <textarea name="" id="" cols="30" rows="10">
+              tell about you share your skills project that have did
+            </textarea>
+          </div> -->
+        </div>
+        <input type="submit" id="signUp" />
+      </form>
+    </div>
+
+    <script type="module" src="firebaseLogic.js"></script>
+  </body>
+</html>

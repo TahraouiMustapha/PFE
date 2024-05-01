@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="signIn.css" />
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div>
+      <form action="#" method="get">
+        <h3>Sign In</h3>
+        <input
+          class="email"
+          type="email"
+          placeholder="Email"
+          id="email"
+          required
+        />
+        <input
+          class="pass"
+          type="password"
+          placeholder="password"
+          id="password"
+          required
+        />
+        <!-- <p>Already have an account? <a href="">Sign in</a></p> -->
+        <!-- <input type="submit" value="SignIn" /> -->
+        <button type="submit" id="signIn">Sign in</button>
+      </form>
+    </div>
+  </body>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import {
+      getDatabase,
+      update,
+      ref,
+    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCOa527QiPGbAmOXtbG99sBoKmwGpTrE6k",
+      authDomain: "projet-fin-d-etude-975b7.firebaseapp.com",
+      databaseURL:
+        "https://projet-fin-d-etude-975b7-default-rtdb.firebaseio.com",
+      projectId: "projet-fin-d-etude-975b7",
+      storageBucket: "projet-fin-d-etude-975b7.appspot.com",
+      messagingSenderId: "919112985393",
+      appId: "1:919112985393:web:7d9c3545b45b52584dde10",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    const auth = getAuth();
+
+    const signIn = document.querySelector("#signIn");
+    signIn.addEventListener("click", () => {
+      let email = document.querySelector("#email").value;
+      let password = document.querySelector("#password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          //update l'information ta3 user
+          let dt = new Date();
+          update(ref(database, "users/" + user.uid), {
+            last_date: dt,
+          });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          //Catch the error
+        });
+    });
+  </script>
+</html>

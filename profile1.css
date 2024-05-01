@@ -151,18 +151,14 @@ div button {
 }
 section {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .ymin {
-  width: calc(
-    50% - 10px
-  ); 
+  width: calc(50% - 10px);
 }
 .ysar {
-  width: calc(
-    50% - 10px
-  );
+  width: calc(50% - 10px);
 }
 
 /* end section */
