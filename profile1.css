@@ -161,6 +161,107 @@ section {
   width: calc(50% - 10px);
 }
 
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  color: white;
+  align-items: flex-start;
+}
+.service-card > .services-gallery {
+  background-color: var(--transp-bg);
+  flex: 1 0 auto;
+  width: 95%;
+  height: 50%;
+  border-radius: 24px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  margin: 6px 0;
+}
+
+.profile > .photo-profile {
+  width: 40px;
+  height: 40px;
+}
+
+.photo-profile {
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.photo-profile > img {
+  width: 100%;
+}
+
+.profile-name {
+  text-transform: uppercase;
+}
+
+.profile-desc,
+.service-rate {
+  padding-left: 1em;
+}
+
+.profile-desc {
+  font-size: 0.9em;
+  font-weight: 300;
+  width: 80%;
+}
+
+.service-rate {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 6px;
+  align-items: flex-end;
+}
+
+.services-gallery > .points {
+  bottom: 0.8em;
+  left: 45%;
+}
+.gallery-main {
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.gallery-main > .left-click,
+.gallery-main > .right-click {
+  font-size: 1.5em;
+}
+
+.gallery-main > .work-image {
+  width: 75%;
+  height: 90%;
+  margin-top: 1em;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.services-gallery .point {
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  background-color: var(--transp-bg);
+}
+
+.services-gallery .point.active {
+  background-color: var(--font-clr);
+}
 /* end section */
 /* start footer */
 footer {
