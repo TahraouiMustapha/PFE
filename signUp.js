@@ -18,14 +18,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-
+//event click 
 const signUp = document.querySelector('#signUp');
 signUp.addEventListener('click', (event) => {
-    event.preventDefault();
+    event.preventDefault();//hadi bah form matib3athch w yasra error
     createNewUserHandler();
 })
 
-
+//function mn fire base 
 function createNewUserHandler() {
     const email = document.querySelector('#email');
     const password = document.querySelector('#password');
