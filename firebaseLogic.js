@@ -50,6 +50,7 @@ const info = document.querySelector('.info');
 const btnsContainer = document.querySelector('.btnsContainer');
 let state = 'client';
 
+
 btn.addEventListener('click', (e) => {
     btnsContainer.classList.toggle('displayNone');
     info.classList.remove('displayNone');
