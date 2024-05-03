@@ -45,85 +45,10 @@ signUp.addEventListener('click', () => {
 });
 
 //jibt les button (as worker w as client)
-const btn = document.querySelector('.btn');
-const info = document.querySelector('.info');
-const btnsContainer = document.querySelector('.btnsContainer');
-let state = 'client';
 
 
-btn.addEventListener('click', (e) => {
-    btnsContainer.classList.toggle('displayNone');
-    info.classList.remove('displayNone');
-    const myForm = document.querySelector('.myForm');
-    if(state === 'client') {
-      myForm.innerHTML += `
-          <div class="adresse">
-            <label for="">adresse</label>
-            <input type="text" placeholder="city" />
-            <input type="text" placeholder="province" />
-            <input type="text" placeholder="street" />
-          </div> 
-      `; 
-    } else {
-      myForm.innerHTML += `
 
-        <div class="description">
-          <label for="">description</label>
-          <textarea name="" id="" cols="30" rows="10">
-            tell about you share your skills project that have did
-          </textarea>
-        </div> 
 
-        <div class="transport">
-          <label>transport</label>
-          
-            <div class="choice">                  
-              <label for="choice1">available</label>
-              <input type="radio" value="available" name="transport" />
-            </div>
 
-            <div class="choice">
-              <label for="choice2">not available</label>
-              <input type="radio" value="not" name="transport"/>
-            </div>
-          
-        </div> 
-
-        <div class="tools">
-          <label>tools</label>
-          
-            <div class="choice">                  
-              <label for="choice1">available</label>
-              <input type="radio" value="available" name="transport" />
-            </div>
-
-            <div class="choice">
-              <label for="choice2">not available</label>
-              <input type="radio" value="not" name="transport"/>
-            </div>
-          
-        </div> 
-      `; 
-    }
-});
-
-let myImg1 = document.getElementById("image1");
-let myImg2 = document.getElementById("image2");
-let myButton = document.querySelector(".btn");
-
-const imageContainers = document.querySelectorAll('.image-container');
-myImg1.onclick = function () {
-  state = 'worker';
-  myButton.textContent = "as worker";
-  imageContainers[0].classList.toggle('clicked');
-  imageContainers[1].classList.remove('clicked');
-};
-myImg2.addEventListener("click", () => {
-  state = 'client';
-  myButton.textContent = "as client";
-  imageContainers[1].classList.toggle('clicked');
-  imageContainers[0].classList.remove('clicked');
-
-});
 
 

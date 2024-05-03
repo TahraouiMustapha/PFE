@@ -39,12 +39,10 @@ function signInUserHandler() {
           // Signed in hna mrigla d5al
           const user = userCredential.user;
 
-          alert('mrigla');
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-            //errorMessage hada l error
-          alert(errorMessage);
+            //errorMessage hada lerror
         });
 }
