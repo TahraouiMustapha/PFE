@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -18,6 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getFirestore(app);
 //event click 
 const signUp = document.querySelector('#signUp');
 signUp.addEventListener('click', (event) => {
@@ -25,19 +26,30 @@ signUp.addEventListener('click', (event) => {
     createNewUserHandler();
 })
 
-//function mn fire base 
 function createNewUserHandler() {
-    const email = document.querySelector('#email');
-    const password = document.querySelector('#password');
-
-    createUserWithEmailAndPassword(auth, email.value, password.value)
-        .then((userCredential) => {
+    const email = document.querySelector('#email').value;
+    const password = document.querySelector('#password').value;
+    //function mn fire base 
+    createUserWithEmailAndPassword(auth, email, password)
+        .then(async (userCredential) => {
           // Signed up 
           const user = userCredential.user;
+          alert('signed up');
+          //logic for database:
+          try {
+            const docRef = await addDoc(collection(db, "users"), {
+              email: email,
+            });
+            // hadi bah tjib id ta3 doc :docRef.id
+          } catch (e) {
+            // e huwa naw3 l error
+          }
+          window.location.href = './asWorkerAsClient.html';
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           //catch the errors
+          alert(errorMessage);
         });
 }
