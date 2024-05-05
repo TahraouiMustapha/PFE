@@ -38,6 +38,7 @@ function signInUserHandler() {
         .then((userCredential) => {
           // Signed in hna mrigla d5al
           const user = userCredential.user;
+          window.location.href = './main.html';
 
         })
         .catch((error) => {

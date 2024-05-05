@@ -34,16 +34,9 @@ function createNewUserHandler() {
         .then(async (userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          alert('signed up');
-          //logic for database:
-          try {
-            const docRef = await addDoc(collection(db, "users"), {
-              email: email,
-            });
-            // hadi bah tjib id ta3 doc :docRef.id
-          } catch (e) {
-            // e huwa naw3 l error
-          }
+          alert(user);
+          
+
           window.location.href = './asWorkerAsClient.html';
         })
         .catch((error) => {

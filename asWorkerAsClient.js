@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getAuth,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-import { getFirestore, doc, updateDoc  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import { getFirestore, addDoc, collection  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,37 +14,15 @@ const firebaseConfig = {
   };
   
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-const db = getFirestore(app);
+
 // hadi bah na3raf wach 5ayar
 let state = 'client';
 
-//firebase function 
-onAuthStateChanged(auth, async(user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
-      const uid = user.uid;
-      const submitBtn = document.querySelector('#submitBtn');
-      submitBtn.addEventListener('click', () => {
-        if(state === 'client'){
-          addClientInfo(uid);
-        } else {
-          addWorkerInfo();
-        }
-      }) 
-
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
-
+const submitBtn = document.querySelector('#submitBtn');
 
 const btn = document.querySelector('.btn');
 const info = document.querySelector('.info');
 const btnsContainer = document.querySelector('.btnsContainer');
-
 
 const myImg1 = document.getElementById("image1");
 const myImg2 = document.getElementById("image2");
@@ -61,30 +39,65 @@ myImg2.addEventListener("click", () => {
   img2Handler();
 });
 
+
 //switch pages logic
 
 btn.addEventListener('click', () => {
     switchPagesHandler();
-})
+});
 
+//firebase authentification
+const auth = getAuth();
+const db = getFirestore(app);
 
-function addClientInfo(clientId) {
+submitBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const email = document.querySelector('#email').value;
+  const password = document.querySelector('#password').value;
   const firstName = document.querySelector('#first-name').value;
   const lastName = document.querySelector('#last-name').value;
   const phoneNumber = document.querySelector('#phone-number').value;
-  const wilaya = document.querySelector('#wilaya').value;
-  //addresse
-  const city = document.querySelector('#city');
-  const province = document.querySelector('#province');
-  const street = document.querySelector('#street');
+  const wilaya2 = document.querySelector('#wilaya2').value;
 
-  const clientRef = doc(db, 'users', clientId);
-  console.log(clientRef);
-}
+  if(state === 'client') {
+    const city = document.querySelector('#city').value; 
+    const province = document.querySelector('#province').value; 
+    const street = document.querySelector('#street').value;
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        alert('mrigla');
+        //add data
+        try {
+          const docRef = await addDoc(collection(db, "try"), {
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber,
+            wilaya2: wilaya2,
+            city: city,
+            province: province,
+            street: street,
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+        alert(errorMessage);
 
-function addWorkerInfo() {
-  console.log('addworkerINfo');
-}
+      });
+        
+  }
+
+})
+
 
 function switchPagesHandler() {
     btnsContainer.classList.toggle('displayNone');
