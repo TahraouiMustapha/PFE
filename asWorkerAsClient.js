@@ -57,8 +57,8 @@ submitBtn.addEventListener('click', (event) => {
   const firstName = document.querySelector('#first-name').value;
   const lastName = document.querySelector('#last-name').value;
   const phoneNumber = document.querySelector('#phone-number').value;
-  const wilaya2 = document.querySelector('#wilaya2').value;
-
+  const wilaya = document.querySelector('#wilaya2').value;
+  //ki y5ayar ymarki as client (database)
   if(state === 'client') {
     const city = document.querySelector('#city').value; 
     const province = document.querySelector('#province').value; 
@@ -76,7 +76,7 @@ submitBtn.addEventListener('click', (event) => {
             firstName: firstName,
             lastName: lastName,
             phoneNumber: phoneNumber,
-            wilaya2: wilaya2,
+            wilaya: wilaya,
             city: city,
             province: province,
             street: street,
@@ -94,8 +94,51 @@ submitBtn.addEventListener('click', (event) => {
 
       });
         
-  }
+  } else {//ki y5ayar ymarki as worker
+    const desc = document.querySelector('#description').value;
+    //njib lea variable ta3 tools w transport
+    const transportValues = document.getElementsByName('transport');
+    const toolsValues = document.getElementsByName('tools');
 
+    const transport = transportValues[0].checked ? transportValues[0].value : transportValues[1].value;
+    const tools = toolsValues[0].checked ? toolsValues[0].value : toolsValues[1].value;
+
+     let newUser = {
+      email: email,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      wilaya: wilaya,
+      desc: desc,
+      transport: transport,
+      tools: tools
+     }; 
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        alert('mrigla worker');
+        //add in database
+        try {
+          const docRef = await addDoc(collection(db, "users"), newUser);
+          
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(errorMessage);
+      });
+
+
+  } 
 })
 
 
@@ -116,8 +159,8 @@ function switchPagesHandler() {
       myForm.innerHTML += `
 
         <div class="description">
-          <label for="">description</label>
-          <textarea name="" id="" cols="30" rows="10">
+          <label for="description">description</label>
+          <textarea name="description" id="description" cols="30" rows="10">
             tell about you share your skills project that have did
           </textarea>
         </div> 
@@ -142,12 +185,12 @@ function switchPagesHandler() {
           
             <div class="choice">                  
               <label for="choice1">available</label>
-              <input type="radio" value="available" name="transport" />
+              <input type="radio" value="available" name="tools" />
             </div>
 
             <div class="choice">
               <label for="choice2">not available</label>
-              <input type="radio" value="not" name="transport"/>
+              <input type="radio" value="not" name="tools"/>
             </div>
           
         </div> 
