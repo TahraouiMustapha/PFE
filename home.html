@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="home.css" />
     <link rel="stylesheet" type="text/css" href="normalize-custom.css" />
     <title>PFE</title>
+    <!-- swiper css -->
+    <link rel="stylesheet" href="swiper-bundle.min.css" />
   </head>
   <body>
     <!-- start header -->
@@ -71,8 +73,7 @@
       <h2 class="title">Popular Services</h2>
 
       <div class="services-main">
-        <div class="left-click"><div class="hover">&lt;</div></div>
-
+        <!-- <div class="right-click"><div class="hover">&lt;</div></div> -->
         <div class="services">
           <div class="service">
             <div class="imgService"><img src="" alt="" /></div>
@@ -105,10 +106,13 @@
           </div>
         </div>
 
-        <div class="right-click"><div class="hover">&gt;</div></div>
+        <!-- <div class="right-click"><div class="hover">&gt;</div></div> -->
       </div>
 
-      <div class="bottom line"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-scrollbar"></div>
+      <div class="swiper-pagination"></div>
     </section>
     <!-- end servises -->
     <!-- start categories -->
@@ -660,4 +664,8 @@
       </div>
     </footer>
   </body>
+  <!-- swiper js -->
+  <script src="swiper-bundle.min.js"></script>
+  <!-- javascript -->
+  <script src="home.js"></script>
 </html>
