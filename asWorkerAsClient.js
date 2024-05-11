@@ -67,21 +67,28 @@ submitBtn.addEventListener('click', (event) => {
       .then(async (userCredential) => {
         // Signed up 
         const user = userCredential.user;
+        const uid = user.uid;
         alert('mrigla');
         //add data
+
+        let newUser = {
+          uid: uid,
+          email: email,
+          password: password,
+          firstName: firstName,
+          lastName: lastName,
+          phoneNumber: phoneNumber,
+          wilaya: wilaya,
+          city: city,
+          province: province,
+          street: street,
+        };
+
         try {
-          const docRef = await addDoc(collection(db, "try"), {
-            email: email,
-            password: password,
-            firstName: firstName,
-            lastName: lastName,
-            phoneNumber: phoneNumber,
-            wilaya: wilaya,
-            city: city,
-            province: province,
-            street: street,
-          });
+          const docRef = await addDoc(collection(db, "clients"), newUser);
           console.log("Document written with ID: ", docRef.id);
+          //yru7 lpage ta3 profile
+          window.location.href = './userProfile.html';
         } catch (e) {
           console.error("Error adding document: ", e);
         }
@@ -122,7 +129,7 @@ submitBtn.addEventListener('click', (event) => {
         alert('mrigla worker');
         //add in database
         try {
-          const docRef = await addDoc(collection(db, "users"), newUser);
+          const docRef = await addDoc(collection(db, "workers"), newUser);
           
           console.log("Document written with ID: ", docRef.id);
         } catch (e) {
