@@ -241,7 +241,88 @@ header {
 .right-click:hover .hover {
   font-size: 1.2em;
 }
+/* start services */
 
+.swiper-container {
+  width: 100%;
+  height: auto;
+}
+
+.services {
+  display: flex;
+  justify-content: space-between;
+}
+.service {
+  width: 100%; /* Ajuster la largeur pour occuper toute la largeur du conteneur */
+  max-width: 18em; /* Définir une largeur maximale pour les cartes */
+  background-color: var(--transp-bg);
+  color: var(--font-clr);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrer le contenu horizontalement */
+  gap: 0.8em;
+  padding: 1em;
+  border-radius: 16px;
+  overflow: hidden; /* Empêcher le contenu de déborder de la carte */
+}
+
+.service .imgService img {
+  width: 100%; /* Ajuster la taille de l'image pour remplir son conteneur */
+  height: auto; /* Conserver le ratio de l'image */
+}
+.service .service-name {
+  font-size: 1.3em;
+}
+
+.service .service-desc {
+  display: block;
+}
+
+.service.active {
+  background-color: var(--font-clr);
+  transform: scaleY(1.2) scaleX(1.05);
+  color: #011121;
+  font-weight: 600;
+  line-height: 0.6;
+}
+
+.service.active .service-desc {
+  display: block;
+  font-size: 0.8em;
+}
+
+.categories-main,
+.top-services-main {
+  padding: 0 120px;
+}
+.popular-services {
+  margin-bottom: 50px;
+}
+.swiper-navBtn {
+  color: var(--font-clr);
+  transition: color 0.3s ease;
+}
+.swiper-navBtn:hover {
+  color: var(--font-clr);
+}
+.swiper-navBtn::after,
+.swiper-navBtn::before {
+  font-size: 40px;
+}
+.swiper-button-next {
+  right: 0;
+}
+.swiper-button-prev {
+  left: 0;
+}
+.swiper-pagination-bullet {
+  background-color: var(--font-clr);
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background-color: blue;
+}
+/* 
 .services {
   display: grid;
   grid-template-columns: repeat(5, 200px);
@@ -289,8 +370,11 @@ header {
 .categories-main,
 .top-services-main {
   padding: 0 120px;
+} */
+/* end services */
+.categories {
+  margin-top: 50px;
 }
-
 .categories-main {
   display: grid;
   grid-template-columns: repeat(auto-fit, 220px);
