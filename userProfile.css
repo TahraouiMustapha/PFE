@@ -157,7 +157,13 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  width: 100%;
 }
+
+/* Le reste de votre CSS reste inchangé */
 
 footer > p {
   font-size: 0.9em;
