@@ -36,9 +36,16 @@ var swiper = new Swiper(".services-main", {
 });
 const craftingImage = document.querySelector("#craftingImage .crafting-photo");
 const craftingImages = [
+<<<<<<< HEAD
   "./images/client.png",
   "./images/ee.png",
   "./images/chef-chantier.png",
+=======
+  "./images/ee.png",
+  "./images/ccc.jpg",
+  "./images/rafdpc.jpg",
+  "./images/ee.png",
+>>>>>>> 690bc98ae20946a224a437e3d851845458867c25
 ];
 
 let currentIndex = 0;
