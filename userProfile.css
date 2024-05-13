@@ -190,3 +190,44 @@ li a svg {
   width: 1em;
   fill: blue;
 }
+
+/* for dialog style */
+
+dialog[open] {
+  background-color: #011121;
+  align-self: center;
+  justify-self: center;
+  width: 40vw;
+  height: 50vh;
+  border: none;
+}
+
+dialog form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+dialog input {
+  width: 80%;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  padding: 0 8px;
+  font-size: 1.05em;
+  font-weight: 400;
+
+}
+
+button {
+  cursor: pointer;
+}
+
+dialog .adresse {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
