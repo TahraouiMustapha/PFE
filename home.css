@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+/* start header */
 header {
   background-color: rgba(255, 255, 255, 0.2);
   border-bottom-left-radius: 30px;
@@ -63,6 +63,7 @@ header {
   font-size: 2em;
   font-weight: 600;
 }
+/* start crafting */
 
 .main {
   flex: 1;
@@ -70,6 +71,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 4rem;
+  margin-bottom: 60px;
 }
 
 .content {
@@ -137,9 +139,9 @@ header {
 }
 
 .image img {
-  width: 100%;
+  width: 80%;
 }
-
+/* 
 .points {
   display: flex;
   gap: 10px;
@@ -158,7 +160,7 @@ header {
 .point.active {
   background-color: var(--font-clr);
   width: 16px;
-}
+} */
 
 .line {
   background-color: var(--transp-bg);
@@ -240,6 +242,8 @@ header {
 .right-click:hover .hover {
   font-size: 1.2em;
 }
+/* end crafting */
+/* end header */
 /* start services */
 
 .swiper-container {
@@ -272,11 +276,9 @@ header {
 .service .service-name {
   font-size: 1.3em;
 }
-
 .service .service-desc {
   display: block;
 }
-
 .service.active {
   background-color: var(--font-clr);
   transform: scaleY(1.2) scaleX(1.05);
