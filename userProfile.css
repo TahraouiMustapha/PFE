@@ -16,6 +16,9 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  position: relative;
+
 }
 
 header {
@@ -44,6 +47,34 @@ header > .left {
   align-items: center;
   gap: 16px;
 }
+/* for result box under the search */
+.result-box {
+  background-color: #e3e3e3;
+  width: 600px;
+  height: 228px;
+  left: 140px;
+  top: 50px;
+
+  display: none;
+  position: absolute;
+}
+
+.result-box ul {
+  list-style: none;
+  display: grid;
+  padding: 8px 16px;
+}
+ 
+.result-box ul li {
+  padding: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+.result-box ul li:hover {
+  background-color: #fff;
+}
+
 
 .search > input {
   width: 80%;
@@ -52,12 +83,12 @@ header > .left {
   outline: none;
   border-radius: 20px;
   padding: 0 1em;
-  background-color: var(--transp-bg);
+  background-color: #cbd5e1;
   font-size: 1.1em;
 }
 
 .search > .search-icon {
-  background-color: var(--transp-bg);
+  background-color: #cbd5e1;
   width: 40px;
   height: 40px;
   border-radius: 50%;
