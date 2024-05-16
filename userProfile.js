@@ -1,4 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+
 import { getFirestore, doc, getDoc, getDocs, collection, updateDoc  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { getAuth, onAuthStateChanged   } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
@@ -57,7 +58,6 @@ editBtn.addEventListener('click', () => {
   //fill user info in our inputs
   dialog.appendChild(createDialogForm(currentUser));
 });
-
 
 function showClientInfo(user) {
   const infoSection = document.querySelector(".sec3");
