@@ -103,13 +103,14 @@ submitBtn.addEventListener('click', (event) => {
         
   } else {//ki y5ayar ymarki as worker
     const desc = document.querySelector('#description').value;
-    //njib lea variable ta3 tools w transport
+    //njib lea variable ta3 tools w transport w speciality
+    const speciality = document.getElementById('speciality').value;
     const transportValues = document.getElementsByName('transport');
     const toolsValues = document.getElementsByName('tools');
 
     const transport = transportValues[0].checked ? transportValues[0].value : transportValues[1].value;
     const tools = toolsValues[0].checked ? toolsValues[0].value : toolsValues[1].value;
-
+    
      let newUser = {
       email: email,
       password: password,
@@ -117,6 +118,7 @@ submitBtn.addEventListener('click', (event) => {
       lastName: lastName,
       phoneNumber: phoneNumber,
       wilaya: wilaya,
+      speciality: speciality,
       desc: desc,
       transport: transport,
       tools: tools
@@ -166,7 +168,7 @@ function switchPagesHandler() {
       myForm.innerHTML += `
         <div class="speciality">
           <label for="speciality">speciality</label>
-          <select name="speciality">
+          <select id="speciality">
             <option value="" disabled selected>Select Worker Specialty</option>
             <optgroup label="Construction">
               <option value="electrician">Electrician</option>
