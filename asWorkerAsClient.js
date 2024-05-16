@@ -164,10 +164,29 @@ function switchPagesHandler() {
       `; 
     } else {
       myForm.innerHTML += `
+        <div class="speciality">
+          <label for="speciality">speciality</label>
+          <select name="speciality">
+            <option value="" disabled selected>Select Worker Specialty</option>
+            <optgroup label="Construction">
+              <option value="electrician">Electrician</option>
+              <option value="mason">Mason</option>
+              <option value="painter">Painter</option>
+            </optgroup>
+
+            <optgroup label="Mechanical and Maintenance">
+              <option value="mechanic">Mechanic </option>
+              <option value="maintenance_technician">Maintenance Technician</option>
+              <option value="plumber">Plumber</option>
+            </optgroup>
+
+          </select>
+        </div>  
+
 
         <div class="description">
           <label for="description">description</label>
-          <textarea name="description" id="description" cols="30" rows="10">
+          <textarea name="description" id="description" cols="30" rows="4">
             tell about you share your skills project that have did
           </textarea>
         </div> 
