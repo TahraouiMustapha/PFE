@@ -2,6 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import { getFirestore, doc, getDoc, getDocs, collection, updateDoc  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { getAuth, onAuthStateChanged   } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
+//import from out module
+import { onkeyUpHandler } from './searchModule.js';
 
 
 // Your web app's Firebase configuration
@@ -39,10 +41,13 @@ onAuthStateChanged(auth, async (user) => {
     } else {
       // User is signed out
     }
-  });
+});
 
 
-
+const searchBar = document.getElementById('search-bar');
+searchBar.addEventListener('keyup', () => {
+  onkeyUpHandler(searchBar.value);
+});
 
 const editBtn = document.querySelector('.editBtn');
 const dialog = document.querySelector('dialog');
