@@ -178,6 +178,15 @@ input {
   clear: both;
 }
 
+.speciality {
+  margin: 20px 0;
+}
+
+.speciality select {
+  padding: 8px;
+  
+}
+
 .transport,
 .tools {
   display: flex;
