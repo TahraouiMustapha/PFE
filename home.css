@@ -71,6 +71,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 4rem;
+  margin-bottom: 60px;
 }
 
 .content {
@@ -138,7 +139,7 @@ header {
 }
 
 .image img {
-  width: 100%;
+  width: 80%;
 }
 /* 
 .points {
@@ -275,11 +276,9 @@ header {
 .service .service-name {
   font-size: 1.3em;
 }
-
 .service .service-desc {
   display: block;
 }
-
 .service.active {
   background-color: var(--font-clr);
   transform: scaleY(1.2) scaleX(1.05);
