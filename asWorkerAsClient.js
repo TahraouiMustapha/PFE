@@ -103,13 +103,14 @@ submitBtn.addEventListener('click', (event) => {
         
   } else {//ki y5ayar ymarki as worker
     const desc = document.querySelector('#description').value;
-    //njib lea variable ta3 tools w transport
+    //njib lea variable ta3 tools w transport w speciality
+    const speciality = document.getElementById('speciality').value;
     const transportValues = document.getElementsByName('transport');
     const toolsValues = document.getElementsByName('tools');
 
     const transport = transportValues[0].checked ? transportValues[0].value : transportValues[1].value;
     const tools = toolsValues[0].checked ? toolsValues[0].value : toolsValues[1].value;
-
+    
      let newUser = {
       email: email,
       password: password,
@@ -117,6 +118,7 @@ submitBtn.addEventListener('click', (event) => {
       lastName: lastName,
       phoneNumber: phoneNumber,
       wilaya: wilaya,
+      speciality: speciality,
       desc: desc,
       transport: transport,
       tools: tools
@@ -164,10 +166,29 @@ function switchPagesHandler() {
       `; 
     } else {
       myForm.innerHTML += `
+        <div class="speciality">
+          <label for="speciality">speciality</label>
+          <select id="speciality">
+            <option value="" disabled selected>Select Worker Specialty</option>
+            <optgroup label="Construction">
+              <option value="electrician">Electrician</option>
+              <option value="mason">Mason</option>
+              <option value="painter">Painter</option>
+            </optgroup>
+
+            <optgroup label="Mechanical and Maintenance">
+              <option value="mechanic">Mechanic </option>
+              <option value="maintenance_technician">Maintenance Technician</option>
+              <option value="plumber">Plumber</option>
+            </optgroup>
+
+          </select>
+        </div>  
+
 
         <div class="description">
           <label for="description">description</label>
-          <textarea name="description" id="description" cols="30" rows="10">
+          <textarea name="description" id="description" cols="30" rows="4">
             tell about you share your skills project that have did
           </textarea>
         </div> 
