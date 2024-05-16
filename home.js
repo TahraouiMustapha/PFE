@@ -34,3 +34,23 @@ var swiper = new Swiper(".services-main", {
     dynamicBullets: true,
   },
 });
+const craftingImage = document.querySelector("#craftingImage .crafting-photo");
+const craftingImages = [
+  "./images/client.png",
+  "./images/ee.png",
+  "./images/chef-chantier.png",
+];
+
+let currentIndex = 0;
+
+// Fonction pour changer l'image toutes les 4 secondes
+function changeCraftingImage() {
+  craftingImage.src = craftingImages[currentIndex];
+  currentIndex = (currentIndex + 1) % craftingImages.length;
+}
+
+// Commencez le diaporama immédiatement
+changeCraftingImage();
+
+// Changez l'image toutes les 4 secondes
+setInterval(changeCraftingImage, 4000);
