@@ -28,8 +28,9 @@ const db = getFirestore(app);
 document.addEventListener('DOMContentLoaded', async () => {
     //render categories
     renderCategories();
-    const sellers = document.querySelector('.sellers');
-    sellers.appendChild(createServiceCard('wi'));
+    //render servicesCard
+    renderServices();
+    
 
     //njib search value mn profile
     const urlParams = new URLSearchParams(window.location.search);
@@ -53,6 +54,16 @@ async function renderCategories(){
     });
 }
 
+//function to render service cards
+async function renderServices() {
+    const serviceContainer = document.querySelector('.sellers');
+    const arrayOfWorkers = await getWorkers();
+
+    arrayOfWorkers.forEach((worker) => {
+        serviceContainer.appendChild(createServiceCard(worker));
+    });
+}
+
 //function to create categorie card
 function createCategorie(title, iconSrc) {
     const myCategorie = document.createElement('div');
@@ -73,6 +84,7 @@ function createCategorie(title, iconSrc) {
 
     return myCategorie;
 }
+
 //function to create worker card 
 function createServiceCard(worker) {
     const serviceCard = document.createElement('div');
@@ -99,7 +111,7 @@ function createServiceCard(worker) {
 
             const profileName = document.createElement('p');
             profileName.classList.add('profile-name');
-            profileName.textContent = 'worker.firstName + worker.lastName';
+            profileName.textContent = worker.firstName +' '+ worker.lastName;
 
 
             profile.appendChild(photoProfile);
@@ -110,7 +122,7 @@ function createServiceCard(worker) {
         const profileDesc = document.createElement('div');
         profileDesc.classList.add('profile-desc');
             const desc = document.createElement('p');
-            desc.textContent = 'worker.desc';
+            desc.textContent = worker.desc;
 
             profileDesc.appendChild(desc);
 
@@ -134,3 +146,13 @@ function createServiceCard(worker) {
     return serviceCard;
 }
 
+//function to get workers fromm firebase
+async function getWorkers() {
+    const myArrayDocuments = await getDocs(collection(db, "workers"));
+    const workersArray = [];
+
+    myArrayDocuments.forEach((doc) => {
+        workersArray.push(doc.data());
+    });
+    return workersArray;
+}
