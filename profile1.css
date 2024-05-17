@@ -100,35 +100,26 @@ header > .left {
 }
 /* end header */
 /* start section */
+
+section {
+  display: flex;
+  justify-content: space-between;
+}
+
 section div {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   margin-bottom: 30px;
 }
-.sec svg {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  margin: auto 20px;
+.ysar {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  order: -1;
+  width: 30%;
 }
-.sec p {
-  margin: auto auto 0;
-}
-div button {
-  background-color: blue;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  width: 50px;
-  height: 25px;
-  margin: auto 20px;
-}
-.sec2,
-.sec3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.sec2 {
+  margin-top: 10px;
 }
 .sec2 div {
   background-color: black;
@@ -136,34 +127,54 @@ div button {
   height: 200px;
   border-radius: 50%;
 }
+
+.sec2,
+.sec3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
 .sec3 {
   flex-direction: column;
   text-align: left;
-  /* margin-bottom: 30px; */
+  margin-bottom: 20px;
+  display: flex;
+  margin-top: 20px;
+  display: flex;
 }
 .sec3 div {
   text-transform: capitalize;
   font-size: 20px;
   font-weight: bold;
 }
-section {
-  display: flex;
-  justify-content: space-between;
-}
 
 .ymin {
-  width: calc(50% - 10px);
+  width: 70%;
+  order: 1;
 }
-.ysar {
-  width: calc(50% - 10px);
+
+.sec svg {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin: auto 20px;
+  margin-right: 10px;
+}
+.sec p {
+  margin: auto auto 0;
+  margin-bottom: 5px;
 }
 
 .service-card {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
   color: white;
   align-items: flex-start;
+  width: 70%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
 }
 .service-card > .services-gallery {
   background-color: var(--transp-bg);
