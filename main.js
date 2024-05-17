@@ -28,16 +28,17 @@ const db = getFirestore(app);
 document.addEventListener('DOMContentLoaded', async () => {
     //render categories
     renderCategories();
-    //render servicesCard
-    renderServices();
     
-
     //njib search value mn profile
     const urlParams = new URLSearchParams(window.location.search);
     const searchValue = urlParams.get('search');
     
     if (searchValue) {
         console.log('Search value:', searchValue);
+        renderServices(searchValue);
+    } else {
+        //render servicesCard
+        renderServices('');
     }
 });
 
@@ -46,7 +47,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function renderCategories(){
     const myCategories = document.querySelector('.categories');
     const array = await getArrayCategory();
-    console.log(array);
     array.forEach((categorie) => {
         let svgSrc = './icons/' + categorie + '.svg';
         categorie = categorie.charAt(0).toUpperCase() + categorie.slice(1);
@@ -55,9 +55,9 @@ async function renderCategories(){
 }
 
 //function to render service cards
-async function renderServices() {
+async function renderServices(value) {
     const serviceContainer = document.querySelector('.sellers');
-    const arrayOfWorkers = await getWorkers();
+    const arrayOfWorkers = await getWorkers(value);
 
     arrayOfWorkers.forEach((worker) => {
         serviceContainer.appendChild(createServiceCard(worker));
@@ -147,12 +147,20 @@ function createServiceCard(worker) {
 }
 
 //function to get workers fromm firebase
-async function getWorkers() {
+async function getWorkers(value) {
     const myArrayDocuments = await getDocs(collection(db, "workers"));
     const workersArray = [];
+    if(value == '') {
+        myArrayDocuments.forEach((doc) => {
+            workersArray.push(doc.data()); 
+        });
+    } else {
+        myArrayDocuments.forEach((doc) => {
+            if(doc.data().speciality === value) {
+                workersArray.push(doc.data());
+            }
+        });
+    }
 
-    myArrayDocuments.forEach((doc) => {
-        workersArray.push(doc.data());
-    });
     return workersArray;
 }
