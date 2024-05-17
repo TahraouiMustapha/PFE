@@ -89,4 +89,4 @@ function editResultBoxSize(numberOfResult) {
     }
 }
 
-export { onkeyUpHandler };
+export { onkeyUpHandler, getArrayCategory };
