@@ -61,10 +61,16 @@ function createResultBox(array) {
     resultBox.style.display = 'block';
 
     const myUl = document.createElement('ul');
-        let myLi;
         array.forEach((res) => {
-            myLi = document.createElement('li');
+            let myLi = document.createElement('li');
             myLi.textContent = res;
+            myLi.addEventListener('click', (e) => {
+                const searchValue = e.target.textContent;
+                //URLSearchParams to include the search value in the URL
+                const url = new URL('main.html', window.location.href);
+                url.searchParams.set('search', searchValue);
+                window.location.href = url.toString();
+            });
 
             myUl.appendChild(myLi);
         });
