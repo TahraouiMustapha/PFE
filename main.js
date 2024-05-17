@@ -28,6 +28,8 @@ const db = getFirestore(app);
 document.addEventListener('DOMContentLoaded', async () => {
     //render categories
     renderCategories();
+    const sellers = document.querySelector('.sellers');
+    sellers.appendChild(createServiceCard('wi'));
 
     //njib search value mn profile
     const urlParams = new URLSearchParams(window.location.search);
@@ -71,5 +73,64 @@ function createCategorie(title, iconSrc) {
 
     return myCategorie;
 }
+//function to create worker card 
+function createServiceCard(worker) {
+    const serviceCard = document.createElement('div');
+    serviceCard.classList.add('service-card');
+        //--create service gallery part
+        const serviceGallery = document.createElement('div');
+        serviceGallery.classList.add('service-gallery');
+            const workImage = document.createElement('div');
+            workImage.classList.add('work-image');
+            //image ta3 work example
+                const img = document.createElement('img');
 
+                workImage.appendChild(img);
+
+            serviceGallery.appendChild(workImage);
+        serviceCard.appendChild(serviceGallery);
+        //--craete profile part
+        const profile = document.createElement('div');
+        profile.classList.add('profile');
+            //div photo profile
+            const photoProfile = document.createElement('div');
+            photoProfile.classList.add('photoProfile');
+            //hna nzid img ta3 siyid
+
+            const profileName = document.createElement('p');
+            profileName.classList.add('profile-name');
+            profileName.textContent = 'worker.firstName + worker.lastName';
+
+
+            profile.appendChild(photoProfile);
+            profile.appendChild(profileName);
+
+        serviceCard.appendChild(profile);
+        // --create profile -desc part
+        const profileDesc = document.createElement('div');
+        profileDesc.classList.add('profile-desc');
+            const desc = document.createElement('p');
+            desc.textContent = 'worker.desc';
+
+            profileDesc.appendChild(desc);
+
+        serviceCard.appendChild(profileDesc);
+
+        //--create service-rate part
+        const serviceRate = document.createElement('div');
+        serviceRate.classList.add('service-rate');
+            const star = document.createElement('img');
+            star.src = './images/star.svg';
+
+            const rate = document.createElement('p');
+            rate.textContent = 'worker.rate';
+            
+            serviceRate.appendChild(star);
+            serviceRate.appendChild(rate);
+
+        serviceCard.appendChild(serviceRate);
+
+
+    return serviceCard;
+}
 
