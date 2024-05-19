@@ -134,12 +134,34 @@ header {
   justify-content: center;
 }
 
-.image {
+/* .image {
+  position: relative;
   width: 60%;
+  height: 100%;
 }
 
 .image img {
-  width: 80%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+} */
+
+.image {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.image img {
+  position: absolute;
+  /* width: 100%; */
+  height: 100%;
+  /* border-radius: 16px; */
 }
 /* 
 .points {
@@ -258,7 +280,7 @@ header {
 .service {
   width: 100%; /* Ajuster la largeur pour occuper toute la largeur du conteneur */
   max-width: 18em; /* Définir une largeur maximale pour les cartes */
-  background-color: var(--transp-bg);
+  background-color: transparent;
   color: var(--font-clr);
   display: flex;
   flex-direction: column;
@@ -268,17 +290,30 @@ header {
   border-radius: 16px;
   overflow: hidden; /* Empêcher le contenu de déborder de la carte */
 }
+.service .imgService {
+  width: 100%;
+  height: 400px; /* Définissez une hauteur fixe pour toutes les images */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Empêche le débordement de l'image hors du conteneur */
+  border-radius: 16px; /* Applique une bordure arrondie au conteneur d'image */
+}
 
 .service .imgService img {
-  width: 100%; /* Ajuster la taille de l'image pour remplir son conteneur */
-  height: auto; /* Conserver le ratio de l'image */
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100%; /* S'assure que l'image remplit complètement le conteneur */
+  object-fit: cover; /* L'image couvre tout le conteneur sans déformer le ratio */
 }
+
 .service .service-name {
   font-size: 1.3em;
 }
 .service .service-desc {
   display: block;
 }
+
 .service.active {
   background-color: var(--font-clr);
   transform: scaleY(1.2) scaleX(1.05);
@@ -323,55 +358,11 @@ header {
 .swiper-pagination-bullet-active {
   background-color: blue;
 }
-/* 
-.services {
-  display: grid;
-  grid-template-columns: repeat(5, 200px);
-  grid-template-rows: 30vh;
-  column-gap: 40px;
-  height: 45vh;
-  align-content: center;
+
+.services-main {
+  overflow-x: auto;
 }
 
-.service {
-  background-color: var(--transp-bg);
-  color: var(--font-clr);
-  display: flex;
-  flex-direction: column;
-  gap: 0.8em;
-  padding: 1em;
-  border-radius: 16px;
-}
-
-.service > .imgService {
-  flex: 1;
-}
-
-.service .service-name {
-  font-size: 1.3em;
-}
-
-.service .service-desc {
-  display: none;
-}
-
-.service.active {
-  background-color: var(--font-clr);
-  transform: scaleY(1.2) scaleX(1.05);
-  color: #011121;
-  font-weight: 600;
-  line-height: 0.6;
-}
-
-.service.active > .service-desc {
-  display: block;
-  font-size: 0.8em;
-}
-
-.categories-main,
-.top-services-main {
-  padding: 0 120px;
-} */
 /* end services */
 .categories {
   margin-top: 50px;
