@@ -391,10 +391,18 @@ header {
 }
 
 .categorie-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: var(--transp-bg);
   width: 50%;
   height: 50%;
   border-radius: 16px;
+}
+
+.categorie-icon img {
+  width: 64px;
 }
 
 .categorie-name {
