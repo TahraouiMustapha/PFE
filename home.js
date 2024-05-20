@@ -19,7 +19,8 @@ changeCraftingImage();
 
 // Changez l'image toutes les 4 secondes
 setInterval(changeCraftingImage, 4000);
-
+// end crafting
+//  start populat service
 // var swiper = new Swiper(".services-main", {
 //   slidesPerView: 3,
 //   spaceBetween: 25,
@@ -118,15 +119,15 @@ var swiper = new Swiper(".services-main", {
 // Function to update the navigation buttons and scrollbar state
 function updateSwiperButtons(swiper) {
   if (swiper.isBeginning) {
-    document.querySelector(".swiper-button-prev").style.display = "none";
-    document.querySelector(".swiper-scrollbar").style.display = "none";
+    // document.querySelector(".swiper-button-prev").style.display = "none";
+    // document.querySelector(".swiper-scrollbar").style.display = "none";
   } else if (swiper.isEnd) {
     document.querySelector(".swiper-button-next").style.display = "none";
     document.querySelector(".swiper-scrollbar").style.display = "none";
   } else {
-    document.querySelector(".swiper-button-next").style.display = "block";
-    document.querySelector(".swiper-button-prev").style.display = "block";
-    document.querySelector(".swiper-scrollbar").style.display = "block";
+    // document.querySelector(".swiper-button-next").style.display = "block";
+    // document.querySelector(".swiper-button-prev").style.display = "block";
+    // document.querySelector(".swiper-scrollbar").style.display = "block";
   }
 }
 
@@ -145,6 +146,29 @@ if (swiper.isEnd) {
   document.querySelector(".swiper-scrollbar").style.display = "none";
 }
 if (swiper.isBeginning) {
-  document.querySelector(".swiper-button-prev").style.display = "none";
-  document.querySelector(".swiper-scrollbar").style.display = "none";
+  // document.querySelector(".swiper-button-prev").style.display = "none";
+  // document.querySelector(".swiper-scrollbar").style.display = "none";
 }
+// end popular service
+// start categorie
+// function addCategory() {
+//   const categoriesMain = document.getElementById("categoriesMain");
+//   const newCategory = document.createElement("div");
+//   newCategory.className = "categorie";
+//   newCategory.innerHTML = `
+//     <div class="categorie-icon">
+//       <img src="./icons/new-icon.svg" alt="">
+//     </div>
+//     <p class="categorie-name">New Category</p>
+//   `;
+//   categoriesMain.appendChild(newCategory);
+// }
+
+// function removeCategory() {
+//   const categoriesMain = document.getElementById("categoriesMain");
+//   if (categoriesMain.lastElementChild) {
+//     categoriesMain.removeChild(categoriesMain.lastElementChild);
+//   }
+// }
+
+// end categorie

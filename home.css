@@ -364,7 +364,9 @@ header {
 }
 
 /* end services */
-.categories {
+/* start categorie */
+
+/* .categories {
   margin-top: 50px;
 }
 .categories-main {
@@ -401,8 +403,50 @@ header {
   font-size: 1.2em;
   margin-top: 12px;
   cursor: pointer;
+} */
+.categories {
+  margin-top: 50px;
+  height: auto;
 }
 
+.categories-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.categorie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.categorie-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--transp-bg);
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+}
+
+.categorie-icon img {
+  width: 64px;
+}
+
+.categorie-name {
+  color: var(--font-clr);
+  font-size: 1.2em;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+/* end categorie */
+/* start top service */
 .top-services > .see-more {
   color: var(--font-clr);
   align-self: flex-end;
@@ -411,7 +455,8 @@ header {
 }
 
 .top-services {
-  height: 130vh;
+  height: auto;
+  margin-top: 30px;
 }
 
 .top-services-main,
@@ -439,7 +484,6 @@ header {
 .service-card {
   align-items: flex-start;
 }
-
 .service-card > .services-gallery {
   background-color: var(--transp-bg);
   flex: 1 0 auto;
@@ -534,14 +578,17 @@ header {
 .services-gallery .point.active {
   background-color: var(--font-clr);
 }
-
+/* end top service */
+/* start best sellers  */
 .best-sellers {
-  min-height: 120vh;
+  /* min-height: 120vh; */
+  height: auto;
 }
 
 .best-sellers-main {
   justify-content: space-between;
   margin-top: 0;
+  margin-bottom: 30px;
 }
 
 .sellers {
@@ -572,7 +619,7 @@ header {
   font-size: 0.8em;
   text-align: center;
 }
-
+/* end best sellers */
 .tips,
 .comments {
   height: 90vh;
