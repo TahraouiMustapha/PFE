@@ -144,6 +144,46 @@ var swiper = new Swiper(".services-main", {
 
 // end categorie
 // start best sellers
+var startIndex = 0; // Indice de départ pour les vendeurs affichés
+var pageSize = 6; // Nombre de vendeurs à afficher par page
+
+function scrollBestSellers(direction) {
+  var sellers = document.querySelectorAll(".seller-card");
+
+  // Calcul du nombre total de pages
+  var totalPages = Math.ceil(sellers.length / pageSize);
+
+  // Si la direction est vers la gauche
+  if (direction === "left") {
+    // Décrémenter l'indice de départ pour revenir à la page précédente
+    startIndex = Math.max(0, startIndex - pageSize);
+  } else if (direction === "right") {
+    // Incrémenter l'indice de départ pour passer à la page suivante
+    startIndex += pageSize;
+
+    // Vérifier si on atteint la fin de la liste
+    if (startIndex >= sellers.length) {
+      startIndex = 0; // Retourner à la première page
+    }
+  }
+
+  // Masquer tous les vendeurs
+  sellers.forEach(function (seller) {
+    seller.style.display = "none";
+  });
+
+  // Afficher les vendeurs de la page actuelle
+  for (
+    var i = startIndex;
+    i < Math.min(startIndex + pageSize, sellers.length);
+    i++
+  ) {
+    sellers[i].style.display = "flex";
+  }
+}
+
+// Appel initial pour afficher les premiers vendeurs
+scrollBestSellers(); // Affiche les six premiers vendeurs au chargement initial
 
 //  end sellers
 // start tips

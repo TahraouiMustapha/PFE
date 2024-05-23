@@ -584,36 +584,66 @@ header {
 }
 
 .best-sellers-main {
+  display: flex;
   justify-content: space-between;
   margin-top: 0;
   margin-bottom: 30px;
 }
 
 .sellers {
+  display: grid;
   flex: 1;
   grid-template-columns: repeat(3, max(260px, 25%));
   grid-template-rows: repeat(2, 280px);
   padding-left: 1.5em;
   row-gap: 3rem;
   column-gap: 3rem;
+  margin-top: 20px;
 }
 .seller-card {
   background-color: var(--transp-bg);
-  border-radius: 20%;
+  border-radius: 20px;
   max-width: 270px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 24px;
 }
 
 .seller-card > .photo-profile {
-  width: 40%;
-  height: 40%;
+  width: 80px;
+  height: 80px;
+  background-color: #ccc;
+  border-radius: 50%;
 }
-
+.seller-card > .profile-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
 .seller-card > .profile-desc {
   font-size: 0.8em;
   text-align: center;
+}
+.best-sellers-main > .left-click,
+.best-sellers-main > .right-click {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.best-sellers-main .hover {
+  font-size: 2em;
+  user-select: none;
+}
+
+.best-sellers-main > .left-click {
+  margin-right: 10px;
+}
+
+.best-sellers-main > .right-click {
+  margin-left: 10px;
 }
 /* end best sellers */
 /* start tips */
@@ -770,6 +800,7 @@ header {
   width: 70%;
   border-radius: 32px;
   background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
 }
 .comment-image {
   box-shadow: 5px 5px 30px;
