@@ -278,42 +278,39 @@ header {
   justify-content: space-between;
 }
 .service {
-  width: 100%; /* Ajuster la largeur pour occuper toute la largeur du conteneur */
-  max-width: 18em; /* Définir une largeur maximale pour les cartes */
+  width: 100%;
+  max-width: 18em;
   background-color: transparent;
   color: var(--font-clr);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrer le contenu horizontalement */
+  align-items: center;
   gap: 0.8em;
   padding: 1em;
   border-radius: 16px;
-  overflow: hidden; /* Empêcher le contenu de déborder de la carte */
+  overflow: hidden;
 }
 .service .imgService {
   width: 100%;
-  height: 400px; /* Définissez une hauteur fixe pour toutes les images */
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Empêche le débordement de l'image hors du conteneur */
-  border-radius: 16px; /* Applique une bordure arrondie au conteneur d'image */
+  overflow: hidden;
+  border-radius: 16px;
 }
-
 .service .imgService img {
   margin-bottom: 10px;
   width: 100%;
-  height: 100%; /* S'assure que l'image remplit complètement le conteneur */
-  object-fit: cover; /* L'image couvre tout le conteneur sans déformer le ratio */
+  height: 100%;
+  object-fit: cover;
 }
-
 .service .service-name {
   font-size: 1.3em;
 }
 .service .service-desc {
   display: block;
 }
-
 .service.active {
   background-color: var(--font-clr);
   transform: scaleY(1.2) scaleX(1.05);
@@ -321,12 +318,10 @@ header {
   font-weight: 600;
   line-height: 0.6;
 }
-
 .service.active .service-desc {
   display: block;
   font-size: 0.8em;
 }
-
 .categories-main,
 .top-services-main {
   padding: 0 120px;
@@ -358,7 +353,6 @@ header {
 .swiper-pagination-bullet-active {
   background-color: blue;
 }
-
 .services-main {
   overflow-x: auto;
 }
@@ -580,8 +574,8 @@ header {
 }
 /* end top service */
 /* start best sellers  */
+
 .best-sellers {
-  /* min-height: 120vh; */
   height: auto;
 }
 
@@ -596,11 +590,9 @@ header {
   grid-template-columns: repeat(3, max(260px, 25%));
   grid-template-rows: repeat(2, 280px);
   padding-left: 1.5em;
-
   row-gap: 3rem;
   column-gap: 3rem;
 }
-
 .seller-card {
   background-color: var(--transp-bg);
   border-radius: 20%;
@@ -620,7 +612,9 @@ header {
   text-align: center;
 }
 /* end best sellers */
-.tips,
+/* start tips */
+
+/* .tips,
 .comments {
   height: 90vh;
 }
@@ -666,22 +660,93 @@ header {
   border-radius: 32px;
 }
 
+.tips-image {
+  box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
+} */
+
+.tips,
+.comments {
+  height: auto;
+}
+
+.tips-main,
+.comment {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 70%;
+  margin-top: 2em;
+  margin-bottom: 4em;
+  border-radius: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.8em;
+}
+
+.tips-content,
+.comment-content {
+  width: 50%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  color: var(--font-clr);
+  margin: 20px;
+}
+
+.tips-content > .title {
+  margin-top: 0;
+}
+
+.tips-content > p {
+  font-weight: 300;
+  letter-spacing: 1.1px;
+  line-height: 1.5;
+}
+
+.tips-image,
 .comment-image {
-  box-shadow: 5px 5px 30px;
+  background-color: #fff;
+  width: 35%;
+  height: 75%;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tips-image {
   box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  width: 60%;
+  height: auto;
 }
 
+.tips-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*Cover the entire area of the container */
+  object-position: center; /* Center the image within the container */
+  border-radius: inherit; /* Ensure the image has the same border-radius as the container */
+}
+
+/* end tips */
+/* start comments */
 .comment {
   height: 80%;
   width: 60%;
   flex-direction: row-reverse;
 }
-
+.comment-image {
+  box-shadow: 5px 5px 30px;
+}
+/* end comments */
+/* start about us */
 .about-us {
   height: 100vh;
 }
@@ -796,7 +861,8 @@ header {
 .opinion-image > img {
   width: 100%;
 }
-
+/* end about us */
+/* start footer */
 footer {
   height: 20vh;
   display: flex;
