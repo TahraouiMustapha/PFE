@@ -5,9 +5,7 @@ const craftingImages = [
   "./images/li ma thebbouche.png",
   "./images/hada nas mlah.png",
 ];
-
 let currentIndex = 0;
-
 // Fonction pour changer image toutes les 4 secondes
 function changeCraftingImage() {
   craftingImage.src = craftingImages[currentIndex];
@@ -166,12 +164,10 @@ function scrollBestSellers(direction) {
       startIndex = 0; // Retourner à la première page
     }
   }
-
   // Masquer tous les vendeurs
   sellers.forEach(function (seller) {
     seller.style.display = "none";
   });
-
   // Afficher les vendeurs de la page actuelle
   for (
     var i = startIndex;
@@ -181,7 +177,6 @@ function scrollBestSellers(direction) {
     sellers[i].style.display = "flex";
   }
 }
-
 // Appel initial pour afficher les premiers vendeurs
 scrollBestSellers(); // Affiche les six premiers vendeurs au chargement initial
 

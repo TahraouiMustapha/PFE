@@ -7,9 +7,15 @@
 
 * {
   margin: 0;
-  font-family: "Roboto";
+  padding: 0;
+  font-family: "Roboto", sans-serif;
   box-sizing: border-box;
   scroll-behavior: smooth;
+}
+body {
+  background: linear-gradient(#0c0c0e, #011121, #0c0c0e);
+  height: 100vh;
+  width: 100%;
 }
 
 ul {
@@ -19,12 +25,6 @@ ul {
 a {
   text-decoration: none;
   color: var(--font-clr);
-}
-
-body {
-  background: linear-gradient(#0c0c0e, #011121, #0c0c0e);
-  height: 100vh;
-  width: 100%;
 }
 
 .first-section {
@@ -45,7 +45,7 @@ header {
 }
 
 .navigation {
-  margin-right: 20px;
+  margin-right: 20px; /* ===*/
   display: flex;
   gap: 32px;
   font-weight: 500;
@@ -134,18 +134,6 @@ header {
   justify-content: center;
 }
 
-/* .image {
-  position: relative;
-  width: 60%;
-  height: 100%;
-}
-
-.image img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-} */
-
 .image {
   position: relative;
   width: 60%;
@@ -159,31 +147,9 @@ header {
 
 .image img {
   position: absolute;
-  /* width: 100%; */
   height: 100%;
   /* border-radius: 16px; */
 }
-/* 
-.points {
-  display: flex;
-  gap: 10px;
-  position: absolute;
-  bottom: 90px;
-  left: 50%;
-}
-
-.point {
-  width: 0.6em;
-  height: 8px;
-  border-radius: 8px;
-  background-color: var(--transp-bg);
-}
-
-.point.active {
-  background-color: var(--font-clr);
-  width: 16px;
-} */
-
 .line {
   background-color: var(--transp-bg);
   opacity: 0.5;
@@ -363,45 +329,6 @@ header {
 
 /* end services */
 /* start categorie */
-
-/* .categories {
-  margin-top: 50px;
-}
-.categories-main {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 220px);
-  gap: 20px;
-  justify-content: center;
-}
-
-.categorie {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.categorie-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: var(--transp-bg);
-  width: 50%;
-  height: 50%;
-  border-radius: 16px;
-}
-
-.categorie-icon img {
-  width: 64px;
-}
-
-.categorie-name {
-  color: var(--font-clr);
-  font-size: 1.2em;
-  margin-top: 12px;
-  cursor: pointer;
-} */
 .categories {
   margin-top: 50px;
   height: auto;
@@ -434,6 +361,12 @@ header {
 
 .categorie-icon img {
   width: 64px;
+  color: #000;
+}
+
+/* Ensuring the SVG takes the color property correctly */
+.categorie-icon svg {
+  fill: currentColor;
 }
 
 .categorie-name {
@@ -578,11 +511,9 @@ header {
 }
 /* end top service */
 /* start best sellers  */
-
 .best-sellers {
   height: auto;
 }
-
 .best-sellers-main {
   display: flex;
   justify-content: space-between;
@@ -647,59 +578,6 @@ header {
 }
 /* end best sellers */
 /* start tips */
-
-/* .tips,
-.comments {
-  height: 90vh;
-}
-
-.tips-main,
-.comment {
-  background-color: rgba(255, 255, 255, 0.1);
-  width: 70%;
-  margin-top: 2em;
-  margin-bottom: 4em;
-  border-radius: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1.8em;
-}
-
-.tips-content,
-.comment-content {
-  width: 50%;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-  color: var(--font-clr);
-}
-
-.tips-content > .title {
-  margin-top: 0;
-}
-
-.tips-content > p {
-  font-weight: 300;
-  letter-spacing: 1.1px;
-  line-height: 1.5;
-}
-
-.tips-image,
-.comment-image {
-  background-color: #fff;
-  width: 35%;
-  height: 75%;
-  border-radius: 32px;
-}
-
-.tips-image {
-  box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 16px 27px 0px rgba(0, 0, 0, 0.75);
-} */
-
 .tips,
 .comments {
   height: auto;
@@ -871,7 +749,6 @@ header {
 .right-click {
   right: 0;
 }
-/* $$$===== */
 
 .arrow {
   background-color: #fff;
@@ -917,7 +794,7 @@ header {
   justify-content: end;
   padding: 2em;
 
-  background-image: url("./images/kmjahmrasmine.jpg");
+  background-image: url("./images/us1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -947,7 +824,8 @@ header {
 .p4 {
   grid-area: p4;
 }
-
+/* end about us */
+/* start trhib */
 .opinion {
   height: 75vh;
   display: flex;
@@ -963,6 +841,9 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 2.8em;
+}
+.opinion-main h2 {
+  margin-left: 80px;
 }
 
 .opinion-card {
@@ -1005,7 +886,7 @@ header {
 .opinion-image > img {
   width: 100%;
 }
-/* end about us */
+/* end trhib */
 /* start footer */
 footer {
   height: 20vh;
