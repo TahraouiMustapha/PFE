@@ -141,6 +141,44 @@ var swiper = new Swiper(".services-main", {
 // }
 
 // end categorie
+// start top servise
+document.addEventListener("DOMContentLoaded", () => {
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  serviceCards.forEach((card) => {
+    const leftClick = card.querySelector(".left-click .hover");
+    const rightClick = card.querySelector(".right-click .hover");
+    const images = card.querySelectorAll(".work-image img");
+    let currentIndex = 0;
+
+    // Function to update image visibility
+    const updateImages = () => {
+      images.forEach((img, index) => {
+        img.classList.toggle("active", index === currentIndex);
+      });
+    };
+
+    // Left click event
+    leftClick.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex -= 1;
+        updateImages();
+      }
+    });
+
+    // Right click event
+    rightClick.addEventListener("click", () => {
+      if (currentIndex < images.length - 1) {
+        currentIndex += 1;
+        updateImages();
+      }
+    });
+
+    // Initial update to show the first image
+    updateImages();
+  });
+});
+// end top service
 // start best sellers
 
 var startIndex = 0; // Indice de départ pour les vendeurs affichés

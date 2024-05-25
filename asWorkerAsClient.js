@@ -1,74 +1,80 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-import { getFirestore, addDoc, collection  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import {
+  getFirestore,
+  addDoc,
+  collection,
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCOa527QiPGbAmOXtbG99sBoKmwGpTrE6k",
-    authDomain: "projet-fin-d-etude-975b7.firebaseapp.com",
-    databaseURL: "https://projet-fin-d-etude-975b7-default-rtdb.firebaseio.com",
-    projectId: "projet-fin-d-etude-975b7",
-    storageBucket: "projet-fin-d-etude-975b7.appspot.com",
-    messagingSenderId: "919112985393",
-    appId: "1:919112985393:web:7d9c3545b45b52584dde10"
-  };
-  
+  apiKey: "AIzaSyCOa527QiPGbAmOXtbG99sBoKmwGpTrE6k",
+  authDomain: "projet-fin-d-etude-975b7.firebaseapp.com",
+  databaseURL: "https://projet-fin-d-etude-975b7-default-rtdb.firebaseio.com",
+  projectId: "projet-fin-d-etude-975b7",
+  storageBucket: "projet-fin-d-etude-975b7.appspot.com",
+  messagingSenderId: "919112985393",
+  appId: "1:919112985393:web:7d9c3545b45b52584dde10",
+};
+
 const app = initializeApp(firebaseConfig);
 
 // hadi bah na3raf wach 5ayar
-let state = 'client';
+let state = "client";
 
-const submitBtn = document.querySelector('#submitBtn');
+const submitBtn = document.querySelector("#submitBtn");
 
-const btn = document.querySelector('.btn');
-const info = document.querySelector('.info');
-const btnsContainer = document.querySelector('.btnsContainer');
+const btn = document.querySelector(".btn");
+const info = document.querySelector(".info");
+const btnsContainer = document.querySelector(".btnsContainer");
 
 const myImg1 = document.getElementById("image1");
 const myImg2 = document.getElementById("image2");
 const myButton = document.querySelector(".btn");
 
-const imageContainers = document.querySelectorAll('.image-container');
-myImg1.addEventListener ('click', () => {
-  state = 'worker';
+const imageContainers = document.querySelectorAll(".image-container");
+myImg1.addEventListener("click", () => {
+  state = "worker";
   img1Handler();
 });
 
 myImg2.addEventListener("click", () => {
-  state = 'client';
+  state = "client";
   img2Handler();
 });
 
-
 //switch pages logic
 
-btn.addEventListener('click', () => {
-    switchPagesHandler();
+btn.addEventListener("click", () => {
+  switchPagesHandler();
 });
 
 //firebase authentification
 const auth = getAuth();
 const db = getFirestore(app);
 
-submitBtn.addEventListener('click', (event) => {
+submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  const email = document.querySelector('#email').value;
-  const password = document.querySelector('#password').value;
-  const firstName = document.querySelector('#first-name').value;
-  const lastName = document.querySelector('#last-name').value;
-  const phoneNumber = document.querySelector('#phone-number').value;
-  const wilaya = document.querySelector('#wilaya2').value;
+  const email = document.querySelector("#email").value;
+  const password = document.querySelector("#password").value;
+  const firstName = document.querySelector("#first-name").value;
+  const lastName = document.querySelector("#last-name").value;
+  const phoneNumber = document.querySelector("#phone-number").value;
+  const wilaya = document.querySelector("#wilaya2").value;
   //ki y5ayar ymarki as client (database)
-  if(state === 'client') {
-    const city = document.querySelector('#city').value; 
-    const province = document.querySelector('#province').value; 
-    const street = document.querySelector('#street').value;
+  if (state === "client") {
+    const city = document.querySelector("#city").value;
+    const province = document.querySelector("#province").value;
+    const street = document.querySelector("#street").value;
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
-        // Signed up 
+        // Signed up
         const user = userCredential.user;
         const uid = user.uid;
-        alert('mrigla');
+        alert("mrigla");
         //add data
 
         let newUser = {
@@ -88,7 +94,7 @@ submitBtn.addEventListener('click', (event) => {
           const docRef = await addDoc(collection(db, "clients"), newUser);
           console.log("Document written with ID: ", docRef.id);
           //yru7 lpage ta3 profile
-          window.location.href = './userProfile.html';
+          window.location.href = "./userProfile.html";
         } catch (e) {
           console.error("Error adding document: ", e);
         }
@@ -98,20 +104,23 @@ submitBtn.addEventListener('click', (event) => {
         const errorMessage = error.message;
         // ..
         alert(errorMessage);
-
       });
-        
-  } else {//ki y5ayar ymarki as worker
-    const desc = document.querySelector('#description').value;
+  } else {
+    //ki y5ayar ymarki as worker
+    const desc = document.querySelector("#description").value;
     //njib lea variable ta3 tools w transport w speciality
-    const speciality = document.getElementById('speciality').value;
-    const transportValues = document.getElementsByName('transport');
-    const toolsValues = document.getElementsByName('tools');
+    const speciality = document.getElementById("speciality").value;
+    const transportValues = document.getElementsByName("transport");
+    const toolsValues = document.getElementsByName("tools");
 
-    const transport = transportValues[0].checked ? transportValues[0].value : transportValues[1].value;
-    const tools = toolsValues[0].checked ? toolsValues[0].value : toolsValues[1].value;
-    
-     let newUser = {
+    const transport = transportValues[0].checked
+      ? transportValues[0].value
+      : transportValues[1].value;
+    const tools = toolsValues[0].checked
+      ? toolsValues[0].value
+      : toolsValues[1].value;
+
+    let newUser = {
       email: email,
       password: password,
       firstName: firstName,
@@ -121,23 +130,22 @@ submitBtn.addEventListener('click', (event) => {
       speciality: speciality,
       desc: desc,
       transport: transport,
-      tools: tools
-     }; 
+      tools: tools,
+    };
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
-        // Signed up 
+        // Signed up
         const user = userCredential.user;
-        alert('mrigla worker');
+        alert("mrigla worker");
         //add in database
         try {
           const docRef = await addDoc(collection(db, "workers"), newUser);
-          
+
           console.log("Document written with ID: ", docRef.id);
         } catch (e) {
           console.error("Error adding document: ", e);
         }
-        
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -145,27 +153,24 @@ submitBtn.addEventListener('click', (event) => {
 
         alert(errorMessage);
       });
-
-
-  } 
-})
-
+  }
+});
 
 function switchPagesHandler() {
-    btnsContainer.classList.toggle('displayNone');
-    info.classList.remove('displayNone');
-    const myForm = document.querySelector('.myForm');
-    if(state === 'client') {
-      myForm.innerHTML += `
+  btnsContainer.classList.toggle("displayNone");
+  info.classList.remove("displayNone");
+  const myForm = document.querySelector(".myForm");
+  if (state === "client") {
+    myForm.innerHTML += `
           <div class="adresse">
             <label for="">adresse</label>
             <input type="text" id="city" placeholder="city" />
             <input type="text" id="province" placeholder="province" />
             <input type="text" id="street" placeholder="street" />
           </div> 
-      `; 
-    } else {
-      myForm.innerHTML += `
+      `;
+  } else {
+    myForm.innerHTML += `
         <div class="speciality">
           <label for="speciality">speciality</label>
           <select id="speciality">
@@ -222,18 +227,18 @@ function switchPagesHandler() {
             </div>
           
         </div> 
-      `; 
-    }
+      `;
+  }
 }
 
 function img1Handler() {
-    myButton.textContent = "as worker";
-    imageContainers[0].classList.toggle('clicked');
-    imageContainers[1].classList.remove('clicked');
+  myButton.textContent = "as worker";
+  imageContainers[0].classList.toggle("clicked");
+  imageContainers[1].classList.remove("clicked");
 }
 
 function img2Handler() {
-    myButton.textContent = "as client";
-    imageContainers[1].classList.toggle('clicked');
-    imageContainers[0].classList.remove('clicked');
+  myButton.textContent = "as client";
+  imageContainers[1].classList.toggle("clicked");
+  imageContainers[0].classList.remove("clicked");
 }
