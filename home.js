@@ -142,6 +142,7 @@ var swiper = new Swiper(".services-main", {
 
 // end categorie
 // start best sellers
+
 var startIndex = 0; // Indice de départ pour les vendeurs affichés
 var pageSize = 6; // Nombre de vendeurs à afficher par page
 
@@ -159,15 +160,18 @@ function scrollBestSellers(direction) {
     // Incrémenter l'indice de départ pour passer à la page suivante
     startIndex += pageSize;
 
-    // Vérifier si on atteint la fin de la liste
+    // Vérifier si on dépasse la fin de la liste
     if (startIndex >= sellers.length) {
-      startIndex = 0; // Retourner à la première page
+      // Fixer l'indice de départ à la première position de la dernière page
+      startIndex = (totalPages - 1) * pageSize;
     }
   }
+
   // Masquer tous les vendeurs
   sellers.forEach(function (seller) {
     seller.style.display = "none";
   });
+
   // Afficher les vendeurs de la page actuelle
   for (
     var i = startIndex;
@@ -177,6 +181,7 @@ function scrollBestSellers(direction) {
     sellers[i].style.display = "flex";
   }
 }
+
 // Appel initial pour afficher les premiers vendeurs
 scrollBestSellers(); // Affiche les six premiers vendeurs au chargement initial
 
@@ -216,15 +221,21 @@ function scrollComments(direction) {
     }
   });
 
+  // Si aucun commentaire n'est actif, activer le premier commentaire
+  if (activeIndex === -1 && comments.length > 0) {
+    comments[0].classList.add("active");
+    return;
+  }
+
   // Désactiver le commentaire actuel
   comments[activeIndex].classList.remove("active");
 
   // Calculer le nouvel index en fonction de la direction
   var newIndex;
   if (direction === "left") {
-    newIndex = activeIndex === 0 ? comments.length - 1 : activeIndex - 1;
+    newIndex = Math.max(0, activeIndex - 1);
   } else if (direction === "right") {
-    newIndex = activeIndex === comments.length - 1 ? 0 : activeIndex + 1;
+    newIndex = Math.min(comments.length - 1, activeIndex + 1);
   }
 
   // Activer le nouveau commentaire
