@@ -78,43 +78,68 @@ setInterval(changeCraftingImage, 4000);
 //     dynamicBullets: true,
 //   },
 // });
-// ======================================================================================================================
-var swiper = new Swiper(".services-main", {
-  slidesPerView: 3,
-  spaceBetween: 25,
-  loop: false,
-  centeredSlides: false, // Désactiver le centrage des slides
-  fade: false, // Désactiver le fade
-  slidesPerGroupSkip: 1,
-  slidesPerGroup: 1, // Changer un slide à la fois
-  keyboard: {
-    enabled: true,
-  },
-  scrollbar: {
-    el: ".swiper-scrollbar",
-  },
+// ======================================================================================================================$$*
+// const swiper = new Swiper(".swiper-container", {
+//   slidesPerView: 1,
+//   spaceBetween: 10,
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+//   pagination: {
+//     el: ".swiper-pagination",
+//     clickable: true,
+//   },
+//   breakpoints: {
+//     640: {
+//       slidesPerView: 2,
+//       spaceBetween: 20,
+//     },
+//     768: {
+//       slidesPerView: 3,
+//       spaceBetween: 40,
+//     },
+//     1024: {
+//       slidesPerView: 4,
+//       spaceBetween: 50,
+//     },
+//   },
+// });
+const swiper = new Swiper(".swiper-container", {
+  slidesPerView: "auto", // Affiche autant de slides que possible par vue
+  spaceBetween: 10,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-  // Commenter ou supprimer la pagination si non nécessaire
-  // pagination: {
-  //   el: ".swiper-pagination",
-  //   clickable: true,
-  //   dynamicBullets: true,
-  // },
-  on: {
-    reachEnd: function () {
-      this.allowSlideNext = false; // Empêche de continuer à scroller après le dernier slide
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
     },
-    slideChange: function () {
-      if (this.isEnd) {
-        this.allowSlideNext = false; // Empêche de continuer à scroller après le dernier slide
-      } else {
-        this.allowSlideNext = true; // Permet le scrolling si on n'est pas à la fin
-      }
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 50,
     },
   },
+});
+
+swiper.on("reachEnd", function () {
+  // Désactiver le bouton "next" lorsque vous atteignez la dernière slide
+  swiper.navigation.$nextEl.addClass("swiper-button-disabled");
+});
+
+swiper.on("fromEdge", function () {
+  // Réactiver le bouton "next" lorsque vous n'êtes pas sur la dernière slide
+  swiper.navigation.$nextEl.removeClass("swiper-button-disabled");
 });
 
 // =======================================================================================================================
