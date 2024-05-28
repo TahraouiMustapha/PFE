@@ -105,16 +105,17 @@ header > .left {
 }
 
 .right > .photo-profile {
-  background-color: #011121;
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  position: relative;
 }
 
-.photo-profile > img {
-  width: 100%;
+.photo-profile img {
+  position: absolute;
+  width: 44px;
+  height: 44px;
 }
-
 .notification-nav {
   display: flex;
   justify-content: space-between;
@@ -187,8 +188,7 @@ button:hover {
   display: flex;
   justify-content: center;
 }
-.sec2 div {
-  background-color: black;
+img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
