@@ -17,11 +17,15 @@ const db = getFirestore(app);
 //end inisialize firebase
 
 async function onkeyUpHandler(inputValue) {
-    const mySpecialityArray = await getArrayCategory();
-    const myResult = compareInputWithSpec(inputValue, mySpecialityArray);
-    editResultBoxSize(myResult.length);
-    if(inputValue !== '') {
-        sendResults(myResult);
+    if(inputValue !==''){
+        const mySpecialityArray = await getArrayCategory();
+        const myResult = compareInputWithSpec(inputValue, mySpecialityArray);
+        editResultBoxSize(myResult.length);
+        if(inputValue !== '') {
+            sendResults(myResult);
+        }
+    } else {
+        makeResultBoxDisappear();
     }
 }
 
@@ -77,6 +81,11 @@ function createResultBox(array) {
         if( array.length !==0) {
             resultBox.appendChild(myUl);
         }
+}
+
+function makeResultBoxDisappear() {
+    const resultBox = document.querySelector('.result-box');
+    resultBox.style.display = 'none';
 }
 
 //to edit result box height
