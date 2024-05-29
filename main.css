@@ -45,6 +45,34 @@ header > .left {
   gap: 16px;
 }
 
+/* for result box under the search */
+.result-box {
+  background-color: #e3e3e3;
+  width: 600px;
+  left: 140px;
+  top: 50px;
+
+  display: none;
+  position: absolute;
+}
+
+.result-box ul {
+  list-style: none;
+  display: grid;
+  padding: 8px 16px;
+}
+
+.result-box ul li {
+  padding: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+.result-box ul li:hover {
+  background-color: #fff;
+}
+
+
 .search > input {
   width: 80%;
   height: 40px;

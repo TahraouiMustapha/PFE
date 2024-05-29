@@ -6,7 +6,7 @@ import {
     updateDoc  
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 //import from our seaarchModule.js
-import { getArrayCategory } from "./searchModule.js";
+import { onkeyUpHandler, getArrayCategory } from "./searchModule.js";
 
 
 // Your web app's Firebase configuration
@@ -32,9 +32,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     //njib search value mn profile
     const urlParams = new URLSearchParams(window.location.search);
     const searchValue = urlParams.get('search');
+
+    //search function
+    const searchBar = document.getElementById('search-bar');
+    searchBar.addEventListener('keyup', () => {
+        onkeyUpHandler(searchBar.value);
+    });
     
     if (searchValue) {
-        console.log('Search value:', searchValue);
         renderServices(searchValue);
     } else {
         //render servicesCard
