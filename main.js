@@ -132,10 +132,10 @@ function createServiceCard(worker) {
         const serviceRate = document.createElement('div');
         serviceRate.classList.add('service-rate');
             const star = document.createElement('img');
-            star.src = './images/star.svg';
+            star.src = './icons/star.svg';
 
             const rate = document.createElement('p');
-            rate.textContent = 'worker.rate';
+            rate.textContent = worker.rate;
             
             serviceRate.appendChild(star);
             serviceRate.appendChild(rate);

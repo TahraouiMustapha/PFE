@@ -131,6 +131,7 @@ submitBtn.addEventListener("click", (event) => {
       desc: desc,
       transport: transport,
       tools: tools,
+      rate: 0.0
     };
 
     createUserWithEmailAndPassword(auth, email, password)
