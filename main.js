@@ -38,6 +38,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     searchBar.addEventListener('keyup', () => {
         onkeyUpHandler(searchBar.value);
     });
+    //button to sort the workers by who has transportation 
+    const transportBtn = document.getElementById('transportBtn');
+    transportBtn.addEventListener('click', async () => {
+        const myArray =  await getWorkers('');
+        renderServicesSortByTransport(myArray);
+    });
+
+    //button to sort the workers by who is available 
+    const availableBtn = document.getElementById('availableBtn');
+    availableBtn.addEventListener('click', async () => {
+        const myArray =  await getWorkers('');
+        renderServicesSortByAvailable(myArray);
+    })
     
     if (searchValue) {
         renderServices(searchValue);
@@ -168,4 +181,31 @@ async function getWorkers(value) {
     }
 
     return workersArray;
+}
+
+//function to sort the workers by transport
+function renderServicesSortByTransport(arrayOfWorkers) {
+    const serviceContainer = document.querySelector('.sellers');
+    serviceContainer.innerHTML = '';
+    const workersWithTransport = arrayOfWorkers.filter((worker) => {
+      return worker.transport === "available";  
+    });
+
+    workersWithTransport.forEach((worker) => {
+        serviceContainer.appendChild(createServiceCard(worker));
+    });
+}
+
+//function to sort the workers by available
+function renderServicesSortByAvailable(arrayOfWorkers) {
+    const serviceContainer = document.querySelector('.sellers');
+    serviceContainer.innerHTML = '';
+
+    const workersWithAvailability = arrayOfWorkers.filter((worker) => {
+        return worker.availability === "available";  
+    });
+
+    workersWithAvailability.forEach((worker) => {
+        serviceContainer.appendChild(createServiceCard(worker));
+    });
 }

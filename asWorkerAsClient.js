@@ -131,6 +131,7 @@ submitBtn.addEventListener("click", (event) => {
       desc: desc,
       transport: transport,
       tools: tools,
+      availability: "available",
       rate: 0.0
     };
 
