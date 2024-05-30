@@ -35,7 +35,7 @@ async function renderCategories(){
         let svgSrc = './icons/' + category + '.svg';
         category = category.charAt(0).toUpperCase() + category.slice(1);
         const categoryElement = createCategorie(category, svgSrc);
-        categoryElement.addEventListener('click', () => {
+        categoryElement.addEventListener('click', (event) => {
             selectedCategory = category;
             renderServices();
         });
@@ -195,7 +195,7 @@ function createSelectForWilayas() {
 
 // DOMContentLoaded event to initialize everything
 document.addEventListener('DOMContentLoaded', async () => {
-    renderCategories();
+    await renderCategories();
     createSelectForWilayas();
     
     const urlParams = new URLSearchParams(window.location.search);
