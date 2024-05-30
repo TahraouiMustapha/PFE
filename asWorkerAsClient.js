@@ -56,6 +56,8 @@ btn.addEventListener("click", () => {
 const auth = getAuth();
 const db = getFirestore(app);
 
+createSelectForWilayas();
+
 submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
   const email = document.querySelector("#email").value;
@@ -63,7 +65,7 @@ submitBtn.addEventListener("click", (event) => {
   const firstName = document.querySelector("#first-name").value;
   const lastName = document.querySelector("#last-name").value;
   const phoneNumber = document.querySelector("#phone-number").value;
-  const wilaya = document.querySelector("#wilaya2").value;
+  const wilaya = document.querySelector('#selectWialaya').value;
   //ki y5ayar ymarki as client (database)
   if (state === "client") {
     const city = document.querySelector("#city").value;
@@ -243,4 +245,77 @@ function img2Handler() {
   myButton.textContent = "as client";
   imageContainers[1].classList.toggle("clicked");
   imageContainers[0].classList.remove("clicked");
+}
+
+function createSelectForWilayas() {
+  const select = document.getElementById('selectWialaya');
+  const locations = [
+      "Adrar",
+      "Chlef",
+      "Laghouat",
+      "Oum El Bouaghi",
+      "Batna",
+      "Béjaïa",
+      "Biskra",
+      "Béchar",
+      "Blida",
+      "Bouira",
+      "Tamanrasset",
+      "Tébessa",
+      "Tlemcen",
+      "Tiaret",
+      "Tizi Ouzou",
+      "Alger",
+      "Djelfa",
+      "Jijel",
+      "Sétif",
+      "Saïda",
+      "Skikda",
+      "Sidi Bel Abbès",
+      "Annaba",
+      "Guelma",
+      "Constantine",
+      "Médéa",
+      "Mostaganem",
+      "M'Sila",
+      "Mascara",
+      "Ouargla",
+      "Oran",
+      "El Bayadh",
+      "Illizi",
+      "Bordj Bou Arreridj",
+      "Boumerdès",
+      "El Tarf",
+      "Tindouf",
+      "Tissemsilt",
+      "El Oued",
+      "Khenchela",
+      "Souk Ahras",
+      "Tipaza",
+      "Mila",
+      "Aïn Defla",
+      "Naâma",
+      "Aïn Témouchent",
+      "Ghardaïa",
+      "Relizane",
+      "Timimoun",
+      "Bordj Badji Mokhtar",
+      "Ouled Djellal",
+      "Béni Abbès",
+      "In Salah",
+      "In Guezzam",
+      "Touggourt",
+      "Djanet",
+      "Ghar",
+      "Meniaa"
+    ];
+
+  let i = 1;  
+  locations.forEach((wilaya) => {
+      let option = document.createElement('option');
+      option.value = wilaya;
+      option.textContent = `${i++} ${wilaya}`
+      select.appendChild(option);
+  })
+    
 }

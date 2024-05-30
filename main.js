@@ -28,7 +28,7 @@ const db = getFirestore(app);
 document.addEventListener('DOMContentLoaded', async () => {
     //render categories
     renderCategories();
-    createSelectForWilayas()
+    createSelectForWilayas();
     
     //njib search value mn profile
     const urlParams = new URLSearchParams(window.location.search);
@@ -42,14 +42,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     //button to sort the workers by who has transportation 
     const transportBtn = document.getElementById('transportBtn');
     transportBtn.addEventListener('click', async () => {
-        const myArray =  await getWorkers('');
+        const selectWialaya = document.querySelector('#selectWialaya').value;
+        const myArray =  await getWorkersByWilaya(selectWialaya);
         renderServicesSortByTransport(myArray);
     });
 
     //button to sort the workers by who is available 
     const availableBtn = document.getElementById('availableBtn');
     availableBtn.addEventListener('click', async () => {
-        const myArray =  await getWorkers('');
+        const selectWialaya = document.querySelector('#selectWialaya').value;
+        const myArray =  await getWorkersByWilaya(selectWialaya);
         renderServicesSortByAvailable(myArray);
     })
     
@@ -165,7 +167,7 @@ function createServiceCard(worker) {
     return serviceCard;
 }
 
-//function to get workers fromm firebase
+//function to get workers from firebase
 async function getWorkers(value) {
     const myArrayDocuments = await getDocs(collection(db, "workers"));
     const workersArray = [];
@@ -183,6 +185,27 @@ async function getWorkers(value) {
 
     return workersArray;
 }
+
+//function to get workers from firebase by wilaya
+async function getWorkersByWilaya(value) {
+    const myArrayDocuments = await getDocs(collection(db, "workers"));
+    const workersArray = [];
+    console.log(value);
+    if(value == '') {
+        myArrayDocuments.forEach((doc) => {
+            workersArray.push(doc.data()); 
+        });
+    } else {
+        myArrayDocuments.forEach((doc) => {
+            if(doc.data().wilaya === value) {
+                workersArray.push(doc.data());
+            }
+        });
+    }
+
+    return workersArray;
+}
+
 
 //function to sort the workers by transport
 function renderServicesSortByTransport(arrayOfWorkers) {
@@ -210,6 +233,7 @@ function renderServicesSortByAvailable(arrayOfWorkers) {
         serviceContainer.appendChild(createServiceCard(worker));
     });
 }
+
 
 function createSelectForWilayas() {
     const select = document.getElementById('selectWialaya');
