@@ -28,6 +28,7 @@ const db = getFirestore(app);
 document.addEventListener('DOMContentLoaded', async () => {
     //render categories
     renderCategories();
+    createSelectForWilayas()
     
     //njib search value mn profile
     const urlParams = new URLSearchParams(window.location.search);
@@ -208,4 +209,77 @@ function renderServicesSortByAvailable(arrayOfWorkers) {
     workersWithAvailability.forEach((worker) => {
         serviceContainer.appendChild(createServiceCard(worker));
     });
+}
+
+function createSelectForWilayas() {
+    const select = document.getElementById('selectWialaya');
+    const locations = [
+        "Adrar",
+        "Chlef",
+        "Laghouat",
+        "Oum El Bouaghi",
+        "Batna",
+        "Béjaïa",
+        "Biskra",
+        "Béchar",
+        "Blida",
+        "Bouira",
+        "Tamanrasset",
+        "Tébessa",
+        "Tlemcen",
+        "Tiaret",
+        "Tizi Ouzou",
+        "Alger",
+        "Djelfa",
+        "Jijel",
+        "Sétif",
+        "Saïda",
+        "Skikda",
+        "Sidi Bel Abbès",
+        "Annaba",
+        "Guelma",
+        "Constantine",
+        "Médéa",
+        "Mostaganem",
+        "M'Sila",
+        "Mascara",
+        "Ouargla",
+        "Oran",
+        "El Bayadh",
+        "Illizi",
+        "Bordj Bou Arreridj",
+        "Boumerdès",
+        "El Tarf",
+        "Tindouf",
+        "Tissemsilt",
+        "El Oued",
+        "Khenchela",
+        "Souk Ahras",
+        "Tipaza",
+        "Mila",
+        "Aïn Defla",
+        "Naâma",
+        "Aïn Témouchent",
+        "Ghardaïa",
+        "Relizane",
+        "Timimoun",
+        "Bordj Badji Mokhtar",
+        "Ouled Djellal",
+        "Béni Abbès",
+        "In Salah",
+        "In Guezzam",
+        "Touggourt",
+        "Djanet",
+        "Ghar",
+        "Meniaa"
+      ];
+
+    let i = 1;  
+    locations.forEach((wilaya) => {
+        let option = document.createElement('option');
+        option.value = wilaya;
+        option.textContent = `${i++} ${wilaya}`
+        select.appendChild(option);
+    })
+      
 }
