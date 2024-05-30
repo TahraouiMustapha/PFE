@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+    --font-clr: white;
+    --transp-bg: #94a3b8;
+  }
+
+* {
+    margin: 0;
+    font-family: "Roboto";
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+}
+
+header > .left,
+header > .right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+header > .left {
+  width: 60%;
+}
+
+.left > .search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search > input {
+    width: 80%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 0 1em;
+    background-color: var(--transp-bg);
+    font-size: 1.1em;
+  }
+  
+  .search > .search-icon {
+    background-color: var(--transp-bg);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .search-icon svg {
+    stroke: #011121;
+  }
+  
+  .logo {
+    font-size: 2em;
+    font-weight: 600;
+  }
+  
+  .right > .photo-profile {
+    background-color: #011121;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+  
+  .photo-profile > img {
+    width: 100%;
+  }
+  
+  .notification-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+  }
+  
+  .notify svg {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+  /* end style for header */
+/* start style fot main */
+.main {
+    flex:1;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 1fr ;
+
+    grid-template-areas: 
+    "title title commande"
+    "content content commande"
+    "content content commande";
+}
+
+.main .service-title {
+    grid-area: title;  
+    width:95%;
+    border-bottom: 1px solid #011121;
+}
+
+
+.main .service-content {
+    grid-area: content;  
+
+}
+
+
+.main .service-commande {
+    grid-area: commande;  
+    border-left:1px solid #011121;
+}
+
+
+
+
+
+/* end style for main */
+
+/* start style for footer */
+  footer {
+    background-color: #011121;
+    color: #fff;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  footer > p {
+    font-size: 0.9em;
+    color: var(--font-clr);
+    width: 25%;
+    padding-left: 1.5em;
+  }
+  
+  .social-media-nav {
+    width: 25%;
+  }
+  
+  .social-media-nav > ul {
+    display: flex;
+    justify-content: space-around;
+    padding-right: 1.5em;
+  }
+  
+  .social-media-nav > ul > li {
+    border: 3px solid blue;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  
+  li a svg {
+    width: 1em;
+    fill: blue;
+  }
