@@ -23,69 +23,38 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 //end inisialize firebase
+// Variables to track selected category and wilaya
+let selectedCategory = '';
+let selectedWilaya = '';
 
-
-document.addEventListener('DOMContentLoaded', async () => {
-    //render categories
-    renderCategories();
-    createSelectForWilayas();
-    
-    //njib search value mn profile
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchValue = urlParams.get('search');
-
-    //search function
-    const searchBar = document.getElementById('search-bar');
-    searchBar.addEventListener('keyup', () => {
-        onkeyUpHandler(searchBar.value);
-    });
-    //button to sort the workers by who has transportation 
-    const transportBtn = document.getElementById('transportBtn');
-    transportBtn.addEventListener('click', async () => {
-        const selectWialaya = document.querySelector('#selectWialaya').value;
-        const myArray =  await getWorkersByWilaya(selectWialaya);
-        renderServicesSortByTransport(myArray);
-    });
-
-    //button to sort the workers by who is available 
-    const availableBtn = document.getElementById('availableBtn');
-    availableBtn.addEventListener('click', async () => {
-        const selectWialaya = document.querySelector('#selectWialaya').value;
-        const myArray =  await getWorkersByWilaya(selectWialaya);
-        renderServicesSortByAvailable(myArray);
-    })
-    
-    if (searchValue) {
-        renderServices(searchValue);
-    } else {
-        //render servicesCard
-        renderServices('');
-    }
-});
-
-
-//function to render the categories 
+// Function to render categories
 async function renderCategories(){
     const myCategories = document.querySelector('.categories');
     const array = await getArrayCategory();
-    array.forEach((categorie) => {
-        let svgSrc = './icons/' + categorie + '.svg';
-        categorie = categorie.charAt(0).toUpperCase() + categorie.slice(1);
-        myCategories.appendChild(createCategorie(categorie, svgSrc));
+    array.forEach((category) => {
+        let svgSrc = './icons/' + category + '.svg';
+        category = category.charAt(0).toUpperCase() + category.slice(1);
+        const categoryElement = createCategorie(category, svgSrc);
+        categoryElement.addEventListener('click', () => {
+            selectedCategory = category;
+            renderServices();
+        });
+        myCategories.appendChild(categoryElement);
     });
 }
 
-//function to render service cards
-async function renderServices(value) {
+// Function to render service cards
+async function renderServices() {
     const serviceContainer = document.querySelector('.sellers');
-    const arrayOfWorkers = await getWorkers(value);
+    serviceContainer.innerHTML = ''; 
+    const arrayOfWorkers = await getWorkers();
 
     arrayOfWorkers.forEach((worker) => {
         serviceContainer.appendChild(createServiceCard(worker));
     });
 }
 
-//function to create categorie card
+// Function to create category card
 function createCategorie(title, iconSrc) {
     const myCategorie = document.createElement('div');
     myCategorie.classList.add('categorie');
@@ -106,7 +75,7 @@ function createCategorie(title, iconSrc) {
     return myCategorie;
 }
 
-//function to create worker card 
+// Function to create worker card 
 function createServiceCard(worker) {
     const serviceCard = document.createElement('div');
     serviceCard.classList.add('service-card');
@@ -117,193 +86,141 @@ function createServiceCard(worker) {
             workImage.classList.add('work-image');
             //image ta3 work example
                 const img = document.createElement('img');
-
                 workImage.appendChild(img);
-
             serviceGallery.appendChild(workImage);
         serviceCard.appendChild(serviceGallery);
-        //--craete profile part
+        //--create profile part
         const profile = document.createElement('div');
         profile.classList.add('profile');
             //div photo profile
             const photoProfile = document.createElement('div');
             photoProfile.classList.add('photoProfile');
             //hna nzid img ta3 siyid
-
             const profileName = document.createElement('p');
             profileName.classList.add('profile-name');
             profileName.textContent = worker.firstName +' '+ worker.lastName;
-
-
             profile.appendChild(photoProfile);
             profile.appendChild(profileName);
-
         serviceCard.appendChild(profile);
-        // --create profile -desc part
+        //--create profile-desc part
         const profileDesc = document.createElement('div');
         profileDesc.classList.add('profile-desc');
             const desc = document.createElement('p');
             desc.textContent = worker.desc;
-
             profileDesc.appendChild(desc);
-
         serviceCard.appendChild(profileDesc);
-
         //--create service-rate part
         const serviceRate = document.createElement('div');
         serviceRate.classList.add('service-rate');
             const star = document.createElement('img');
             star.src = './icons/star.svg';
-
             const rate = document.createElement('p');
             rate.textContent = worker.rate;
-            
             serviceRate.appendChild(star);
             serviceRate.appendChild(rate);
-
         serviceCard.appendChild(serviceRate);
-
-
     return serviceCard;
 }
 
-//function to get workers from firebase
-async function getWorkers(value) {
+// Function to get workers from Firebase
+async function getWorkers() {
     const myArrayDocuments = await getDocs(collection(db, "workers"));
     const workersArray = [];
-    if(value == '') {
-        myArrayDocuments.forEach((doc) => {
-            workersArray.push(doc.data()); 
-        });
-    } else {
-        myArrayDocuments.forEach((doc) => {
-            if(doc.data().speciality === value) {
-                workersArray.push(doc.data());
-            }
-        });
-    }
-
+    myArrayDocuments.forEach((doc) => {
+        const data = doc.data();
+        if ((selectedCategory === '' || data.speciality === selectedCategory.toLowerCase()) &&
+            (selectedWilaya === '' || data.wilaya === selectedWilaya.toLowerCase())) {
+            workersArray.push(data);
+        }
+    });
     return workersArray;
 }
 
-//function to get workers from firebase by wilaya
+// Function to get workers by wilaya from Firebase
 async function getWorkersByWilaya(value) {
-    const myArrayDocuments = await getDocs(collection(db, "workers"));
-    const workersArray = [];
-    console.log(value);
-    if(value == '') {
-        myArrayDocuments.forEach((doc) => {
-            workersArray.push(doc.data()); 
-        });
-    } else {
-        myArrayDocuments.forEach((doc) => {
-            if(doc.data().wilaya === value) {
-                workersArray.push(doc.data());
-            }
-        });
-    }
-
-    return workersArray;
+    selectedWilaya = value;
+    renderServices();
 }
 
-
-//function to sort the workers by transport
+// Function to sort workers by transport
 function renderServicesSortByTransport(arrayOfWorkers) {
     const serviceContainer = document.querySelector('.sellers');
     serviceContainer.innerHTML = '';
     const workersWithTransport = arrayOfWorkers.filter((worker) => {
-      return worker.transport === "available";  
+        return worker.transport === "available";  
     });
-
     workersWithTransport.forEach((worker) => {
         serviceContainer.appendChild(createServiceCard(worker));
     });
 }
 
-//function to sort the workers by available
+// Function to sort workers by availability
 function renderServicesSortByAvailable(arrayOfWorkers) {
     const serviceContainer = document.querySelector('.sellers');
     serviceContainer.innerHTML = '';
-
     const workersWithAvailability = arrayOfWorkers.filter((worker) => {
         return worker.availability === "available";  
     });
-
     workersWithAvailability.forEach((worker) => {
         serviceContainer.appendChild(createServiceCard(worker));
     });
 }
 
-
+// Function to create select for wilayas
 function createSelectForWilayas() {
     const select = document.getElementById('selectWialaya');
     const locations = [
-        "Adrar",
-        "Chlef",
-        "Laghouat",
-        "Oum El Bouaghi",
-        "Batna",
-        "Béjaïa",
-        "Biskra",
-        "Béchar",
-        "Blida",
-        "Bouira",
-        "Tamanrasset",
-        "Tébessa",
-        "Tlemcen",
-        "Tiaret",
-        "Tizi Ouzou",
-        "Alger",
-        "Djelfa",
-        "Jijel",
-        "Sétif",
-        "Saïda",
-        "Skikda",
-        "Sidi Bel Abbès",
-        "Annaba",
-        "Guelma",
-        "Constantine",
-        "Médéa",
-        "Mostaganem",
-        "M'Sila",
-        "Mascara",
-        "Ouargla",
-        "Oran",
-        "El Bayadh",
-        "Illizi",
-        "Bordj Bou Arreridj",
-        "Boumerdès",
-        "El Tarf",
-        "Tindouf",
-        "Tissemsilt",
-        "El Oued",
-        "Khenchela",
-        "Souk Ahras",
-        "Tipaza",
-        "Mila",
-        "Aïn Defla",
-        "Naâma",
-        "Aïn Témouchent",
-        "Ghardaïa",
-        "Relizane",
-        "Timimoun",
-        "Bordj Badji Mokhtar",
-        "Ouled Djellal",
-        "Béni Abbès",
-        "In Salah",
-        "In Guezzam",
-        "Touggourt",
-        "Djanet",
-        "Ghar",
-        "Meniaa"
-      ];
+        "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra",
+        "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret",
+        "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif", "Saïda", "Skikda",
+        "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem",
+        "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj",
+        "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela",
+        "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent",
+        "Ghardaïa", "Relizane", "Timimoun", "Bordj Badji Mokhtar", "Ouled Djellal",
+        "Béni Abbès", "In Salah", "In Guezzam", "Touggourt", "Djanet", "Ghar", "Meniaa"
+    ];
 
-    let i = 1;  
-    locations.forEach((wilaya) => {
-        let option = document.createElement('option');
+    locations.forEach((wilaya, index) => {
+        const option = document.createElement('option');
         option.value = wilaya;
-        option.textContent = `${i++} ${wilaya}`
+        option.textContent = `${index + 1} ${wilaya}`;
         select.appendChild(option);
-    })
-      
+    });
+
+    select.addEventListener('change', (event) => {
+        getWorkersByWilaya(event.target.value);
+    });
 }
+
+// DOMContentLoaded event to initialize everything
+document.addEventListener('DOMContentLoaded', async () => {
+    renderCategories();
+    createSelectForWilayas();
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchValue = urlParams.get('search');
+
+    const searchBar = document.getElementById('search-bar');
+    searchBar.addEventListener('keyup', () => {
+        onkeyUpHandler(searchBar.value);
+    });
+
+    const transportBtn = document.getElementById('transportBtn');
+    transportBtn.addEventListener('click', async () => {
+        const arrayOfWorkers = await getWorkers();
+        renderServicesSortByTransport(arrayOfWorkers);
+    });
+
+    const availableBtn = document.getElementById('availableBtn');
+    availableBtn.addEventListener('click', async () => {
+        const arrayOfWorkers = await getWorkers();
+        renderServicesSortByAvailable(arrayOfWorkers);
+    });
+
+    if (searchValue) {
+        renderServices(searchValue);
+    } else {
+        renderServices('');
+    }
+});
