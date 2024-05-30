@@ -179,29 +179,51 @@ input {
   width: 600px;
   height: 150px;
   border-radius: 20px;
-  text-align: center;
+  text-align: start;
   padding: 10px;
   font-weight: bold;
   font-size: 16px;
   margin: 20px;
+  color: white;
   display: inline-flex;
   align-content: flex-end;
   justify-content: flex-end;
+  background-color: black;
 }
 .description label {
   transform: translateY(-10px);
   float: left;
   clear: both;
 }
+textarea::placeholder {
+  color: gray;
+  opacity: 1;
+}
 
 .speciality {
   margin: 20px 0;
+}
+select {
+  color: gray;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+select option {
+  color: black;
+  background-color: white;
+}
+
+select option:checked {
+  background-color: black;
+  color: white;
 }
 
 .speciality select {
   padding: 8px;
 }
-
 .transport,
 .tools {
   display: flex;

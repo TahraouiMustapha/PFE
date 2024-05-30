@@ -197,11 +197,13 @@ function switchPagesHandler() {
 
         <div class="description">
           <label for="description">description</label>
-          <textarea name="description" id="description" cols="30" rows="4">
-            tell about you share your skills project that have did
+
+          <textarea " name="description" id="description" cols="30" rows="4" placeholder="tell about you share your skills project that have did">
           </textarea>
         </div> 
-
+        document.addEventListener("DOMContentLoaded", function() {
+          var textarea = document.getElementById('description');
+        });
         <div class="transport">
           <label>transport</label>
           
