@@ -193,6 +193,7 @@ header > .left {
 .service-card {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   gap: 5px;
 }
 

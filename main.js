@@ -119,6 +119,16 @@ function createServiceCard(worker) {
             serviceRate.appendChild(star);
             serviceRate.appendChild(rate);
         serviceCard.appendChild(serviceRate);
+
+        serviceCard.addEventListener('click', () => {
+            const workerJson = JSON.stringify(worker); 
+            const encodedWorkerJson = encodeURIComponent(workerJson);
+
+            const url = new URL('workerProfile.html', window.location.href);
+            url.searchParams.set('worker', encodedWorkerJson);
+            window.location.href = url.toString();
+        });
+
     return serviceCard;
 }
 
