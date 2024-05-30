@@ -205,30 +205,30 @@ function switchPagesHandler() {
           var textarea = document.getElementById('description');
         });
         <div class="transport">
-          <label>transport</label>
+          <label>accepte mobility</label>
           
             <div class="choice">                  
-              <label for="choice1">available</label>
+              <label for="choice1">Accepted</label>
               <input type="radio" value="available" name="transport" />
             </div>
 
             <div class="choice">
-              <label for="choice2">not available</label>
+              <label for="choice2">Not Accepted</label>
               <input type="radio" value="not" name="transport"/>
             </div>
           
         </div> 
 
         <div class="tools">
-          <label>tools</label>
+          <label>Accepting fees for gear purchases</label>
           
             <div class="choice">                  
-              <label for="choice1">available</label>
+              <label for="choice1">Accepted</label>
               <input type="radio" value="available" name="tools" />
             </div>
 
             <div class="choice">
-              <label for="choice2">not available</label>
+              <label for="choice2">Not Accepted</label>
               <input type="radio" value="not" name="tools"/>
             </div>
           
