@@ -88,6 +88,8 @@ form {
   grid-template-rows: repeat(5 1fr);
   border-radius: 20px;
   margin: 110px auto;
+  width: auto;
+  padding: 20px;
 }
 h2 {
   color: gray;
@@ -99,6 +101,9 @@ h2 {
   width: fit-content;
   border-radius: 20px;
   padding: 10px;
+}
+.email {
+  margin-top: 50px;
 }
 .btnsContainer {
   background-color: black;
