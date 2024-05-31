@@ -1,4 +1,5 @@
 // start crafting
+
 const craftingImage = document.querySelector("#craftingImage .crafting-photo");
 const craftingImages = [
   "./images/lhaj.png",
@@ -167,19 +168,22 @@ swiper.on("fromEdge", function () {
 
 // end categorie
 // start top servise
+//hdi mtbdache tkhdm hta yt3mre mhtwa sfha 
 document.addEventListener("DOMContentLoaded", () => {
+  // ychdlk wche kayn ga3 info f secvice card kaml les service card 
   const serviceCards = document.querySelectorAll(".service-card");
-
+  // dir repitition
   serviceCards.forEach((card) => {
     const leftClick = card.querySelector(".left-click .hover");
     const rightClick = card.querySelector(".right-click .hover");
     const images = card.querySelectorAll(".work-image img");
-    let currentIndex = 0;
+    let currentIndex = 0;// counteur wzid ta3 soura lwla
 
     // Function to update image visibility
+
     const updateImages = () => {
-      images.forEach((img, index) => {
-        img.classList.toggle("active", index === currentIndex);
+      images.forEach((img, index) => {// tdir loperation l kaml tsawre 
+        img.classList.toggle("active", index === currentIndex);// dir classe active l tswira li index=cureentIndex
       });
     };
 
@@ -199,20 +203,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Initial update to show the first image
+    // Initial update to show the first image in refrreche
     updateImages();
   });
 });
 // end top service
 // start best sellers
 
-var startIndex = 0; // Indice de départ pour les vendeurs affichés
-var pageSize = 6; // Nombre de vendeurs à afficher par page
+var startIndex = 0; //  wchmn page rak
+var pageSize = 6; //  chale mn vendeur f page
 
 function scrollBestSellers(direction) {
   var sellers = document.querySelectorAll(".seller-card");
 
-  // Calcul du nombre total de pages
+  // thsb 3dd les page btkrib ll a3la bach ydkhl f hsab sellers f page lkhra
   var totalPages = Math.ceil(sellers.length / pageSize);
 
   // Si la direction est vers la gauche
@@ -223,7 +227,7 @@ function scrollBestSellers(direction) {
     // Incrémenter l'indice de départ pour passer à la page suivante
     startIndex += pageSize;
 
-    // Vérifier si on dépasse la fin de la liste
+    // bah ki ykmo sellers thbs la page
     if (startIndex >= sellers.length) {
       // Fixer l'indice de départ à la première position de la dernière page
       startIndex = (totalPages - 1) * pageSize;
@@ -250,7 +254,7 @@ scrollBestSellers(); // Affiche les six premiers vendeurs au chargement initial
 
 //  end sellers
 // start tips
-
+// fonction kima ta3 crafting
 const tipsImage = document.querySelector(".tips .tips-photo");
 const tipsImages = [
   "./images/1tips.jpg",
@@ -269,15 +273,15 @@ function changeTipsImage() {
   tipsIndex = (tipsIndex + 1) % tipsImages.length;
 }
 
-// Changer l'image toutes les 4 secondes
+// Changer l'image toutes les 2 secondes
 setInterval(changeTipsImage, 2000);
-
+// end tips
 // start comments
 function scrollComments(direction) {
   var comments = document.querySelectorAll(".comment");
-  var activeIndex = -1;
+  var activeIndex = -1;// mkan hta commentair
 
-  // Trouver l'index du commentaire actuellement actif
+  // hwse 3la lindex ta3 comment li fih active class wdiro activeIndex
   comments.forEach(function (comment, index) {
     if (comment.classList.contains("active")) {
       activeIndex = index;
@@ -293,7 +297,7 @@ function scrollComments(direction) {
   // Désactiver le commentaire actuel
   comments[activeIndex].classList.remove("active");
 
-  // Calculer le nouvel index en fonction de la direction
+  // yhsb index jdid 3la hsab dirction si ymin yzid whd wmyfoutche 3dd cmnt si ysar ynks whs w myhbtche tht 0
   var newIndex;
   if (direction === "left") {
     newIndex = Math.max(0, activeIndex - 1);
