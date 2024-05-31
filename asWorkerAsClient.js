@@ -9,6 +9,9 @@ import {
   collection,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
+//import our calsses
+import { Client, Artisan, Comment } from "./ourClasses.js";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCOa527QiPGbAmOXtbG99sBoKmwGpTrE6k",
@@ -79,21 +82,21 @@ submitBtn.addEventListener("click", (event) => {
         alert("mrigla");
         //add data
 
-        let newUser = {
-          uid: uid,
-          email: email,
-          password: password,
-          firstName: firstName,
-          lastName: lastName,
-          phoneNumber: phoneNumber,
-          wilaya: wilaya,
-          city: city,
-          province: province,
-          street: street,
-        };
+        let newUser = new Client(
+          uid,
+          firstName,
+          lastName,
+          email,
+          password,
+          phoneNumber,
+          wilaya,
+          city,
+          province,
+          street
+        );
 
         try {
-          const docRef = await addDoc(collection(db, "clients"), newUser);
+          const docRef = await addDoc(collection(db, "clients"), newUser.toPlainObject());
           console.log("Document written with ID: ", docRef.id);
           //yru7 lpage ta3 profile
           window.location.href = "./userProfile.html";
@@ -122,29 +125,30 @@ submitBtn.addEventListener("click", (event) => {
       ? toolsValues[0].value
       : toolsValues[1].value;
 
-    let newUser = {
-      email: email,
-      password: password,
-      firstName: firstName,
-      lastName: lastName,
-      phoneNumber: phoneNumber,
-      wilaya: wilaya,
-      speciality: speciality,
-      desc: desc,
-      transport: transport,
-      tools: tools,
-      availability: "available",
-      rate: 0.0,
-    };
-
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Signed up
         const user = userCredential.user;
+        const uid = user.uid;
         alert("mrigla worker");
         //add in database
+
+        let newUser = new Artisan(
+          uid,
+          firstName,
+          lastName,
+          email,
+          password,
+          phoneNumber,
+          wilaya,
+          speciality,
+          transport,
+          tools,
+          desc,
+        );
+
         try {
-          const docRef = await addDoc(collection(db, "workers"), newUser);
+          const docRef = await addDoc(collection(db, "workers"), newUser.toPlainObject());
 
           console.log("Document written with ID: ", docRef.id);
         } catch (e) {
