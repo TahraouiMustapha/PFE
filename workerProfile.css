@@ -237,7 +237,7 @@ header > .left {
 
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
 }
 
 .worker-info-container .profile {
@@ -275,10 +275,12 @@ header > .left {
 }
 
 .state-btns button {
-    padding: 10px 0; 
+    padding: 10px 24px; 
     border: none;
     border-radius: 8px;
+    font-size: 16px;
     font-weight: 500;
+    text-align: start;
 }
 
 #commandeBtn {
@@ -292,8 +294,8 @@ header > .left {
 }
 
 .checked {
-    background-color: #2563eb;
-    color: #fff;
+  background-color: #2563eb;
+  color: #fff;
 }
 
 
