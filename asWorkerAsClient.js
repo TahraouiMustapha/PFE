@@ -213,12 +213,12 @@ function switchPagesHandler() {
           
             <div class="choice">                  
               <label for="choice1">Accepted</label>
-              <input type="radio" value="available" name="transport" />
+              <input type="radio" value="true" name="transport" />
             </div>
 
             <div class="choice">
               <label for="choice2">Not Accepted</label>
-              <input type="radio" value="not" name="transport"/>
+              <input type="radio" value="false" name="transport"/>
             </div>
           
         </div> 
@@ -228,12 +228,12 @@ function switchPagesHandler() {
           
             <div class="choice">                  
               <label for="choice1">Accepted</label>
-              <input type="radio" value="available" name="tools" />
+              <input type="radio" value="true" name="tools" />
             </div>
 
             <div class="choice">
               <label for="choice2">Not Accepted</label>
-              <input type="radio" value="not" name="tools"/>
+              <input type="radio" value="false" name="tools"/>
             </div>
           
         </div> 
