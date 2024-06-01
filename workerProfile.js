@@ -1,4 +1,3 @@
-const { debounce } = require("lodash");
 
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -17,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainSec = document.querySelector('.main');
     mainSec.appendChild(createServiceTitle(worker.speciality));
 
+
+
+    mainSec.appendChild(createServiceCommande(worker));
 
 });
 
@@ -49,14 +51,16 @@ function createServiceCommande(workerObj) {
     myDiv.classList.add('service-commande');
         const workerInfoContainer = document.createElement('div');
         workerInfoContainer.classList.add('worker-info-container');        
-        //create profile div
+            //create profile div
             workerInfoContainer.appendChild(createProfileDiv(workerObj));
-        //create state-btns div
+            //create state-btns div
+            workerInfoContainer.appendChild(createWorkerState(workerObj));
 
 
 
         const commandeBtn = document.createElement('button');
         commandeBtn.setAttribute('id', 'commandeBtn');
+        commandeBtn.textContent = 'Commande';
         
         myDiv.appendChild(workerInfoContainer);
         myDiv.appendChild(commandeBtn);
@@ -64,6 +68,7 @@ function createServiceCommande(workerObj) {
     return myDiv;
 }
 
+//func to create profile div
 function createProfileDiv(workerObj) {
     const myDiv = document.createElement('div');
     myDiv.classList.add('profile');
@@ -98,16 +103,41 @@ function createProfileDiv(workerObj) {
     return myDiv;
 }
 
+//func to create worker state (buttons)
 function createWorkerState(workerObj) {
     const myDiv = document.createElement('div');
     myDiv.classList.add('state-btns');
 
     const transportBtn = document.createElement('button');
+    transportBtn.textContent = 'Accepte mobility';
     const toolsBtn = document.createElement('button');
+    toolsBtn.textContent = 'Charging for gear purchases';
     const availableBtn = document.createElement('button');
+    availableBtn.textContent = 'Available'
+    //add checked class
+    addCheckedClass(transportBtn, workerObj.transport);
+    addCheckedClass(toolsBtn, workerObj.tools);
+    addCheckedClass(availableBtn, workerObj.availability);
+
+    myDiv.appendChild(transportBtn);
+    myDiv.appendChild(toolsBtn);
+    myDiv.appendChild(availableBtn);
 
 
     return myDiv;
 }
 
+//func to adding class checked to true state
+function addCheckedClass(element, state) {
+    if(state) {
+        element.classList.add('checked');
+        console.log(element, state);
+    } else {
+        console.log(element, state);
+
+        if(element.classList.contains('checked')) {
+            element.classList.remove('checked');
+        }
+    }
+}
 
