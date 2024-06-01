@@ -261,6 +261,10 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  width: 100%;
 }
 
 footer > p {
@@ -293,4 +297,15 @@ footer > p {
 li a svg {
   width: 1em;
   fill: blue;
+}
+.not1 {
+  width: 350px;
+  height: 450px;
+  background-color: white;
+  position: relative;
+  bottom: 740px;
+  left: 1040px;
+  display: none;
+  z-index: 30;
+  border: 1px black solid;
 }

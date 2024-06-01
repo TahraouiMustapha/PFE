@@ -127,6 +127,17 @@ header > .left {
   height: 32px;
   cursor: pointer;
 }
+.not1 {
+  width: 350px;
+  height: 450px;
+  background-color: white;
+  position: relative;
+  bottom: 370px;
+  left: 650px;
+  display: none;
+  z-index: 30;
+  border: 1px black solid;
+}
 /* end header */
 /* start section */
 section div {
