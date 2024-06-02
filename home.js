@@ -168,22 +168,23 @@ swiper.on("fromEdge", function () {
 
 // end categorie
 // start top servise
-//hdi mtbdache tkhdm hta yt3mre mhtwa sfha 
+//hdi mtbdache tkhdm hta yt3mre mhtwa sfha
 document.addEventListener("DOMContentLoaded", () => {
-  // ychdlk wche kayn ga3 info f secvice card kaml les service card 
+  // ychdlk wche kayn ga3 info f secvice card kaml les service card
   const serviceCards = document.querySelectorAll(".service-card");
   // dir repitition
   serviceCards.forEach((card) => {
     const leftClick = card.querySelector(".left-click .hover");
     const rightClick = card.querySelector(".right-click .hover");
     const images = card.querySelectorAll(".work-image img");
-    let currentIndex = 0;// counteur wzid ta3 soura lwla
+    let currentIndex = 0; // counteur wzid ta3 soura lwla
 
     // Function to update image visibility
 
     const updateImages = () => {
-      images.forEach((img, index) => {// tdir loperation l kaml tsawre 
-        img.classList.toggle("active", index === currentIndex);// dir classe active l tswira li index=cureentIndex
+      images.forEach((img, index) => {
+        // tdir loperation l kaml tsawre
+        img.classList.toggle("active", index === currentIndex); // dir classe active l tswira li index=cureentIndex
       });
     };
 
@@ -279,7 +280,7 @@ setInterval(changeTipsImage, 2000);
 // start comments
 function scrollComments(direction) {
   var comments = document.querySelectorAll(".comment");
-  var activeIndex = -1;// mkan hta commentair
+  var activeIndex = -1; // mkan hta commentair
 
   // hwse 3la lindex ta3 comment li fih active class wdiro activeIndex
   comments.forEach(function (comment, index) {
