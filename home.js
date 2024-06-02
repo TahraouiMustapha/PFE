@@ -51,11 +51,11 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     // User is signed out
     seeMoreUser.addEventListener("click", function () {
-      window.location.href = "CreateNewAccount.html";
+      window.location.href = "./CreateANewAccount.html";
     });
     cat.forEach((link) => {
       link.addEventListener("click", function () {
-        window.location.href = "CreateNewAccount.html";
+        window.location.href = "./CreateANewAccount.html";
       });
     });
   }
