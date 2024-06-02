@@ -33,17 +33,33 @@ const myDatabase = getFirestore(app);
 //end initialise firebase
 
 onAuthStateChanged(auth, async (user) => {
+  const seeMoreUser = document.querySelector(".see-more a");
+  const cat = document.querySelectorAll(".categorie a");
   if (user) {
     // User is signed in
     const currentUserUid = user.uid;
-    console.log(currentUserUid);//hada uid li fi authentification
+    console.log(currentUserUid); //hada uid li fi authentification
+    seeMoreUser.addEventListener("click", function () {
+      window.location.href = "main.html";
+    });
 
+    cat.forEach((link) => {
+      link.addEventListener("click", function () {
+        window.location.href = "main.html";
+      });
+    });
   } else {
     // User is signed out
+    seeMoreUser.addEventListener("click", function () {
+      window.location.href = "CreateNewAccount.html";
+    });
+    cat.forEach((link) => {
+      link.addEventListener("click", function () {
+        window.location.href = "CreateNewAccount.html";
+      });
+    });
   }
 });
-
-
 
 // start crafting
 

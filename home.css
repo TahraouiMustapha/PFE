@@ -975,7 +975,7 @@ header {
   bottom: -100%;
   left: 0;
   width: 100%;
-  color:white;
+  color: white;
   padding: 20px;
   transition: bottom 0.3s ease;
 }
