@@ -211,18 +211,6 @@ footer {
   right: 0;
   position: fixed;
   width: 100%;
-}
-footer {
-  background-color: #011121;
-  color: #fff;
-  height: 72px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  width: 100%;
   text-align: center;
 }
 
