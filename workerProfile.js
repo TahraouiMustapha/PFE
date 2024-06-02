@@ -172,7 +172,8 @@ function addCheckedClass(element, state) {
 }
 
 //func to create service-comment div
-function createServiceComment(arrayOfComments) {    
+function createServiceComment(arrayOfComments) {  
+    let i = 0;  
     const myDiv = document.createElement('div');
     myDiv.classList.add('service-comment');
 
@@ -185,6 +186,14 @@ function createServiceComment(arrayOfComments) {
 
             leftFlach.appendChild(img1);
 
+            leftFlach.addEventListener('click', () => {
+                const currentComment = document.querySelector('.comment-container');
+                const rightFlach = document.querySelector('.right.flach');
+                currentComment.remove();
+                rightFlach.insertAdjacentElement('beforebegin', createComment(arrayOfComments[i--]));
+                if(i == -1) i = arrayOfComments.length - 1;
+            });
+
         const rightFlach = document.createElement('div');
         rightFlach.classList.add('right');
         rightFlach.classList.add('flach');
@@ -192,9 +201,17 @@ function createServiceComment(arrayOfComments) {
             img2.src = "icons/right-flach.svg";
             rightFlach.appendChild(img2);
 
+            rightFlach.addEventListener('click', () => {
+                const currentComment = document.querySelector('.comment-container');
+                const rightFlach = document.querySelector('.right.flach');
+                currentComment.remove();
+                rightFlach.insertAdjacentElement('beforebegin', createComment(arrayOfComments[i++]));
+                if(i == arrayOfComments.length) i = 0;
+            });
+
         myDiv.appendChild(leftFlach);
         //create comment container
-        myDiv.appendChild(createComment(arrayOfComments[0]));
+        myDiv.appendChild(createComment(arrayOfComments[i]));
         myDiv.appendChild(rightFlach);
 
     return myDiv;
@@ -209,7 +226,7 @@ function createComment(commentObj) {
             const photoProfile = document.createElement('div');
             photoProfile.classList.add('photo-profile');
                 const myImg = document.createElement('img');
-                
+
                 photoProfile.appendChild(myImg);
 
             const profileName = document.createElement('div');
