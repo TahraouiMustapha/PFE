@@ -45,12 +45,33 @@ onAuthStateChanged(auth, async (user) => {
           currentUser = doc.data();
           currentUserRef = doc.ref;
         } 
-      });
+    });
+    
+    fillInfo(currentUser);
     } else {
       // User is signed out
     }
   });
 
-  
+
+//func to fill client info
+function fillInfo(user) {
+    const firstName = document.querySelector('#firstName');
+    const lastName = document.querySelector('#lastName');
+    const phoneNumber = document.querySelector('#phoneNumber');
+    const state = document.querySelector('#state');
+    const city = document.querySelector('#city');
+    const province = document.querySelector('#province');
+    const street = document.querySelector('#street');
+    
+    firstName.value = user.firstName;
+    lastName.value = user.lastName;
+    phoneNumber.value = user.phoneNumber;
+    state.value = user.wilaya;
+    city.value = user.city;
+    province.value = user.province;
+    street.value = user.street;
+}
+
 
   
