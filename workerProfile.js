@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mainSec = document.querySelector('.main');
     mainSec.appendChild(createServiceTitle(worker.speciality));
-
-
-
+    mainSec.appendChild(createServiceContent(worker));
     mainSec.appendChild(createServiceCommande(worker));
 
 });
@@ -64,6 +62,38 @@ function createServiceCommande(workerObj) {
         
         myDiv.appendChild(workerInfoContainer);
         myDiv.appendChild(commandeBtn);
+
+    return myDiv;
+}
+
+//func to create service-content div
+function createServiceContent(workerObj) {
+    const myDiv = document.createElement('div');
+    myDiv.classList.add('service-content');
+        const serviceGallery = document.createElement('div');
+        serviceGallery.classList.add('service-gallery');
+            const myImg = document.createElement('img');
+            myImg.src = "images/Charpentier.jpg";
+
+            serviceGallery.appendChild(myImg);
+        
+        //create about-service div
+        const aboutService = document.createElement('div');
+        aboutService.classList.add('about-service');
+            const aboutTitle = document.createElement('h2');
+            aboutTitle.textContent = "About the service";
+
+            const desc = document.createElement('p');
+            desc.textContent = workerObj.desc;
+
+
+            aboutService.appendChild(aboutTitle);
+            aboutService.appendChild(desc);
+
+        myDiv.appendChild(serviceGallery);
+        //create service-comment div
+        myDiv.appendChild(createServiceComment(workerObj.comments));
+        myDiv.appendChild(aboutService);
 
     return myDiv;
 }
@@ -139,5 +169,64 @@ function addCheckedClass(element, state) {
             element.classList.remove('checked');
         }
     }
+}
+
+//func to create service-comment div
+function createServiceComment(arrayOfComments) {    
+    const myDiv = document.createElement('div');
+    myDiv.classList.add('service-comment');
+
+
+        const leftFlach = document.createElement('div');
+        leftFlach.classList.add('left');
+        leftFlach.classList.add('flach');
+            const img1 = document.createElement('img');
+            img1.src = "icons/left-flach.svg";
+
+            leftFlach.appendChild(img1);
+
+        const rightFlach = document.createElement('div');
+        rightFlach.classList.add('right');
+        rightFlach.classList.add('flach');
+            const img2 = document.createElement('img');
+            img2.src = "icons/right-flach.svg";
+            rightFlach.appendChild(img2);
+
+        myDiv.appendChild(leftFlach);
+        //create comment container
+        myDiv.appendChild(createComment(arrayOfComments[0]));
+        myDiv.appendChild(rightFlach);
+
+    return myDiv;
+}
+
+//func to create comment container
+function createComment(commentObj) {
+    const myDiv = document.createElement('div');
+    myDiv.classList.add('comment-container');
+        const profile = document.createElement('div');
+        profile.classList.add('profile');
+            const photoProfile = document.createElement('div');
+            photoProfile.classList.add('photo-profile');
+                const myImg = document.createElement('img');
+                
+                photoProfile.appendChild(myImg);
+
+            const profileName = document.createElement('div');
+            profileName.classList.add('profile-name');
+            profileName.textContent = commentObj.writerName;
+
+            profile.appendChild(photoProfile);
+            profile.appendChild(profileName);
+
+
+        const commentaire = document.createElement('div');
+        commentaire.classList.add('commentaire');
+        commentaire.textContent = commentObj.comment;
+
+        myDiv.appendChild(profile);
+        myDiv.appendChild(commentaire);
+
+    return myDiv;
 }
 
