@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (workerJson) {
         try {
             worker = JSON.parse(decodeURIComponent(workerJson)); 
-            console.log(worker);
         } catch (e) {
             console.error('Error parsing worker JSON:', e);
         }
@@ -161,10 +160,7 @@ function createWorkerState(workerObj) {
 function addCheckedClass(element, state) {
     if(state) {
         element.classList.add('checked');
-        console.log(element, state);
     } else {
-        console.log(element, state);
-
         if(element.classList.contains('checked')) {
             element.classList.remove('checked');
         }
