@@ -111,17 +111,6 @@ header > .left {
   height: 32px;
   cursor: pointer;
 }
-.not1 {
-  width: 350px;
-  height: 450px;
-  background-color: white;
-  position: relative;
-  bottom: 370px;
-  left: 650px;
-  display: none;
-  z-index: 30;
-  border: 1px black solid;
-}
 /* end header */
 /* start section */
 section div {
@@ -136,9 +125,16 @@ section div {
   margin: auto 20px;
 }
 .sec p {
-  margin: auto auto 0;
+  margin: 10px;
 }
-
+.sec a {
+  text-decoration: none;
+  color: black;
+}
+.sec p a {
+  font-weight: bold;
+  text-transform: none;
+}
 div button {
   text-align: center;
   font-weight: bold;
@@ -183,7 +179,7 @@ button:hover {
   display: flex;
   justify-content: center;
 }
-img {
+.sec2 img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -204,18 +200,6 @@ img {
 }
 /* end section */
 /* start footer */
-footer {
-  background-color: #011121;
-  color: #fff;
-  height: 72px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  width: 100%;
-}
 footer {
   background-color: #011121;
   color: #fff;
@@ -310,4 +294,16 @@ dialog .adresse {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+.not1 {
+  width: 350px;
+  height: 450px;
+  background-color: white;
+  position: relative;
+  bottom: 600px;
+  left: 1050px;
+  display: none;
+  z-index: 30;
+  border: 1px black solid;
+  margin-bottom: -600px;
 }
