@@ -72,7 +72,6 @@ header > .left {
   background-color: #fff;
 }
 
-
 .search > input {
   width: 80%;
   height: 40px;
@@ -100,8 +99,13 @@ header > .left {
 }
 
 .logo {
+  color: var(--font-clr);
   font-size: 2em;
   font-weight: 600;
+  margin-top: 10px;
+}
+.logo img {
+  width: 50px;
 }
 
 .right > .photo-profile {
@@ -267,7 +271,7 @@ header > .left {
 }
 
 .sort-by button {
-  padding:6px 16px;
+  padding: 6px 16px;
   cursor: pointer;
   border: none;
   border-radius: 6px;
@@ -275,13 +279,13 @@ header > .left {
 
 .sort-by button:hover {
   background-color: #011121;
-  color:#fff;
+  color: #fff;
 }
 
 .page-number {
   margin-top: 20px;
 }
-
+/* start foote */
 footer {
   background-color: #011121;
   color: #fff;
@@ -291,11 +295,22 @@ footer {
   align-items: center;
 }
 
-footer > p {
+footer > div {
   font-size: 0.9em;
   color: var(--font-clr);
   width: 25%;
   padding-left: 1.5em;
+}
+footer > div > img {
+  width: 80px;
+  height: 20px;
+}
+footer .logo {
+  margin-top: 10px;
+}
+footer .logo img {
+  width: 100px;
+  height: 60px;
 }
 
 .social-media-nav {

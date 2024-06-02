@@ -25,6 +25,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 1em;
+  background-color: white;
 }
 
 header > .left,
@@ -72,8 +73,13 @@ header > .left {
 }
 
 .logo {
+  color: var(--font-clr);
   font-size: 2em;
   font-weight: 600;
+  margin-top: 10px;
+}
+.logo img {
+  width: 50px;
 }
 
 .photo-profile {
@@ -182,13 +188,25 @@ footer {
   right: 0;
   position: fixed;
   width: 100%;
+  text-align: center;
 }
 
-footer > p {
+footer > div {
   font-size: 0.9em;
   color: var(--font-clr);
   width: 25%;
   padding-left: 1.5em;
+}
+footer > div > img {
+  width: 80px;
+  height: 20px;
+}
+footer .logo {
+  margin-top: 10px;
+}
+footer .logo img {
+  width: 100px;
+  height: 60px;
 }
 
 .social-media-nav {
