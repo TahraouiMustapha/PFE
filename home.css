@@ -652,6 +652,25 @@ header {
 .swiper-slide :last-child {
   overflow: hidden;
 }
+/* .see-more {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.see-more:hover {
+  background-color: #0056b3;
+}
+
+.see-more a {
+  color: #fff;
+  text-decoration: none;
+} */
 /* end top service */
 /* start best sellers  */
 .best-sellers {
@@ -975,7 +994,7 @@ header {
   bottom: -100%;
   left: 0;
   width: 100%;
-  color:white;
+  color: white;
   padding: 20px;
   transition: bottom 0.3s ease;
 }
