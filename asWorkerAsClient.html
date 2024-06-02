@@ -11,92 +11,51 @@
       }
     </style>
   </head>
-  <body>
-    <div class="btnsContainer">
-      <div class="images-container">
-        <div class="image-container">
-          <img
-            src="./images/worker.png"
-            alt="Image A"
-            class="image"
-            id="image1"
-          />
+ <body>
+  <div class="btnsContainer">
+    <div class="images-container">
+      <div class="image-container">
+        <img src="./images/worker.png" alt="Image A" class="image" id="image1" />
+      </div>
+      <div class="image-container">
+        <img class="img-right" src="./images/buyer.png" alt="Image B" class="image" id="image2" />
+      </div>
+    </div>
+    <button class="btn">as client</button>
+  </div>
+
+  <div class="info displayNone">
+    <form>
+      <div class="myForm">
+        <div class="email">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Email" autocomplete="email" required />
         </div>
-        <div class="image-container">
-          <img
-            class="img-right"
-            src="./images/buyer.png"
-            alt="Image B"
-            class="image"
-            id="image2"
-          />
+        <div class="password">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Password" autocomplete="current-password" required />
+        </div>
+        <div class="fullName">
+          <label for="full-name">Full Name</label>
+          <input id="first-name" type="text" placeholder="First Name" required />
+          <input id="last-name" type="text" placeholder="Last Name" required />
+        </div>
+        <div class="wilaya2">
+          <label for="wilaya2">Wilaya</label>
+          <select id="selectWialaya">
+            <option value="" disabled selected>Your Wilaya</option>
+          </select>
+        </div>
+        <div class="tel">
+          <label for="phone-number">Telephone</label>
+          <input id="phone-number" type="text" placeholder="Telephone Number" required />
         </div>
       </div>
-      <button class="btn">as client</button>
-    </div>
+      <input type="submit" id="submitBtn" value="submit" />
+    </form>
+  </div>
 
-    <!-- <div class="ma3lomatClient"></div>  hadi ndirolha display none 7tan yudrob lfaw9-->
-    <div class="info displayNone">
-      <form>
-        <div class="myForm">
-          <div class="email">
-            <label for="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              placeholder="Email"
-              autocomplete="email"
-              required
-            />
-          </div>
-          <div class="password">
-            <label for="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Password"
-              autocomplete="current-password"
-              required
-            />
-          </div>
-          <div class="full-name">
-            <label>full name</label>
-            <input
-              id="first-name"
-              type="text"
-              placeholder="first name"
-              required
-            />
-            <input
-              id="last-name"
-              type="text"
-              placeholder="last name"
-              required
-            />
-          </div>
-
-          <div class="wilaya2">
-            <label for="wilaya2">wilaya</label>
-            <select id="selectWialaya">
-              <option value="" disabled selected>Your wilaya</option>
-            </select>
-          </div>
-
-          <div class="tel">
-            <label for="phone-number">telphone</label>
-            <input
-              id="phone-number"
-              type="text"
-              placeholder="telephone number"
-              required
-            />
-          </div>
-
-        </div>
-        <input type="submit" id="submitBtn" value="submit" />
-      </form>
-    </div>
-  </body>
   <script type="module" src="ourClasses.js"></script>
   <script type="module" src="asWorkerAsClient.js"></script>
+</body>
 </html>

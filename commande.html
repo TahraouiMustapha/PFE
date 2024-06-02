@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="workerProfile.css" />
-    <title>worker profile</title>
+    <link rel="stylesheet" href="commande.css" />
+    <title>Document</title>
   </head>
   <body>
     <!-- start header -->
     <header>
       <div class="left">
         <div class="logo">LOGO</div>
+
         <div class="search">
           <input
             type="text"
@@ -73,6 +74,7 @@
               height="24"
               viewBox="0 -960 960 960"
               width="24"
+              class="not"
             >
               <path
                 d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"
@@ -81,95 +83,109 @@
           </div>
         </div>
 
-        <div class="photo-profile"></div>
+        <div class="photo-profile">
+          <img src="./images/profile1.jpg" alt="" />
+        </div>
       </div>
     </header>
+    <hr />
     <!-- end header -->
-
-    <!-- start main section -->
-    <section class="main">
-      <div class="service-title">
-        <div class="home-roadMap">
-          <a href="home.html"><img src="icons/home.svg" /></a>
-          <a href="home.html"><p>Home</p></a
-          ><a href="main.html"><p>/ Service card</p></a>
-        </div>
-
-        <div class="service-name">worker.speciality</div>
-      </div>
-
-      <div class="service-content">
-        <div class="service-gallery">
-          <img src="images/Charpentier.jpg" alt="" />
-        </div>
-
-        <div class="service-comment">
-          <div class="left flach">
-            <img src="icons/left-flach.svg" />
+    <!-- start section -->
+    <!-- <section>
+      <form action="">
+        <div class="group inline">
+          <div class="seul">
+            <label for="prenom">Name</label>
+            <input type="text" id="prenom" placeholder="Name" />
           </div>
-          <div class="comment-container">
-            <div class="profile">
-              <div class="photo-profile">
-                <img src="" />
-              </div>
-              <div class="profile-name">Tahraoui Mustapha</div>
-            </div>
-            <div class="commentaire">
-              commentaire Lorem ipsum dolor sit amet.
-            </div>
-          </div>
-
-          <div class="right flach">
-            <img src="icons/right-flach.svg" />
+          <div class="seul">
+            <label for="name">First name</label>
+            <input type="text" id="name" placeholder="First name" />
           </div>
         </div>
-
-        <div class="about-service">
-          <h2>About the service</h2>
+        <div class="group">
+          <label for="tel">Telephone Number</label>
+          <input type="text" id="tel" placeholder="Telephone Number" />
         </div>
-      </div>
-
-      <div class="service-commande">
-        <div class="worker-info-container">
-          <div class="profile">
-            <div class="person-icon">
-              <img src="icons/account-circle.svg" alt="" />
-            </div>
-            <div class="worker-info">
-              <p class="worker-name">Zakaria Taleb</p>
-              <div class="rate">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="#fbbf24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-star"
-                >
-                  <polygon
-                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                  ></polygon>
-                </svg>
-                <p>4.5</p>
-              </div>
-            </div>
+        <div class="group">
+          <label for="tel">The state</label>
+          <input type="text" id="tel" placeholder="The state" />
+        </div>
+        <div class="group inline">
+          <div class="seul">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="City" />
           </div>
-
-          <div class="state-btns">
-            <button>trans</button>
-            <button>tools</button>
-            <button>availa</button>
+          <div class="seul">
+            <label for="province">Province</label>
+            <input type="text" id="province" placeholder="province" />
+          </div>
+          <div class="seul">
+            <label for="street">Street</label>
+            <input type="text" id="street" placeholder="Street" />
           </div>
         </div>
-        <a href="commande.html"> <button id="commandeBtn">Commande</button></a>
-      </div>
+        <div class="group">
+          <label for="">Description</label>
+          <textarea
+            name=""
+            id=""
+            placeholder="Write down the issue you are experiencing that you would like to fix."
+          ></textarea>
+        </div>
+      </form>
     </section>
-    <!-- end main section -->
-
+     -->
+    <section>
+      <form action="">
+        <div class="group">
+          <label for="full-name">Full Name</label>
+          <div class="group inline">
+            <div class="seul">
+              <input type="text" id="prenom" placeholder="Name" />
+            </div>
+            <div class="seul">
+              <input type="text" id="name" placeholder="First name" />
+            </div>
+          </div>
+        </div>
+        <div class="group">
+          <label for="tel">Telephone Number</label>
+          <input type="text" id="tel" placeholder="Telephone Number" />
+        </div>
+        <div class="group">
+          <label for="state">The State</label>
+          <input type="text" id="state" placeholder="The State" />
+        </div>
+        <div class="group">
+          <label for="address">Address</label>
+          <div class="group inline">
+            <div class="seul">
+              <input type="text" id="city" placeholder="City" />
+            </div>
+            <div class="seul">
+              <input type="text" id="province" placeholder="Province" />
+            </div>
+            <div class="seul">
+              <input type="text" id="street" placeholder="Street" />
+            </div>
+          </div>
+        </div>
+        <div class="group">
+          <label for="tel">Service</label>
+          <input type="text" id="tel" placeholder="Service" />
+        </div>
+        <div class="group">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            placeholder="Write down the issue you are experiencing that you would like to fix."
+          ></textarea>
+        </div>
+        <input type="submit" class="sub" value="Send" />
+      </form>
+    </section>
+    <!-- end section -->
     <!-- start footer -->
     <footer>
       <p>2024 @Alright boragba</p>
@@ -244,9 +260,5 @@
         </ul>
       </div>
     </footer>
-    <!-- end footer -->
-
-    <!-- our scripts -->
-    <script type="module" src="workerProfile.js"></script>
   </body>
 </html>
