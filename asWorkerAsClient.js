@@ -142,8 +142,8 @@ submitBtn.addEventListener("click", (event) => {
           phoneNumber,
           wilaya,
           speciality,
-          transport,
-          tools,
+          transport.toLowerCase() === "true",
+          tools.toLowerCase() === "true",
           desc,
         );
 

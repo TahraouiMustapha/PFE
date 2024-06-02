@@ -1,9 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import { 
     getFirestore, 
-    doc, getDoc, 
     getDocs, collection, 
-    updateDoc  
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 //import from our seaarchModule.js
 import { onkeyUpHandler, getArrayCategory } from "./searchModule.js";
@@ -157,7 +155,7 @@ function renderServicesSortByTransport(arrayOfWorkers) {
     const serviceContainer = document.querySelector('.sellers');
     serviceContainer.innerHTML = '';
     const workersWithTransport = arrayOfWorkers.filter((worker) => {
-        return worker.transport === "available";  
+        return worker.transport === true;  
     });
     workersWithTransport.forEach((worker) => {
         serviceContainer.appendChild(createServiceCard(worker));
@@ -169,7 +167,7 @@ function renderServicesSortByAvailable(arrayOfWorkers) {
     const serviceContainer = document.querySelector('.sellers');
     serviceContainer.innerHTML = '';
     const workersWithAvailability = arrayOfWorkers.filter((worker) => {
-        return worker.availability === "available";  
+        return worker.availability === true;  
     });
     workersWithAvailability.forEach((worker) => {
         serviceContainer.appendChild(createServiceCard(worker));

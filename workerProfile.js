@@ -58,6 +58,9 @@ function createServiceCommande(workerObj) {
         const commandeBtn = document.createElement('button');
         commandeBtn.setAttribute('id', 'commandeBtn');
         commandeBtn.textContent = 'Commande';
+        commandeBtn.addEventListener('click', () => {
+            window.location.href = "commande.html";
+        });
         
         myDiv.appendChild(workerInfoContainer);
         myDiv.appendChild(commandeBtn);
