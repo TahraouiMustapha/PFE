@@ -27,6 +27,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 1em;
+  background-color: white;
 }
 
 header > .left,
@@ -46,31 +47,6 @@ header > .left {
   align-items: center;
   gap: 16px;
 }
-/* for result box under the search */
-.result-box {
-  background-color: #e3e3e3;
-  width: 600px;
-  left: 140px;
-  top: 50px;
-  display: none;
-  position: absolute;
-}
-
-.result-box ul {
-  list-style: none;
-  display: grid;
-  padding: 8px 16px;
-}
-
-.result-box ul li {
-  padding: 8px;
-  margin: 4px 0;
-  cursor: pointer;
-}
-
-.result-box ul li:hover {
-  background-color: #fff;
-}
 
 .search > input {
   width: 80%;
@@ -79,12 +55,12 @@ header > .left {
   outline: none;
   border-radius: 20px;
   padding: 0 1em;
-  background-color: #cbd5e1;
+  background-color: var(--transp-bg);
   font-size: 1.1em;
 }
 
 .search > .search-icon {
-  background-color: #cbd5e1;
+  background-color: var(--transp-bg);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -108,18 +84,23 @@ header > .left {
   width: 50px;
 }
 
-.right > .photo-profile {
-  width: 44px;
-  height: 44px;
+.photo-profile {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   position: relative;
+  background-color: black;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+}
+.photo-profile > img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
-.photo-profile img {
-  position: absolute;
-  width: 44px;
-  height: 44px;
-}
 .notification-nav {
   display: flex;
   justify-content: space-between;
@@ -141,19 +122,6 @@ header > .left {
   display: none;
   z-index: 30;
   border: 1px black solid;
-}
-
-a svg {
-  width: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-a {
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
 }
 /* end header */
 /* start section */
@@ -248,6 +216,19 @@ footer {
   right: 0;
   position: fixed;
   width: 100%;
+}
+footer {
+  background-color: #011121;
+  color: #fff;
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
 }
 
 footer > div {
