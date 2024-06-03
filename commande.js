@@ -65,6 +65,7 @@ onAuthStateChanged(auth, async (user) => {
     submitBtn.addEventListener("click", async (event) => {
       event.preventDefault();
       myProject = handleCreateProject(currentUserUid, workerUid);
+      changeHasNew(workerUid);
       //store the project in database
       try {
         const docRef = await addDoc(
@@ -156,6 +157,23 @@ function showMessageOrderCompleted() {
 
   body.appendChild(myDialog);
   myDialog.showModal();
+}
+
+//function to change hasNew variable in worker 
+async function changeHasNew(workerUid) {
+  let currentWorker;
+  let docRef;
+  const querySnapshot = await getDocs(collection(myDatabase, "workers"));
+  querySnapshot.forEach((doc) => {
+    if (workerUid === doc.data().uid) {
+      currentWorker = doc.data();
+      docRef = doc.ref;  
+    }
+  });
+
+
+  await updateDoc(docRef, { hasNew: true });
+
 }
 // function ta3  notification 
 const notification = document.querySelector(".notify .not");

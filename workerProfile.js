@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
   mainSec.appendChild(createServiceTitle(worker.speciality));
   mainSec.appendChild(createServiceContent(worker));
   mainSec.appendChild(createServiceCommande(worker));
+  ifThereNew(worker.hasNew);
+
+
+
 });
 
 //func to create service-title div
@@ -103,6 +107,13 @@ function createServiceContent(workerObj) {
   return myDiv;
 }
 
+//func to check if there new
+function ifThereNew(hasNew) {
+  if(hasNew) {
+    const jaras = document.querySelector('.jaras');
+    jaras.setAttribute('id','notificationIcon');
+  }
+}
 //func to create profile div
 function createProfileDiv(workerObj) {
   const myDiv = document.createElement("div");
@@ -275,10 +286,15 @@ function showMessageNotAvailable() {
 const notification = document.querySelector(".notify .not");
 const divvisble = document.querySelector(".not1");
 function one() {
+  const jaras = document.querySelector('.jaras');
+  jaras.removeAttribute('id');
   if (divvisble.style.display === "block") {
     divvisble.style.display = "none";
+    
   } else {
     divvisble.style.display = "block";
   }
 }
-notification.onclick = one;
+notification.addEventListener('click', () => {
+  one();
+})
