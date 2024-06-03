@@ -46,3 +46,10 @@ function one() {
   }
 }
 notification.onclick = one;
+// out ta3 profile
+const out = document.querySelector(".photo-profile img");
+const logout = document.querySelector(".logout");
+
+out.addEventListener("click", function () {
+  logout.style.display = logout.style.display === "none" ? "block" : "none";
+});

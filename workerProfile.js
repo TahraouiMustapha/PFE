@@ -132,12 +132,12 @@ function createServiceCommande(workerObj) {
   commandeBtn.setAttribute("id", "commandeBtn");
   commandeBtn.textContent = "Commande";
   commandeBtn.addEventListener("click", () => {
-    if(workerObj.availability) {
-      const workerJson = JSON.stringify(workerObj); 
+    if (workerObj.availability) {
+      const workerJson = JSON.stringify(workerObj);
       const encodedWorkerJson = encodeURIComponent(workerJson);
 
-      const url = new URL('commande.html', window.location.href);
-      url.searchParams.set('worker', encodedWorkerJson);
+      const url = new URL("commande.html", window.location.href);
+      url.searchParams.set("worker", encodedWorkerJson);
       window.location.href = url.toString();
     } else {
       showMessageNotAvailable();
@@ -157,7 +157,7 @@ function createServiceContent(workerObj) {
   const serviceGallery = document.createElement("div");
   serviceGallery.classList.add("service-gallery");
   const myImg = document.createElement("img");
-  myImg.src = "images/"+workerObj.speciality +".jpg";
+  myImg.src = "images/" + workerObj.speciality + ".jpg";
 
   serviceGallery.appendChild(myImg);
 
@@ -339,16 +339,16 @@ function createComment(commentObj) {
 
 function showMessageNotAvailable() {
   const body = document.body;
-  const myDialog = document.createElement('dialog');
+  const myDialog = document.createElement("dialog");
 
-  const message = document.createElement('h2');
+  const message = document.createElement("h2");
   message.textContent = "Worker not currently available";
   myDialog.appendChild(message);
 
-  const closeButton = document.createElement('button');
+  const closeButton = document.createElement("button");
   closeButton.textContent = "Close";
-  closeButton.addEventListener('click', () => {
-      myDialog.close();
+  closeButton.addEventListener("click", () => {
+    myDialog.close();
   });
   myDialog.appendChild(closeButton);
 
@@ -373,3 +373,7 @@ function one() {
 notification.addEventListener('click', () => {
   one();
 })
+
+out.addEventListener("click", function () {
+  logout.style.display = logout.style.display === "none" ? "block" : "none";
+});
