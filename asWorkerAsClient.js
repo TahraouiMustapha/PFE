@@ -157,6 +157,8 @@ submitBtn.addEventListener("click", (event) => {
           );
 
           console.log("Document written with ID: ", docRef.id);
+
+          window.location.href = "./profile1.html";
         } catch (e) {
           console.error("Error adding document: ", e);
         }
