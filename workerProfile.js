@@ -366,8 +366,26 @@ function one() {
 
 notification.addEventListener("click", () => {
   one();
-})
+});
+
+// out.addEventListener("click", function () {
+//   logout.style.display = logout.style.display === "none" ? "block" : "none";
+// });
+// out ta3 profile
+const out = document.querySelector(".photo-profile img");
+const logout = document.querySelector(".logout");
 
 out.addEventListener("click", function () {
   logout.style.display = logout.style.display === "none" ? "block" : "none";
+});
+
+logout.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      console.log("User signed out successfully");
+      window.location.href = "home.html";
+    })
+    .catch((error) => {
+      console.error("Error signing out: ", error);
+    });
 });
