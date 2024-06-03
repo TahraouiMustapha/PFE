@@ -288,6 +288,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderServicesSortByAvailable(arrayOfWorkers);
   });
 
+  const allBtn = document.querySelector("#allBtn");
+  allBtn.addEventListener('click', () => {
+    selectedWilaya = '';
+    selectedCategory = '';
+    renderServices("")
+  })
+
   if (searchValue) {
     renderServices(searchValue);
   } else {
