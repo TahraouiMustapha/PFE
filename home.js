@@ -35,6 +35,7 @@ const myDatabase = getFirestore(app);
 onAuthStateChanged(auth, async (user) => {
   const seeMoreUser = document.querySelector(".see-more a");
   const cat = document.querySelectorAll(".categorie a");
+  const rech = document.querySelector(".input .recherche");
   if (user) {
     // User is signed in
     const currentUserUid = user.uid;
@@ -48,6 +49,9 @@ onAuthStateChanged(auth, async (user) => {
         window.location.href = "main.html";
       });
     });
+    rech.addEventListener("click", function () {
+      // iktb ta3 recherche
+    });
   } else {
     // User is signed out
     seeMoreUser.addEventListener("click", function () {
@@ -57,6 +61,9 @@ onAuthStateChanged(auth, async (user) => {
       link.addEventListener("click", function () {
         window.location.href = "./CreateANewAccount.html";
       });
+    });
+    rech.addEventListener("click", function () {
+      window.location.href = "./CreateANewAccount.html";
     });
   }
 });
@@ -80,95 +87,6 @@ changeCraftingImage();
 setInterval(changeCraftingImage, 4000);
 // end crafting
 //  start populat service
-
-// var swiper = new Swiper(".services-main", {
-//   slidesPerView: 3,
-//   spaceBetween: 25,
-//   loop: false,
-//   centeredSlides: "true",
-//   fade: "true",
-//   grabCursor: "true",
-//   slidesPerGroupSkip: 1,
-//   grabCursor: true,
-//   keyboard: {
-//     enabled: true,
-//   },
-//   breakpoints: {
-//     0: {
-//       slidesPerView: 1,
-//     },
-//     520: {
-//       slidesPerView: 2,
-//     },
-//     950: {
-//       slidesPerView: 3,
-//     },
-//   },
-//   scrollbar: {
-//     el: ".swiper-scrollbar",
-//   },
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-//   pagination: {
-//     el: ".swiper-pagination",
-//     clickable: true,
-//     dynamicBullets: true,
-//   },
-// });
-// ===============================================================================================================
-// var swiper = new Swiper(".services-main", {
-//   slidesPerView: 3,
-//   spaceBetween: 25,
-//   loop: false,
-//   centeredSlides: true,
-//   fade: true,
-//   slidesPerGroupSkip: 1,
-//   keyboard: {
-//     enabled: true,
-//   },
-
-//   scrollbar: {
-//     el: ".swiper-scrollbar",
-//   },
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-//   pagination: {
-//     el: ".swiper-pagination",
-//     clickable: true,
-//     dynamicBullets: true,
-//   },
-// });
-// ======================================================================================================================$$*
-// const swiper = new Swiper(".swiper-container", {
-//   slidesPerView: 1,
-//   spaceBetween: 10,
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-//   pagination: {
-//     el: ".swiper-pagination",
-//     clickable: true,
-//   },
-//   breakpoints: {
-//     640: {
-//       slidesPerView: 2,
-//       spaceBetween: 20,
-//     },
-//     768: {
-//       slidesPerView: 3,
-//       spaceBetween: 40,
-//     },
-//     1024: {
-//       slidesPerView: 4,
-//       spaceBetween: 50,
-//     },
-//   },
-// });
 const swiper = new Swiper(".swiper-container", {
   slidesPerView: "auto", // Affiche autant de slides que possible par vue
   spaceBetween: 10,
@@ -209,25 +127,6 @@ swiper.on("fromEdge", function () {
 // =======================================================================================================================
 // end popular service
 // start categorie
-// function addCategory() {
-//   const categoriesMain = document.getElementById("categoriesMain");
-//   const newCategory = document.createElement("div");
-//   newCategory.className = "categorie";
-//   newCategory.innerHTML = `
-//     <div class="categorie-icon">
-//       <img src="./icons/new-icon.svg" alt="">
-//     </div>
-//     <p class="categorie-name">New Category</p>
-//   `;
-//   categoriesMain.appendChild(newCategory);
-// }
-
-// function removeCategory() {
-//   const categoriesMain = document.getElementById("categoriesMain");
-//   if (categoriesMain.lastElementChild) {
-//     categoriesMain.removeChild(categoriesMain.lastElementChild);
-//   }
-// }
 
 // end categorie
 // start top servise
@@ -372,44 +271,3 @@ function scrollComments(direction) {
   // Activer le nouveau commentaire
   comments[newIndex].classList.add("active");
 }
-
-// =====******************************************=
-
-//  start populat service
-// var swiper = new Swiper(".services-main", {
-//   slidesPerView: 3,
-//   spaceBetween: 25,
-//   loop: false,
-//   centeredSlides: "true",
-//   fade: "true",
-//   grabCursor: "true",
-//   slidesPerGroupSkip: 1,
-//   grabCursor: true,
-//   keyboard: {
-//     enabled: true,
-//   },
-//   breakpoints: {
-//     0: {
-//       slidesPerView: 1,
-//     },
-//     520: {
-//       slidesPerView: 2,
-//     },
-//     950: {
-//       slidesPerView: 3,
-//     },
-//   },
-//   scrollbar: {
-//     el: ".swiper-scrollbar",
-//   },
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-//   pagination: {
-//     el: ".swiper-pagination",
-//     clickable: true,
-//     dynamicBullets: true,
-//   },
-// });
-// Sélectionnez l'élément avec la classe "services-main"
