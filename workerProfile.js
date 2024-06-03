@@ -1,3 +1,51 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+//import from our searchModule.js
+import { onkeyUpHandler, getArrayCategory } from "./searchModule.js";
+
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCOa527QiPGbAmOXtbG99sBoKmwGpTrE6k",
+  authDomain: "projet-fin-d-etude-975b7.firebaseapp.com",
+  databaseURL: "https://projet-fin-d-etude-975b7-default-rtdb.firebaseio.com",
+  projectId: "projet-fin-d-etude-975b7",
+  storageBucket: "projet-fin-d-etude-975b7.appspot.com",
+  messagingSenderId: "919112985393",
+  appId: "1:919112985393:web:7d9c3545b45b52584dde10",
+};
+
+const app = initializeApp(firebaseConfig);
+const myDatabase = getFirestore(app);
+const auth = getAuth();
+
+let isWorker = false;
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    // User is signed in
+    const currentUserUid = user.uid;
+
+    if(checkClient(currentUserUid)) {
+      console.log('client');
+    } else if(checkWorker(currentUserUid)) {
+      isWorker = true;
+    }
+
+  } else {
+    // User is signed out
+  }
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const workerJson = urlParams.get("worker");
@@ -14,7 +62,37 @@ document.addEventListener("DOMContentLoaded", () => {
   mainSec.appendChild(createServiceTitle(worker.speciality));
   mainSec.appendChild(createServiceContent(worker));
   mainSec.appendChild(createServiceCommande(worker));
+  if(isWorker) {
+    ifThereNew(worker.hasNew);
+  }
+
 });
+
+
+
+//funciton if client
+async function checkClient(userUId) {
+  const querySnapshot = await getDocs(collection(myDatabase, "clients"));
+  querySnapshot.forEach((doc) => {
+    if (userUId === doc.data().uid) {
+      let currentUser = doc.data();
+      let currentUserRef = doc.ref;
+      return true;
+    }
+  });
+}
+
+//function if worker
+async function checkWorker(userUId) {
+  const querySnapshot = await getDocs(collection(myDatabase, "workers"));
+  querySnapshot.forEach((doc) => {
+    if (userUId === doc.data().uid) {
+      let currentUser = doc.data();
+      let currentUserRef = doc.ref;
+      return true;
+    }
+  });
+}
 
 //func to create service-title div
 function createServiceTitle(spec) {
@@ -103,6 +181,13 @@ function createServiceContent(workerObj) {
   return myDiv;
 }
 
+//func to check if there new
+function ifThereNew(hasNew) {
+  if(hasNew) {
+    const jaras = document.querySelector('.jaras');
+    jaras.setAttribute('id','notificationIcon');
+  }
+}
 //func to create profile div
 function createProfileDiv(workerObj) {
   const myDiv = document.createElement("div");
@@ -275,16 +360,19 @@ function showMessageNotAvailable() {
 const notification = document.querySelector(".notify .not");
 const divvisble = document.querySelector(".not1");
 function one() {
+  const jaras = document.querySelector('.jaras');
+  jaras.removeAttribute('id');
   if (divvisble.style.display === "block") {
     divvisble.style.display = "none";
+    
   } else {
     divvisble.style.display = "block";
   }
 }
-notification.onclick = one;
-// out ta3 profile
-const out = document.querySelector(".photo-profile img");
-const logout = document.querySelector(".logout");
+
+notification.addEventListener('click', () => {
+  one();
+})
 
 out.addEventListener("click", function () {
   logout.style.display = logout.style.display === "none" ? "block" : "none";

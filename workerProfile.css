@@ -17,7 +17,6 @@ body {
   flex-direction: column;
   position: relative;
 }
-/* ta7ya ba9laea */
 
 header {
   width: 100%;
@@ -106,7 +105,23 @@ header > .left {
   height: 32px;
   cursor: pointer;
 }
-.logout{
+.jaras {
+  position: relative;
+}
+
+#notificationIcon::after{
+  content: '';
+  width:12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  position: absolute;
+  right:0;
+  top:0;
+  display: block;
+}
+
+.logout {
   display: none;
   position: absolute;
   top: 70px; 
