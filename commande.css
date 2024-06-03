@@ -132,6 +132,17 @@ form {
   border-radius: 40px;
 
 }
+.group.budget {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group.budget input {
+  width: 30%;
+}
+
+
 .group {
   margin-bottom: 15px;
 }
@@ -164,6 +175,7 @@ form {
 textarea {
   width: 560px;
   background-color: black;
+  color:#fff;
   border-radius: 20px;
   padding: 15px;
   padding-left: 20px;
@@ -171,14 +183,16 @@ textarea {
 
 .sub {
   text-transform: capitalize;
-  font-weight: bold;
-  color: gray;
+  font-weight: 500;
+  font-size: 1.2em;
+  color: #fff;
   width: 150px;
   height: 50px;
   background-color: blue;
   border: 1px transparent solid;
   border-radius: 20px;
   margin-left: 200px;
+  cursor: pointer;
 }
 /* end section */
 /* start footer */

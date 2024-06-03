@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import {
   getFirestore,
+  addDoc,
   doc,
   getDoc,
   getDocs,
@@ -14,6 +15,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 //import from out module
 import { onkeyUpHandler } from "./searchModule.js";
+import  { Project } from "./ourClasses.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -36,8 +38,19 @@ let currentUserRef;
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const workerJson = urlParams.get("worker");
+      let worker;
+      if (workerJson) {
+        try {
+          worker = JSON.parse(decodeURIComponent(workerJson));
+        } catch (e) {
+          console.error("Error parsing worker JSON:", e);
+        }
+      }
       // User is signed in
       const currentUserUid = user.uid;
+      const workerUid = worker.uid;
   
       const querySnapshot = await getDocs(collection(myDatabase, "clients"));
       querySnapshot.forEach((doc) => {
@@ -45,13 +58,28 @@ onAuthStateChanged(auth, async (user) => {
           currentUser = doc.data();
           currentUserRef = doc.ref;
         } 
-    });
-    
-    fillInfo(currentUser);
+      });
+      //add event listener
+      const submitBtn = document.querySelector('.sub');
+      let myProject;
+      submitBtn.addEventListener('click', async (event) => {
+        event.preventDefault();
+        myProject = handleCreateProject(currentUserUid, workerUid);
+        //store the project in database
+        try {
+          const docRef = await addDoc(collection(myDatabase, "projects"), myProject.toPlainObject());
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      })
+
+      fillInfo(currentUser);
+
     } else {
       // User is signed out
     }
-  });
+});
+
 
 
 //func to fill client info
@@ -73,5 +101,32 @@ function fillInfo(user) {
     street.value = user.street;
 }
 
+function handleCreateProject(clientid, workerId) {
+  const firstName = document.querySelector('#firstName').value;
+  const lastName = document.querySelector('#lastName').value;
+  const phoneNumber = document.querySelector('#phoneNumber').value;
+  const state = document.querySelector('#state').value;
+  const budget = document.querySelector('#budget').value;
+  const city = document.querySelector('#city').value;
+  const province = document.querySelector('#province').value;
+  const street = document.querySelector('#street').value;
+  const date = document.querySelector('#time').value;
+  const desc = document.querySelector('#description').value;
+
+
+  let newProject = new Project(generateRandomId(), clientid, workerId, date, budget, desc);
+  return newProject;
+}
+
+//function to create a random id
+function generateRandomId(length = 25) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let randomId = '';
+  for (let i = 0; i < length; i++) {
+      randomId += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return randomId;
+}
 
   

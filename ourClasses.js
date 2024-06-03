@@ -26,6 +26,31 @@ class Comment {
     }
 }
 
+class Project {
+    constructor(projectId, clientid, workerId, date, budget, description) {
+        this.projectId = projectId
+        this.clientid = clientid
+        this.workerId = workerId
+        this.date = date
+        this.budget = budget
+        this.description = description
+        this.status = false
+    }
+
+    toPlainObject() {
+        return {
+            projectId: this.projectId,
+            clientid: this.clientid,
+            workerId: this.workerId,
+            date: this.date,
+            budget: this.budget,
+            description: this.description,
+            status: this.status
+        };
+    }
+}
+
+
 class Client extends User {
     constructor(uid, firstName, lastName, email, password, 
                 phoneNumber, wilaya, city, province, street) {
@@ -93,10 +118,13 @@ class Artisan extends User {
     }
 }
 
+
+
 export {
     Client, 
     Artisan, 
     Comment, 
+    Project
 };
 
 

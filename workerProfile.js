@@ -55,7 +55,12 @@ function createServiceCommande(workerObj) {
   commandeBtn.textContent = "Commande";
   commandeBtn.addEventListener("click", () => {
     if(workerObj.availability) {
-      window.location.href = "commande.html";
+      const workerJson = JSON.stringify(workerObj); 
+      const encodedWorkerJson = encodeURIComponent(workerJson);
+
+      const url = new URL('commande.html', window.location.href);
+      url.searchParams.set('worker', encodedWorkerJson);
+      window.location.href = url.toString();
     } else {
       showMessageNotAvailable();
     }
