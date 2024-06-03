@@ -374,6 +374,7 @@ header {
 
 .service .service-name {
   font-size: 1.3em;
+  cursor: pointer;
 }
 
 .service .service-desc {
@@ -802,6 +803,7 @@ header {
 
 /* end tips */
 /* start comments */
+
 .comment {
   height: 80%;
   width: 60%;

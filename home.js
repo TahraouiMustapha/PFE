@@ -29,13 +29,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const myDatabase = getFirestore(app);
-
+const serv = document.querySelectorAll(".service");
 //end initialise firebase
 
 onAuthStateChanged(auth, async (user) => {
   const seeMoreUser = document.querySelector(".see-more a");
   const cat = document.querySelectorAll(".categorie a");
   const rech = document.querySelector(".input .recherche");
+
   if (user) {
     // User is signed in
     const currentUserUid = user.uid;
@@ -52,6 +53,12 @@ onAuthStateChanged(auth, async (user) => {
     rech.addEventListener("click", function () {
       // iktb ta3 recherche
     });
+
+    serv.forEach((service) => {
+      service.addEventListener("click", function () {
+        window.location.href = "main.html";
+      });
+    });
   } else {
     // User is signed out
     seeMoreUser.addEventListener("click", function () {
@@ -64,6 +71,12 @@ onAuthStateChanged(auth, async (user) => {
     });
     rech.addEventListener("click", function () {
       window.location.href = "./CreateANewAccount.html";
+    });
+
+    serv.forEach((service) => {
+      service.addEventListener("click", function () {
+        window.location.href = "./CreateANewAccount.html";
+      });
     });
   }
 });
@@ -124,7 +137,6 @@ swiper.on("fromEdge", function () {
   swiper.navigation.$nextEl.removeClass("swiper-button-disabled");
 });
 
-// =======================================================================================================================
 // end popular service
 // start categorie
 
@@ -173,47 +185,41 @@ document.addEventListener("DOMContentLoaded", () => {
 // end top service
 // start best sellers
 
-var startIndex = 0; //  wchmn page rak
-var pageSize = 6; //  chale mn vendeur f page
+// Cette variable représente l'index du premier vendeur affiché dans la liste
+let startIndex = 0;
 
+// Cette fonction permet de faire défiler les vendeurs vers la gauche ou vers la droite
 function scrollBestSellers(direction) {
-  var sellers = document.querySelectorAll(".seller-card");
+  const sellers = document.querySelectorAll(".seller-card");
+  const maxIndex = sellers.length - 1;
+  const increment = 6; // Nombre de vendeurs à afficher à chaque clic
 
-  // thsb 3dd les page btkrib ll a3la bach ydkhl f hsab sellers f page lkhra
-  var totalPages = Math.ceil(sellers.length / pageSize);
-
-  // Si la direction est vers la gauche
   if (direction === "left") {
-    // Décrémenter l'indice de départ pour revenir à la page précédente
-    startIndex = Math.max(0, startIndex - pageSize);
+    startIndex = Math.max(startIndex - increment, 0);
   } else if (direction === "right") {
-    // Incrémenter l'indice de départ pour passer à la page suivante
-    startIndex += pageSize;
-
-    // bah ki ykmo sellers thbs la page
-    if (startIndex >= sellers.length) {
-      // Fixer l'indice de départ à la première position de la dernière page
-      startIndex = (totalPages - 1) * pageSize;
-    }
+    startIndex = Math.min(startIndex + increment, maxIndex - increment + 1);
   }
 
-  // Masquer tous les vendeurs
-  sellers.forEach(function (seller) {
-    seller.style.display = "none";
-  });
-
-  // Afficher les vendeurs de la page actuelle
-  for (
-    var i = startIndex;
-    i < Math.min(startIndex + pageSize, sellers.length);
-    i++
-  ) {
-    sellers[i].style.display = "flex";
+  // Affichage des vendeurs correspondant à l'index actuel
+  for (let i = 0; i < sellers.length; i++) {
+    if (i >= startIndex && i < startIndex + increment) {
+      sellers[i].style.display = "flex";
+    } else {
+      sellers[i].style.display = "none";
+    }
   }
 }
 
-// Appel initial pour afficher les premiers vendeurs
-scrollBestSellers(); // Affiche les six premiers vendeurs au chargement initial
+// Ajout des écouteurs d'événements sur les boutons de défilement
+document
+  .querySelector(".left-arrow")
+  .addEventListener("click", () => scrollBestSellers("left"));
+document
+  .querySelector(".right-arrow")
+  .addEventListener("click", () => scrollBestSellers("right"));
+
+// Affichage des premiers vendeurs au chargement de la page
+scrollBestSellers("left"); // Vous pouvez également choisir 'right' si vous préférez commencer par la droite
 
 //  end sellers
 // start tips
@@ -242,32 +248,27 @@ setInterval(changeTipsImage, 2000);
 // start comments
 function scrollComments(direction) {
   var comments = document.querySelectorAll(".comment");
-  var activeIndex = -1; // mkan hta commentair
+  var activeIndex = -1; // mkan hta commentair // hwse 3la lindex ta3 comment li fih active class wdiro activeIndex
 
-  // hwse 3la lindex ta3 comment li fih active class wdiro activeIndex
   comments.forEach(function (comment, index) {
     if (comment.classList.contains("active")) {
       activeIndex = index;
     }
-  });
+  }); // Si aucun commentaire n'est actif, activer le premier commentaire
 
-  // Si aucun commentaire n'est actif, activer le premier commentaire
   if (activeIndex === -1 && comments.length > 0) {
     comments[0].classList.add("active");
     return;
-  }
+  } // Désactiver le commentaire actuel
 
-  // Désactiver le commentaire actuel
-  comments[activeIndex].classList.remove("active");
+  comments[activeIndex].classList.remove("active"); // yhsb index jdid 3la hsab dirction si ymin yzid whd wmyfoutche 3dd cmnt si ysar ynks whs w myhbtche tht 0
 
-  // yhsb index jdid 3la hsab dirction si ymin yzid whd wmyfoutche 3dd cmnt si ysar ynks whs w myhbtche tht 0
   var newIndex;
   if (direction === "left") {
     newIndex = Math.max(0, activeIndex - 1);
   } else if (direction === "right") {
     newIndex = Math.min(comments.length - 1, activeIndex + 1);
-  }
+  } // Activer le nouveau commentaire
 
-  // Activer le nouveau commentaire
   comments[newIndex].classList.add("active");
 }
