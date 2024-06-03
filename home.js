@@ -29,13 +29,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const myDatabase = getFirestore(app);
-
+const serv = document.querySelectorAll(".service");
 //end initialise firebase
 
 onAuthStateChanged(auth, async (user) => {
   const seeMoreUser = document.querySelector(".see-more a");
   const cat = document.querySelectorAll(".categorie a");
   const rech = document.querySelector(".input .recherche");
+
   if (user) {
     // User is signed in
     const currentUserUid = user.uid;
@@ -52,6 +53,12 @@ onAuthStateChanged(auth, async (user) => {
     rech.addEventListener("click", function () {
       // iktb ta3 recherche
     });
+
+    serv.forEach((service) => {
+      service.addEventListener("click", function () {
+        window.location.href = "main.html";
+      });
+    });
   } else {
     // User is signed out
     seeMoreUser.addEventListener("click", function () {
@@ -64,6 +71,12 @@ onAuthStateChanged(auth, async (user) => {
     });
     rech.addEventListener("click", function () {
       window.location.href = "./CreateANewAccount.html";
+    });
+
+    serv.forEach((service) => {
+      service.addEventListener("click", function () {
+        window.location.href = "./CreateANewAccount.html";
+      });
     });
   }
 });
@@ -124,7 +137,6 @@ swiper.on("fromEdge", function () {
   swiper.navigation.$nextEl.removeClass("swiper-button-disabled");
 });
 
-// =======================================================================================================================
 // end popular service
 // start categorie
 
