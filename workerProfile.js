@@ -54,7 +54,11 @@ function createServiceCommande(workerObj) {
   commandeBtn.setAttribute("id", "commandeBtn");
   commandeBtn.textContent = "Commande";
   commandeBtn.addEventListener("click", () => {
-    window.location.href = "commande.html";
+    if(workerObj.availability) {
+      window.location.href = "commande.html";
+    } else {
+      showMessageNotAvailable();
+    }
   });
 
   myDiv.appendChild(workerInfoContainer);
@@ -241,4 +245,23 @@ function createComment(commentObj) {
   myDiv.appendChild(commentaire);
 
   return myDiv;
+}
+
+function showMessageNotAvailable() {
+  const body = document.body;
+  const myDialog = document.createElement('dialog');
+
+  const message = document.createElement('h2');
+  message.textContent = "Worker not currently available";
+  myDialog.appendChild(message);
+
+  const closeButton = document.createElement('button');
+  closeButton.textContent = "Close";
+  closeButton.addEventListener('click', () => {
+      myDialog.close();
+  });
+  myDialog.appendChild(closeButton);
+
+  body.appendChild(myDialog);
+  myDialog.showModal();
 }
