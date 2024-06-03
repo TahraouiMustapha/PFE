@@ -248,26 +248,38 @@ setInterval(changeTipsImage, 2000);
 // start comments
 // Sélection des éléments HTML des boutons
 
-const leftArrow = document.querySelector(".comments-main .left-arrow");
-const rightArrow = document.querySelector(".comments-main .right-arrow");
-const commentCarousel = document.querySelector(".comment-carousel");
-let commentIndex = 0;
+// Cette variable représente l'index du premier commentaire affiché dans la liste
+let cIndex = 0;
 
-// Ajout des écouteurs d'événements "click"
-leftArrow.addEventListener("click", () => changeComment(-1));
-rightArrow.addEventListener("click", () => changeComment(1));
+// Cette fonction permet de faire défiler les commentaires vers la gauche ou vers la droite
+function scrollComments(direction) {
+  const comments = document.querySelectorAll(".comment");
+  const maxIndex = comments.length - 1;
+  const increment = 1; // Nombre de commentaires à afficher à chaque clic
 
-// Fonction pour changer de commentaire
-function changeComment(direction) {
-  const comments = commentCarousel.querySelectorAll(".comment");
-  const totalComments = comments.length;
+  if (direction === "left") {
+    cIndex = Math.max(cIndex - increment, 0);
+  } else if (direction === "right") {
+    cIndex = Math.min(cIndex + increment, maxIndex - increment + 1);
+  }
 
-  // Masquer le commentaire actuel
-  comments[commentIndex].classList.remove("active");
-
-  // Calculer le nouvel index de commentaire
-  commentIndex = (commentIndex + direction + totalComments) % totalComments;
-
-  // Afficher le nouveau commentaire
-  comments[commentIndex].classList.add("active");
+  // Affichage des commentaires correspondant à l'index actuel
+  for (let i = 0; i < comments.length; i++) {
+    if (i >= cIndex && i < cIndex + increment) {
+      comments[i].classList.add("active");
+    } else {
+      comments[i].classList.remove("active");
+    }
+  }
 }
+
+// Ajout des écouteurs d'événements sur les boutons de défilement
+document
+  .querySelector(".comments-main .left-arrow")
+  .addEventListener("click", () => scrollComments("left"));
+document
+  .querySelector(".comments-main .right-arrow")
+  .addEventListener("click", () => scrollComments("right"));
+
+// Affichage du premier commentaire au chargement de la page
+scrollComments("left"); // Vous pouvez également choisir 'right' si vous préférez commencer par la droite
