@@ -246,29 +246,28 @@ function changeTipsImage() {
 setInterval(changeTipsImage, 2000);
 // end tips
 // start comments
-function scrollComments(direction) {
-  var comments = document.querySelectorAll(".comment");
-  var activeIndex = -1; // mkan hta commentair // hwse 3la lindex ta3 comment li fih active class wdiro activeIndex
+// Sélection des éléments HTML des boutons
 
-  comments.forEach(function (comment, index) {
-    if (comment.classList.contains("active")) {
-      activeIndex = index;
-    }
-  }); // Si aucun commentaire n'est actif, activer le premier commentaire
+const leftArrow = document.querySelector(".comments-main .left-arrow");
+const rightArrow = document.querySelector(".comments-main .right-arrow");
+const commentCarousel = document.querySelector(".comment-carousel");
+let commentIndex = 0;
 
-  if (activeIndex === -1 && comments.length > 0) {
-    comments[0].classList.add("active");
-    return;
-  } // Désactiver le commentaire actuel
+// Ajout des écouteurs d'événements "click"
+leftArrow.addEventListener("click", () => changeComment(-1));
+rightArrow.addEventListener("click", () => changeComment(1));
 
-  comments[activeIndex].classList.remove("active"); // yhsb index jdid 3la hsab dirction si ymin yzid whd wmyfoutche 3dd cmnt si ysar ynks whs w myhbtche tht 0
+// Fonction pour changer de commentaire
+function changeComment(direction) {
+  const comments = commentCarousel.querySelectorAll(".comment");
+  const totalComments = comments.length;
 
-  var newIndex;
-  if (direction === "left") {
-    newIndex = Math.max(0, activeIndex - 1);
-  } else if (direction === "right") {
-    newIndex = Math.min(comments.length - 1, activeIndex + 1);
-  } // Activer le nouveau commentaire
+  // Masquer le commentaire actuel
+  comments[commentIndex].classList.remove("active");
 
-  comments[newIndex].classList.add("active");
+  // Calculer le nouvel index de commentaire
+  commentIndex = (commentIndex + direction + totalComments) % totalComments;
+
+  // Afficher le nouveau commentaire
+  comments[commentIndex].classList.add("active");
 }
