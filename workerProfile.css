@@ -333,7 +333,7 @@ dialog[open] button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007BFF;
+  background-color: #007bff;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
@@ -394,4 +394,16 @@ footer .logo img {
 li a svg {
   width: 1em;
   fill: blue;
+}
+.not1 {
+  width: 350px;
+  height: 450px;
+  background-color: white;
+  position: relative;
+  bottom: 965px;
+  left: 1045px;
+  display: none;
+  z-index: 30;
+  border: 1px black solid;
+  margin-bottom: -460px;
 }
