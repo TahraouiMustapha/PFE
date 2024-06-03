@@ -137,8 +137,8 @@ async function getWorkers() {
     const workersArray = [];
     myArrayDocuments.forEach((doc) => {
         const data = doc.data();
-        if ((selectedCategory === '' || data.speciality === selectedCategory.toLowerCase()) &&
-            (selectedWilaya === '' || data.wilaya === selectedWilaya.toLowerCase())) {
+        if ((selectedCategory === '' || data.speciality.toLowerCase() === selectedCategory.toLowerCase()) &&
+            (selectedWilaya === '' || data.wilaya.toLowerCase() === selectedWilaya.toLowerCase())) {
             workersArray.push(data);
         }
     });
