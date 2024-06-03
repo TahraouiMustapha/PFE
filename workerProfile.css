@@ -223,6 +223,12 @@ header > .left {
   padding: 20px;
 }
 
+.about-service p {
+  padding: 20px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
 .main .service-commande {
   grid-area: commande;
   border-left: 1px solid #011121;
