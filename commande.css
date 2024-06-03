@@ -194,6 +194,35 @@ textarea {
   margin-left: 200px;
   cursor: pointer;
 }
+
+dialog {
+  padding: 20px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+dialog[open] h2 {
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+dialog[open] button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
 /* end section */
 /* start footer */
 footer {

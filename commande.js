@@ -68,13 +68,13 @@ onAuthStateChanged(auth, async (user) => {
         //store the project in database
         try {
           const docRef = await addDoc(collection(myDatabase, "projects"), myProject.toPlainObject());
+          showMessageOrderCompleted();
         } catch (e) {
           console.error("Error adding document: ", e);
         }
       })
 
       fillInfo(currentUser);
-
     } else {
       // User is signed out
     }
@@ -127,6 +127,27 @@ function generateRandomId(length = 25) {
       randomId += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return randomId;
+}
+
+//function to show a message of success
+function showMessageOrderCompleted() {
+  const body = document.body;
+  const myDialog = document.createElement('dialog');
+
+  const message = document.createElement('h2');
+  message.textContent = "The order was completed successfully";
+  myDialog.appendChild(message);
+
+  const closeButton = document.createElement('button');
+  closeButton.textContent = "Close";
+  closeButton.addEventListener('click', () => {
+      myDialog.close();
+      window.history.back();
+  });
+  myDialog.appendChild(closeButton);
+
+  body.appendChild(myDialog);
+  myDialog.showModal();
 }
 
   
