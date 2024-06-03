@@ -345,3 +345,15 @@ li a svg {
   width: 1em;
   fill: blue;
 }
+.not1 {
+  width: 350px;
+  height: 450px;
+  background-color: white;
+  position: relative;
+  bottom: 1410px;
+  left: 1045px;
+  display: none;
+  z-index: 30;
+  border: 1px black solid;
+  margin-bottom: -460px;
+}
