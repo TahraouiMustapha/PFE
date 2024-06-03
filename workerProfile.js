@@ -70,7 +70,7 @@ function createServiceContent(workerObj) {
   const serviceGallery = document.createElement("div");
   serviceGallery.classList.add("service-gallery");
   const myImg = document.createElement("img");
-  myImg.src = "images/Charpentier.jpg";
+  myImg.src = "images/"+workerObj.speciality +".jpg";
 
   serviceGallery.appendChild(myImg);
 
