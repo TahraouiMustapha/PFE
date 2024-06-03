@@ -96,7 +96,10 @@ submitBtn.addEventListener("click", (event) => {
         );
 
         try {
-          const docRef = await addDoc(collection(db, "clients"), newUser.toPlainObject());
+          const docRef = await addDoc(
+            collection(db, "clients"),
+            newUser.toPlainObject()
+          );
           console.log("Document written with ID: ", docRef.id);
           //yru7 lpage ta3 profile
           window.location.href = "./userProfile.html";
@@ -144,11 +147,14 @@ submitBtn.addEventListener("click", (event) => {
           speciality,
           transport.toLowerCase() === "true",
           tools.toLowerCase() === "true",
-          desc,
+          desc
         );
 
         try {
-          const docRef = await addDoc(collection(db, "workers"), newUser.toPlainObject());
+          const docRef = await addDoc(
+            collection(db, "workers"),
+            newUser.toPlainObject()
+          );
 
           console.log("Document written with ID: ", docRef.id);
         } catch (e) {
@@ -202,7 +208,8 @@ function switchPagesHandler() {
         <div class="description">
           <label for="description">description</label>
 
-          <textarea " name="description" id="description" cols="30" rows="4" placeholder="tell about you share your skills project that have did">
+          <textarea " name="description" id="description" cols="30" rows="4" 
+         >
           </textarea>
         </div> 
         document.addEventListener("DOMContentLoaded", function() {
