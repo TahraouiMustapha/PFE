@@ -84,6 +84,7 @@ function createServiceCard(worker) {
             workImage.classList.add('work-image');
             //image ta3 work example
                 const img = document.createElement('img');
+                img.src = "./images/"+ worker.speciality +".jpg";
                 workImage.appendChild(img);
             serviceGallery.appendChild(workImage);
         serviceCard.appendChild(serviceGallery);
