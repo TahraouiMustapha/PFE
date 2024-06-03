@@ -4,6 +4,12 @@ import {
   getDocs,
   collection,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import {
+  getAuth,
+  signOut,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
 //import from our seaarchModule.js
 import { onkeyUpHandler, getArrayCategory } from "./searchModule.js";
 
@@ -20,6 +26,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth();
+
 //end inisialize firebase
 // Variables to track selected category and wilaya
 let selectedCategory = "";
@@ -280,6 +288,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderServicesSortByAvailable(arrayOfWorkers);
   });
 
+  const allBtn = document.querySelector("#allBtn");
+  allBtn.addEventListener('click', () => {
+    selectedWilaya = '';
+    selectedCategory = '';
+    renderServices("")
+  })
+
   if (searchValue) {
     renderServices(searchValue);
   } else {
@@ -304,3 +319,12 @@ const logout = document.querySelector(".logout");
 out.addEventListener("click", function () {
   logout.style.display = logout.style.display === "none" ? "block" : "none";
 });
+
+logout.addEventListener('click', () => {
+  signOut(auth).then(() => {
+    console.log("User signed out successfully");
+    window.location.href = "home.html";
+  }).catch((error) => {
+    console.error("Error signing out: ", error);
+  });
+})

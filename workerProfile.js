@@ -6,6 +6,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import {
   getAuth,
+  signOut,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 //import from our searchModule.js
@@ -365,11 +366,7 @@ function one() {
 
 notification.addEventListener("click", () => {
   one();
-});
-
-// out ta3 profile
-const out = document.querySelector(".photo-profile img");
-const logout = document.querySelector(".logout");
+})
 
 out.addEventListener("click", function () {
   logout.style.display = logout.style.display === "none" ? "block" : "none";
