@@ -7,6 +7,7 @@ class User {
         this.password = password
         this.phoneNumber = phoneNumber
         this.wilaya = wilaya
+        this.hasNew = false
     }
 }
 
@@ -74,6 +75,7 @@ class Client extends User {
             city: this.city,
             province: this.province,
             street: this.street,
+            hasNew: this.hasNew
         };
     }
 }
@@ -114,6 +116,7 @@ class Artisan extends User {
             rate:this.rate,
             availability:this.availability,
             comments:this.comments,
+            hasNew: this.hasNew,
         }
     }
 }
