@@ -273,7 +273,7 @@ function showMessageNotAvailable() {
 // notification
 
 const notification = document.querySelector(".notify .not");
-const divvisble = document.querySelector(" .not1");
+const divvisble = document.querySelector(".not1");
 function one() {
   if (divvisble.style.display === "block") {
     divvisble.style.display = "none";
