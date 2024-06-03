@@ -246,29 +246,40 @@ function changeTipsImage() {
 setInterval(changeTipsImage, 2000);
 // end tips
 // start comments
+// Sélection des éléments HTML des boutons
+
+// Cette variable représente l'index du premier commentaire affiché dans la liste
+let cIndex = 0;
+
+// Cette fonction permet de faire défiler les commentaires vers la gauche ou vers la droite
 function scrollComments(direction) {
-  var comments = document.querySelectorAll(".comment");
-  var activeIndex = -1; // mkan hta commentair // hwse 3la lindex ta3 comment li fih active class wdiro activeIndex
+  const comments = document.querySelectorAll(".comment");
+  const maxIndex = comments.length - 1;
+  const increment = 1; // Nombre de commentaires à afficher à chaque clic
 
-  comments.forEach(function (comment, index) {
-    if (comment.classList.contains("active")) {
-      activeIndex = index;
-    }
-  }); // Si aucun commentaire n'est actif, activer le premier commentaire
-
-  if (activeIndex === -1 && comments.length > 0) {
-    comments[0].classList.add("active");
-    return;
-  } // Désactiver le commentaire actuel
-
-  comments[activeIndex].classList.remove("active"); // yhsb index jdid 3la hsab dirction si ymin yzid whd wmyfoutche 3dd cmnt si ysar ynks whs w myhbtche tht 0
-
-  var newIndex;
   if (direction === "left") {
-    newIndex = Math.max(0, activeIndex - 1);
+    cIndex = Math.max(cIndex - increment, 0);
   } else if (direction === "right") {
-    newIndex = Math.min(comments.length - 1, activeIndex + 1);
-  } // Activer le nouveau commentaire
+    cIndex = Math.min(cIndex + increment, maxIndex - increment + 1);
+  }
 
-  comments[newIndex].classList.add("active");
+  // Affichage des commentaires correspondant à l'index actuel
+  for (let i = 0; i < comments.length; i++) {
+    if (i >= cIndex && i < cIndex + increment) {
+      comments[i].classList.add("active");
+    } else {
+      comments[i].classList.remove("active");
+    }
+  }
 }
+
+// Ajout des écouteurs d'événements sur les boutons de défilement
+document
+  .querySelector(".comments-main .left-arrow")
+  .addEventListener("click", () => scrollComments("left"));
+document
+  .querySelector(".comments-main .right-arrow")
+  .addEventListener("click", () => scrollComments("right"));
+
+// Affichage du premier commentaire au chargement de la page
+scrollComments("left"); // Vous pouvez également choisir 'right' si vous préférez commencer par la droite
