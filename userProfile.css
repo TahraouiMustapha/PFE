@@ -111,6 +111,15 @@ header > .left {
   height: 32px;
   cursor: pointer;
 }
+.logout {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 1px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+}
 /* end header */
 /* start section */
 section div {
@@ -135,7 +144,7 @@ section div {
   font-weight: bold;
   text-transform: none;
 }
-div button {
+div .editBtn {
   text-align: center;
   font-weight: bold;
   overflow: hidden;
@@ -150,9 +159,12 @@ div button {
   width: 50px;
   height: 25px;
   margin: auto 20px;
+  position: absolute;
+  top: 75px;
+  right: 60px;
 }
 
-button::before {
+.editBtn::before {
   content: "";
   top: 0;
   left: 0;
@@ -164,11 +176,11 @@ button::before {
   position: absolute;
 }
 
-button:hover::before {
+.editBtn:hover::before {
   transform: translateX(100%);
 }
 
-button:hover {
+.editBtn:hover {
   color: white;
   background-color: blue;
   filter: drop-shadow(0 0 10px #fffdef);
