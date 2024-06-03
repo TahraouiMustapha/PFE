@@ -10,6 +10,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import {
   getAuth,
+  signOut,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
@@ -185,3 +186,12 @@ const logout = document.querySelector(".logout");
 out.addEventListener("click", function () {
   logout.style.display = logout.style.display === "none" ? "block" : "none";
 });
+
+logout.addEventListener('click', () => {
+  signOut(auth).then(() => {
+    console.log("User signed out successfully");
+    window.location.href = "home.html";
+  }).catch((error) => {
+    console.error("Error signing out: ", error);
+  });
+})
