@@ -3,6 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import {
   getAuth,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
@@ -42,3 +43,26 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     });
 });
+// facbook sign in
+document
+  .getElementById("facebookSignInBtn")
+  .addEventListener("click", function () {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // Handle the signed-in user information.
+        const user = result.user;
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        console.log(user);
+        const accessToken = credential.accessToken;
+        window.location.href = "./CreateANewAccount.html";
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage)
+        const email = error.customData.email;
+        const credential = FacebookAuthProvider.credentialFromResult(error);
+      });
+  });
