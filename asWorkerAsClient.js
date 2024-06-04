@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  sendEmailVerification 
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 import {
   getFirestore,
@@ -80,6 +81,8 @@ submitBtn.addEventListener("click", (event) => {
         const user = userCredential.user;
         const uid = user.uid;
         alert("mrigla");
+        //send email ver
+
         //add data
 
         let newUser = new Client(
@@ -96,13 +99,28 @@ submitBtn.addEventListener("click", (event) => {
         );
 
         try {
-          const docRef = await addDoc(
-            collection(db, "clients"),
-            newUser.toPlainObject()
-          );
-          console.log("Document written with ID: ", docRef.id);
+
+          sendEmailVerification(auth.currentUser)
+          .then(() => {
+            alert("Email verification link sent!");
+          });
+
+          const checkEmailVerification = setTimeout(async () => {
+            await user.reload();
+            if (user.emailVerified) {
+              clearInterval(checkEmailVerification);
+              alert("Email verified! You can now complete your profile.");
+              const docRef = await addDoc(
+                collection(db, "clients"),
+                newUser.toPlainObject()
+              );
+              window.location.href = "./userProfile.html";
+            } else {
+              alert("Email not verified yet.");
+              window.location.href = "./home.html";
+            }
+          }, 3000);
           //yru7 lpage ta3 profile
-          window.location.href = "./userProfile.html";
         } catch (e) {
           console.error("Error adding document: ", e);
         }
@@ -151,14 +169,27 @@ submitBtn.addEventListener("click", (event) => {
         );
 
         try {
-          const docRef = await addDoc(
-            collection(db, "workers"),
-            newUser.toPlainObject()
-          );
 
-          console.log("Document written with ID: ", docRef.id);
+          sendEmailVerification(auth.currentUser)
+          .then(() => {
+            alert("Email verification link sent!");
+          });
 
-          window.location.href = "./profile1.html";
+          const checkEmailVerification = setTimeout(async () => {
+            await user.reload();
+            if (user.emailVerified) {
+              clearInterval(checkEmailVerification);
+              alert("Email verified! You can now complete your profile.");
+              const docRef = await addDoc(
+                collection(db, "workers"),
+                newUser.toPlainObject()
+              );
+              window.location.href = "./profile1.html";
+            } else {
+              alert("Email not verified yet.");
+              window.location.href = "./home.html";
+            }
+          }, 5000);
         } catch (e) {
           console.error("Error adding document: ", e);
         }
