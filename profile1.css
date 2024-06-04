@@ -356,6 +356,72 @@ a {
   background-color: #0056b3;
 }
 
+.not1 {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 300px;
+  margin: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Header of the notification */
+.not1 > div:first-child {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  background-color: #011121;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Container for the notification content */
+.not1-container {
+  padding: 20px;
+}
+
+/* Individual item in the notification */
+.not1-container > div {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Title of each item */
+.not1-container h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Description or name of the item */
+.not1-container p {
+  margin: 0 0 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Accept button */
+.acceptBtn {
+  padding: 5px 10px;
+  font-size: 14px;
+  color: white;
+  background-color: #011121;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect for the accept button */
+.acceptBtn:hover {
+  background-color: #45a049;
+}
+
 /* end section */
 /* start footer */
 footer {

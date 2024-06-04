@@ -55,6 +55,10 @@ onAuthStateChanged(auth, async (user) => {
     showWorkerServices(currentUser);
     
     ifThereNew(currentUser.hasNew);
+    const divvisble1 = document.querySelector(".not1-container");
+    let commandeObj = await getCommandeObj(currentUser.uid);
+    let divJdid = await createCommande(commandeObj);
+    divvisble1.appendChild(divJdid);
     
   } else {
     // User is signed out
@@ -178,6 +182,49 @@ function createServiceCard(worker) {
   return serviceCard;
 }
 
+async function getWorkerObj(userUid) {
+  const querySnapshot = await getDocs(collection(myDatabase, "workers"));
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().uid) {
+      return doc.data();
+    }
+  }
+  return null;
+}
+
+async function getCommandeObj(userUid) {
+  const querySnapshot = await getDocs(collection(myDatabase, "projects"));
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().workerId) {
+      return doc.data();
+    }
+  }
+  return null;
+}
+
+//function to create not1
+async function createCommande(commandeObj) {
+  const myDiv = document.createElement('div');
+    const h2 = document.createElement('h2');
+    h2.textContent = 'Commande';
+
+    const p = document.createElement('p');
+    const worker = await getWorkerObj(commandeObj.workerId);
+    p.textContent = worker.firstName;
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Accept';
+    btn.classList.add('acceptBtn');
+
+    myDiv.appendChild(h2);
+    myDiv.appendChild(p);
+    myDiv.appendChild(btn);
+
+  return myDiv;
+}
+
+const divvisble = document.querySelector(".not1");
+
 //func to check if there new
 function ifThereNew(hasNew) {
   const jaras = document.querySelector(".jaras");
@@ -187,7 +234,7 @@ function ifThereNew(hasNew) {
 }
 
 const notification = document.querySelector(".notify .not");
-const divvisble = document.querySelector(".not1");
+
 function one() {
   const jaras = document.querySelector(".jaras");
   jaras.removeAttribute("id");
