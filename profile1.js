@@ -4,6 +4,8 @@ import {
   getFirestore,
   doc,
   getDoc,
+  query,
+  where,
   getDocs,
   collection,
   updateDoc,
@@ -54,7 +56,8 @@ onAuthStateChanged(auth, async (user) => {
     showProfileInfo(currentUser);
     showWorkerServices(currentUser);
     
-    ifThereNew(currentUser.hasNew);
+    ifThereNew(currentUser);
+
     
   } else {
     // User is signed out
@@ -178,16 +181,91 @@ function createServiceCard(worker) {
   return serviceCard;
 }
 
+async function getWorkerObj(userUid) {
+  const querySnapshot = await getDocs(collection(myDatabase, "workers"));
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().uid) {
+      return doc.data();
+    }
+  }
+  return null;
+}
+
+async function getCommandeObj(userUid) {
+  const querySnapshot = await getDocs(collection(myDatabase, "projects"));
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().workerId) {
+      return doc.data();
+    }
+  }
+  return null;
+}
+
+//function to create not1
+async function createCommande(commandeObj) {
+  const myDiv = document.createElement('div');
+    const h2 = document.createElement('h2');
+    h2.textContent = 'Commande';
+
+    const p = document.createElement('p');
+    const worker = await getWorkerObj(commandeObj.workerId);
+    p.textContent = worker.firstName;
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Accept';
+    btn.classList.add('acceptBtn');
+    btn.addEventListener('click' ,()=>{
+      acceptCommande(commandeObj.workerId);
+    })
+
+    myDiv.appendChild(h2);
+    myDiv.appendChild(p);
+    myDiv.appendChild(btn);
+
+  return myDiv;
+}
+
+//function accept coomande
+async function acceptCommande(workerId) {
+  const divvisble1 = document.querySelector(".not1-container");
+  divvisble1.innerHTML = '';
+  const myWorker = await getWorkerObj(workerId);
+
+  const workerDoc = await getWorkerDocByUid(workerId);
+  if (workerDoc) {
+    const workerRef = doc(myDatabase, "workers", workerDoc.id); // Get the document reference
+    await updateDoc(workerRef, {
+      hasNew: false
+    });
+  }
+}
+
+async function getWorkerDocByUid(uid) {
+  const workersQuery = query(collection(myDatabase, "workers"), where("uid", "==", uid));
+  const querySnapshot = await getDocs(workersQuery);
+  if (!querySnapshot.empty) {
+    const workerDoc = querySnapshot.docs[0]; // Assuming uid is unique, we take the first match
+    return workerDoc;
+  }
+  return null;
+}
+
+const divvisble = document.querySelector(".not1");
+
 //func to check if there new
-function ifThereNew(hasNew) {
+async function ifThereNew(user) {
   const jaras = document.querySelector(".jaras");
-  if (hasNew) {
+  if (user.hasNew) {
     jaras.setAttribute("id", "notificationIcon");
+    const divvisble1 = document.querySelector(".not1-container");
+    let commandeObj = await getCommandeObj(currentUser.uid);
+    let divJdid = await createCommande(commandeObj);
+    divvisble1.appendChild(divJdid);
   }
 }
 
 const notification = document.querySelector(".notify .not");
-const divvisble = document.querySelector(".not1");
+
 function one() {
   const jaras = document.querySelector(".jaras");
   jaras.removeAttribute("id");
