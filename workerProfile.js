@@ -12,7 +12,6 @@ import {
 //import from our searchModule.js
 import { onkeyUpHandler, getArrayCategory } from "./searchModule.js";
 
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCOa527QiPGbAmOXtbG99sBoKmwGpTrE6k",
@@ -35,17 +34,15 @@ onAuthStateChanged(auth, async (user) => {
     // User is signed in
     const currentUserUid = user.uid;
 
-    if(checkClient(currentUserUid)) {
-      console.log('client');
-    } else if(checkWorker(currentUserUid)) {
+    if (checkClient(currentUserUid)) {
+      console.log("client");
+    } else if (checkWorker(currentUserUid)) {
       isWorker = true;
     }
-
   } else {
     // User is signed out
   }
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -63,13 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
   mainSec.appendChild(createServiceTitle(worker.speciality));
   mainSec.appendChild(createServiceContent(worker));
   mainSec.appendChild(createServiceCommande(worker));
-  if(isWorker) {
+  if (isWorker) {
     ifThereNew(worker.hasNew);
   }
-
 });
-
-
 
 //funciton if client
 async function checkClient(userUId) {
@@ -184,9 +178,9 @@ function createServiceContent(workerObj) {
 
 //func to check if there new
 function ifThereNew(hasNew) {
-  if(hasNew) {
-    const jaras = document.querySelector('.jaras');
-    jaras.setAttribute('id','notificationIcon');
+  if (hasNew) {
+    const jaras = document.querySelector(".jaras");
+    jaras.setAttribute("id", "notificationIcon");
   }
 }
 //func to create profile div
@@ -361,20 +355,23 @@ function showMessageNotAvailable() {
 const notification = document.querySelector(".notify .not");
 const divvisble = document.querySelector(".not1");
 function one() {
-  const jaras = document.querySelector('.jaras');
-  jaras.removeAttribute('id');
+  const jaras = document.querySelector(".jaras");
+  jaras.removeAttribute("id");
   if (divvisble.style.display === "block") {
     divvisble.style.display = "none";
-    
   } else {
     divvisble.style.display = "block";
   }
 }
 
-notification.addEventListener('click', () => {
+notification.addEventListener("click", () => {
   one();
-})
+});
 
+// out.addEventListener("click", function () {
+//   logout.style.display = logout.style.display === "none" ? "block" : "none";
+// });
+// out ta3 profile
 const out = document.querySelector(".photo-profile img");
 const logout = document.querySelector(".logout");
 
@@ -382,11 +379,13 @@ out.addEventListener("click", function () {
   logout.style.display = logout.style.display === "none" ? "block" : "none";
 });
 
-logout.addEventListener('click', () => {
-  signOut(auth).then(() => {
-    console.log("User signed out successfully");
-    window.location.href = "home.html";
-  }).catch((error) => {
-    console.error("Error signing out: ", error);
-  });
-})
+logout.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      console.log("User signed out successfully");
+      window.location.href = "home.html";
+    })
+    .catch((error) => {
+      console.error("Error signing out: ", error);
+    });
+});

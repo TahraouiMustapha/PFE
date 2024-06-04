@@ -131,14 +131,18 @@ header > .left {
   cursor: pointer;
 }
 
-.logout{
+.logout {
   display: none;
   position: absolute;
-  top: 70px; 
+  top: 70px;
   right: 1px;
   background-color: white;
   border: 1px solid black;
-  padding: 10px; 
+  padding: 10px;
+}
+.logout:hover {
+  background-color: #011121;
+  color: #fff;
 }
 .main {
   flex: 1;

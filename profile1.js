@@ -60,42 +60,42 @@ function showProfileInfo(user) {
   const infoSection = document.querySelector(".profileBelka");
   infoSection.innerHTML = "";
   //create divs to fill information of client
-    const profilePic = document.createElement('div');
-    profilePic.classList.add('profile-pic');
-      const myImg = document.createElement('img');
-      myImg.src = "./images/profile1.jpg";
-      profilePic.appendChild(myImg);
-    const fullName = document.createElement("h2");
-    fullName.textContent = `${user.firstName} ${user.lastName}`;
-    const descP = document.createElement("p");
-    descP.textContent = user.desc;
-    const contactInfo = document.createElement('div');
-    contactInfo.classList.add('contact-info');
-      const addresse = document.createElement('p');
-        const addresseStrong = document.createElement('strong');
-        addresseStrong.textContent = "Adresse:";
-        addresse.appendChild(addresseStrong);
-        addresse.innerHTML += `${user.wilaya}`;
+  const profilePic = document.createElement("div");
+  profilePic.classList.add("profile-pic");
+  const myImg = document.createElement("img");
+  myImg.src = "./images/profile1.jpg";
+  profilePic.appendChild(myImg);
+  const fullName = document.createElement("h2");
+  fullName.textContent = `${user.firstName} ${user.lastName}`;
+  const descP = document.createElement("p");
+  descP.textContent = user.desc;
+  const contactInfo = document.createElement("div");
+  contactInfo.classList.add("contact-info");
+  const addresse = document.createElement("p");
+  const addresseStrong = document.createElement("strong");
+  addresseStrong.textContent = "Adresse:";
+  addresse.appendChild(addresseStrong);
+  addresse.innerHTML += `${user.wilaya}`;
 
-      const emailP = document.createElement('p');
-        const emailStrong = document.createElement('strong');
-        emailStrong.textContent = "Email:";
-        emailP.appendChild(emailStrong);
-        emailP.innerHTML += `${user.email}`;
-      
-      const phoneP = document.createElement('p');
-        const phoneStrong = document.createElement('strong');
-        phoneStrong.textContent = "Phone:";
-        phoneP.appendChild(phoneStrong);
-        phoneP.innerHTML += `${user.phoneNumber}`;  
-        
-    contactInfo.appendChild(addresse);  
-    contactInfo.appendChild(emailP);  
-    contactInfo.appendChild(phoneP); 
+  const emailP = document.createElement("p");
+  const emailStrong = document.createElement("strong");
+  emailStrong.textContent = "Email:";
+  emailP.appendChild(emailStrong);
+  emailP.innerHTML += `${user.email}`;
 
-  const editBtn = document.createElement('button');
-  editBtn.textContent = 'Edit';
-  editBtn.classList.add('btn');
+  const phoneP = document.createElement("p");
+  const phoneStrong = document.createElement("strong");
+  phoneStrong.textContent = "Phone:";
+  phoneP.appendChild(phoneStrong);
+  phoneP.innerHTML += `${user.phoneNumber}`;
+
+  contactInfo.appendChild(addresse);
+  contactInfo.appendChild(emailP);
+  contactInfo.appendChild(phoneP);
+
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.classList.add("btn");
 
   infoSection.appendChild(profilePic);
   infoSection.appendChild(fullName);
@@ -106,7 +106,7 @@ function showProfileInfo(user) {
 
 //function to show services of worker
 function showWorkerServices(user) {
-  const servicesGrid = document.querySelector('.services-grid');
+  const servicesGrid = document.querySelector(".services-grid");
   servicesGrid.appendChild(createServiceCard(user));
 }
 
@@ -168,7 +168,6 @@ function createServiceCard(worker) {
   return serviceCard;
 }
 
-
 const notification = document.querySelector(".notify .not");
 const divvisble = document.querySelector(" .not1");
 function one() {
@@ -186,12 +185,3 @@ const logout = document.querySelector(".logout");
 out.addEventListener("click", function () {
   logout.style.display = logout.style.display === "none" ? "block" : "none";
 });
-
-logout.addEventListener('click', () => {
-  signOut(auth).then(() => {
-    console.log("User signed out successfully");
-    window.location.href = "home.html";
-  }).catch((error) => {
-    console.error("Error signing out: ", error);
-  });
-})
