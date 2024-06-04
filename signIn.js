@@ -1,6 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import {
+  getFirestore,
+  getDocs,
+  collection,
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import {
   getAuth,
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
@@ -20,7 +25,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+const myDatabase = getFirestore(app);
 const auth = getAuth();
 
 const signIn = document.querySelector("#signIn");
@@ -34,14 +39,55 @@ function signInUserHandler() {
   const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       // Signed in hna mrigla d5al
       const user = userCredential.user;
-      window.location.href = "./main.html";
+      let isClient = await checkClient(user.uid);
+      if(isClient) {
+        window.location.href = "./userProfile.html";
+      } else {
+        window.location.href = "./profile1.html";
+
+      }
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       //errorMessage hada lerror
     });
+}
+
+//funciton if client
+async function checkClient(userUId) {
+  const querySnapshot = await getDocs(collection(myDatabase, "clients"));
+  querySnapshot.forEach((doc) => {
+    if (userUId === doc.data().uid) {
+      let currentUser = doc.data();
+      let currentUserRef = doc.ref;
+      return true;
+    }
+  });
+  return false;
+}
+
+//function if worker
+async function checkWorker(userUId) {
+  const querySnapshot = await getDocs(collection(myDatabase, "workers"));
+  querySnapshot.forEach((doc) => {
+    if (userUId === doc.data().uid) {
+      let currentUser = doc.data();
+      let currentUserRef = doc.ref;
+      return true;
+    }
+  });
+}
+
+async function getWorkerObj(userUid) {
+  const querySnapshot = await getDocs(collection(myDatabase, "workers"));
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().uid) {
+      return doc.data();
+    }
+  }
+  return null;
 }
