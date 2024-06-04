@@ -4,6 +4,8 @@ import {
   getFirestore,
   doc,
   getDoc,
+  query,
+  where,
   getDocs,
   collection,
   updateDoc,
@@ -54,11 +56,8 @@ onAuthStateChanged(auth, async (user) => {
     showProfileInfo(currentUser);
     showWorkerServices(currentUser);
     
-    ifThereNew(currentUser.hasNew);
-    const divvisble1 = document.querySelector(".not1-container");
-    let commandeObj = await getCommandeObj(currentUser.uid);
-    let divJdid = await createCommande(commandeObj);
-    divvisble1.appendChild(divJdid);
+    ifThereNew(currentUser);
+
     
   } else {
     // User is signed out
@@ -215,6 +214,9 @@ async function createCommande(commandeObj) {
     const btn = document.createElement('button');
     btn.textContent = 'Accept';
     btn.classList.add('acceptBtn');
+    btn.addEventListener('click' ,()=>{
+      acceptCommande(commandeObj.workerId);
+    })
 
     myDiv.appendChild(h2);
     myDiv.appendChild(p);
@@ -223,13 +225,42 @@ async function createCommande(commandeObj) {
   return myDiv;
 }
 
+//function accept coomande
+async function acceptCommande(workerId) {
+  const divvisble1 = document.querySelector(".not1-container");
+  divvisble1.innerHTML = '';
+  const myWorker = await getWorkerObj(workerId);
+
+  const workerDoc = await getWorkerDocByUid(workerId);
+  if (workerDoc) {
+    const workerRef = doc(myDatabase, "workers", workerDoc.id); // Get the document reference
+    await updateDoc(workerRef, {
+      hasNew: false
+    });
+  }
+}
+
+async function getWorkerDocByUid(uid) {
+  const workersQuery = query(collection(myDatabase, "workers"), where("uid", "==", uid));
+  const querySnapshot = await getDocs(workersQuery);
+  if (!querySnapshot.empty) {
+    const workerDoc = querySnapshot.docs[0]; // Assuming uid is unique, we take the first match
+    return workerDoc;
+  }
+  return null;
+}
+
 const divvisble = document.querySelector(".not1");
 
 //func to check if there new
-function ifThereNew(hasNew) {
+async function ifThereNew(user) {
   const jaras = document.querySelector(".jaras");
-  if (hasNew) {
+  if (user.hasNew) {
     jaras.setAttribute("id", "notificationIcon");
+    const divvisble1 = document.querySelector(".not1-container");
+    let commandeObj = await getCommandeObj(currentUser.uid);
+    let divJdid = await createCommande(commandeObj);
+    divvisble1.appendChild(divJdid);
   }
 }
 
