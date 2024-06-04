@@ -134,4 +134,7 @@ function editResultBoxSize(numberOfResult) {
     resultBox.style.height = `calc(${numberOfResult} * 45px);`;
   }
 }
-export { onkeyUpHandler, onkeyUpHandlerSamePage, getArrayCategory };
+export { onkeyUpHandler, 
+  onkeyUpHandlerSamePage, 
+  makeResultBoxDisappear,
+  getArrayCategory };

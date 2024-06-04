@@ -11,7 +11,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
 //import from our seaarchModule.js
-import { onkeyUpHandlerSamePage, getArrayCategory } from "./searchModule.js";
+import { onkeyUpHandlerSamePage, 
+  makeResultBoxDisappear,
+  getArrayCategory } from "./searchModule.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -275,6 +277,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   searchBar.addEventListener("keyup", (e) => {
     onkeyUpHandlerSamePage(e.target.value);
   });
+
+  if(searchBar.value = '') {
+    makeResultBoxDisappear();
+  }
 
   const resultBox = document.querySelector(".result-box");
   resultBox.addEventListener("click", (e) => {
