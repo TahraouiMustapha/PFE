@@ -43,11 +43,11 @@ function signInUserHandler() {
       // Signed in hna mrigla d5al
       const user = userCredential.user;
       let isClient = await checkClient(user.uid);
+      
       if(isClient) {
         window.location.href = "./userProfile.html";
       } else {
         window.location.href = "./profile1.html";
-
       }
     })
     .catch((error) => {
@@ -58,16 +58,14 @@ function signInUserHandler() {
 }
 
 //funciton if client
-async function checkClient(userUId) {
+async function checkClient(userUid) {
   const querySnapshot = await getDocs(collection(myDatabase, "clients"));
-  querySnapshot.forEach((doc) => {
-    if (userUId === doc.data().uid) {
-      let currentUser = doc.data();
-      let currentUserRef = doc.ref;
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().uid) {
       return true;
     }
-  });
-  return false;
+  }
+  return null;
 }
 
 //function if worker
