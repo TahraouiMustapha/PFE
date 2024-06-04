@@ -368,11 +368,12 @@ li a svg {
   width: 350px;
   height: 450px;
   background-color: white;
-  position: relative;
+  position: fixed;
   bottom: 700px;
-  left: 1040px;
+  left: 1055px;
   display: none;
   z-index: 30;
   border: 1px black solid;
   margin-bottom: -460px;
 }
+
