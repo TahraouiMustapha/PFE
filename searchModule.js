@@ -85,15 +85,13 @@ function sendResultsSamePage(array) {
   array.forEach((res) => {
     let myLi = document.createElement("li");
     myLi.textContent = res;
-    myLi.addEventListener("click", (e) => {
-    });
+    myLi.addEventListener("click", (e) => {});
 
     myUl.appendChild(myLi);
   });
   if (array.length !== 0) {
     resultBox.appendChild(myUl);
   }
-
 }
 
 function createResultBox(array) {
@@ -134,7 +132,9 @@ function editResultBoxSize(numberOfResult) {
     resultBox.style.height = `calc(${numberOfResult} * 45px);`;
   }
 }
-export { onkeyUpHandler, 
-  onkeyUpHandlerSamePage, 
+export {
+  onkeyUpHandler,
+  onkeyUpHandlerSamePage,
   makeResultBoxDisappear,
-  getArrayCategory };
+  getArrayCategory,
+};
