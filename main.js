@@ -11,9 +11,11 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
 //import from our seaarchModule.js
-import { onkeyUpHandlerSamePage, 
+import {
+  onkeyUpHandlerSamePage,
   makeResultBoxDisappear,
-  getArrayCategory } from "./searchModule.js";
+  getArrayCategory,
+} from "./searchModule.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -278,7 +280,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     onkeyUpHandlerSamePage(e.target.value);
   });
 
-  if(searchBar.value = '') {
+  if ((searchBar.value = "")) {
     makeResultBoxDisappear();
   }
 
@@ -303,11 +305,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   const allBtn = document.querySelector("#allBtn");
-  allBtn.addEventListener('click', () => {
-    selectedWilaya = '';
-    selectedCategory = '';
-    renderServices("")
-  })
+  allBtn.addEventListener("click", () => {
+    selectedWilaya = "";
+    selectedCategory = "";
+    renderServices("");
+  });
 
   if (searchValue) {
     renderServices(searchValue);
@@ -326,6 +328,24 @@ function one() {
   }
 }
 notification.onclick = one;
+// ta3 9lb
+let kalb = document.querySelector(".klb");
+
+function changeFillColor() {
+  let heartPath = document.querySelector(".heart-path");
+  let currentFill = heartPath.style.fill;
+  if (currentFill === "red") {
+    heartPath.style.fill = "black";
+    heartPath.style.stroke = "black";
+    heartPath.style.strokeWidth = "2";
+  } else {
+    heartPath.style.fill = "red";
+    heartPath.style.stroke = "none";
+  }
+}
+
+kalb.onclick = changeFillColor;
+
 // out ta3 profile
 const out = document.querySelector(".photo-profile img");
 const logout = document.querySelector(".logout");
@@ -334,11 +354,13 @@ out.addEventListener("click", function () {
   logout.style.display = logout.style.display === "none" ? "block" : "none";
 });
 
-logout.addEventListener('click', () => {
-  signOut(auth).then(() => {
-    console.log("User signed out successfully");
-    window.location.href = "home.html";
-  }).catch((error) => {
-    console.error("Error signing out: ", error);
-  });
-})
+logout.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      console.log("User signed out successfully");
+      window.location.href = "home.html";
+    })
+    .catch((error) => {
+      console.error("Error signing out: ", error);
+    });
+});
