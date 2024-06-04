@@ -36,6 +36,19 @@ async function onkeyUpHandler(inputValue) {
   }
 }
 
+async function onkeyUpHandlerSamePage(inputValue) {
+  if (inputValue !== "") {
+    const mySpecialityArray = await getArrayCategory();
+    const myResult = compareInputWithSpec(inputValue, mySpecialityArray);
+    editResultBoxSize(myResult.length);
+    if (inputValue !== "") {
+      sendResultsSamePage(myResult);
+    }
+  } else {
+    makeResultBoxDisappear();
+  }
+}
+
 //function to get array of categories
 async function getArrayCategory() {
   const myArrayDocuments = await getDocs(collection(db, "workers"));
@@ -61,6 +74,26 @@ function compareInputWithSpec(inputValue, array) {
 //function to send the results to result box ta3 input
 function sendResults(array) {
   createResultBox(array);
+}
+//function to send the results to result box ta3 same page
+function sendResultsSamePage(array) {
+  const resultBox = document.querySelector(".result-box");
+  resultBox.innerHTML = "";
+  resultBox.style.display = "block";
+
+  const myUl = document.createElement("ul");
+  array.forEach((res) => {
+    let myLi = document.createElement("li");
+    myLi.textContent = res;
+    myLi.addEventListener("click", (e) => {
+    });
+
+    myUl.appendChild(myLi);
+  });
+  if (array.length !== 0) {
+    resultBox.appendChild(myUl);
+  }
+
 }
 
 function createResultBox(array) {
@@ -101,4 +134,4 @@ function editResultBoxSize(numberOfResult) {
     resultBox.style.height = `calc(${numberOfResult} * 45px);`;
   }
 }
-export { onkeyUpHandler, getArrayCategory };
+export { onkeyUpHandler, onkeyUpHandlerSamePage, getArrayCategory };
