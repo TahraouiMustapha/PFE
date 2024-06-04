@@ -1,19 +1,10 @@
+// Import the necessary Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import {
-  getFirestore,
-  getDocs,
-  collection,
-} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-import {
   getAuth,
-  signOut,
-  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-
-//import from our seaarchModule.js
-import { onkeyUpHandlerSamePage, 
-  makeResultBoxDisappear,
-  getArrayCategory } from "./searchModule.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -26,6 +17,28 @@ const firebaseConfig = {
   appId: "1:919112985393:web:7d9c3545b45b52584dde10",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth();
+const auth = getAuth(app);
+
+// Google Sign-In
+window.addEventListener("DOMContentLoaded", (event) => {
+  document
+    .getElementById("googleSignInBtn")
+    .addEventListener("click", function () {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // Handle the signed-in user information.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const user = result.user;
+          console.log(user);
+          window.location.href = "./CreateANewAccount.html";
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    });
+});
