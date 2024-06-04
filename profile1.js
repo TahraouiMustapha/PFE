@@ -37,6 +37,8 @@ const myDatabase = getFirestore(app);
 let currentUser;
 let currentUserRef;
 
+let isWorker = false;
+
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     // User is signed in
@@ -51,6 +53,9 @@ onAuthStateChanged(auth, async (user) => {
     });
     showProfileInfo(currentUser);
     showWorkerServices(currentUser);
+    
+    ifThereNew(currentUser.hasNew);
+    
   } else {
     // User is signed out
   }
@@ -173,16 +178,30 @@ function createServiceCard(worker) {
   return serviceCard;
 }
 
+//func to check if there new
+function ifThereNew(hasNew) {
+  const jaras = document.querySelector(".jaras");
+  if (hasNew) {
+    jaras.setAttribute("id", "notificationIcon");
+  }
+}
+
 const notification = document.querySelector(".notify .not");
-const divvisble = document.querySelector(" .not1");
+const divvisble = document.querySelector(".not1");
 function one() {
+  const jaras = document.querySelector(".jaras");
+  jaras.removeAttribute("id");
   if (divvisble.style.display === "block") {
     divvisble.style.display = "none";
   } else {
     divvisble.style.display = "block";
   }
 }
-notification.onclick = one;
+
+notification.addEventListener("click", () => {
+  one();
+});
+
 // out ta3 profile
 const out = document.querySelector(".photo-profile img");
 const logout = document.querySelector(".logout");

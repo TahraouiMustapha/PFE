@@ -136,6 +136,23 @@ header > .left {
   height: 32px;
   cursor: pointer;
 }
+
+.jaras {
+  position: relative;
+}
+
+#notificationIcon::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+}
+
 .logout {
   display: none;
   position: absolute;
