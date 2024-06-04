@@ -274,6 +274,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const urlParams = new URLSearchParams(window.location.search);
   const searchValue = urlParams.get("search");
+  selectedCategory = searchValue;
 
   const searchBar = document.getElementById("search-bar");
   searchBar.addEventListener("keyup", (e) => {

@@ -54,8 +54,8 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 const searchBar = document.getElementById("search-bar");
-searchBar.addEventListener("keyup", () => {
-  onkeyUpHandler(searchBar.value);
+searchBar.addEventListener("keyup", (e) => {
+  onkeyUpHandler(e.target.value);
 });
 
 const editBtn = document.querySelector(".editBtn");
