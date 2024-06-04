@@ -386,6 +386,6 @@ logout.addEventListener("click", () => {
       window.location.href = "home.html";
     })
     .catch((error) => {
-      console.error("Error signing out: ", error);
+      console.error("Error scigning out: ", error);
     });
 });
