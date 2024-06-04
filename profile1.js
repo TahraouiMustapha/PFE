@@ -56,6 +56,11 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
+const searchBar = document.getElementById("search-bar");
+searchBar.addEventListener("keyup", () => {
+  onkeyUpHandler(searchBar.value);
+});
+
 function showProfileInfo(user) {
   const infoSection = document.querySelector(".profileBelka");
   infoSection.innerHTML = "";
