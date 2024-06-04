@@ -159,7 +159,7 @@ function showMessageOrderCompleted() {
   myDialog.showModal();
 }
 
-//function to change hasNew variable in worker 
+//function to change hasNew variable in worker
 async function changeHasNew(workerUid) {
   let currentWorker;
   let docRef;
@@ -167,15 +167,13 @@ async function changeHasNew(workerUid) {
   querySnapshot.forEach((doc) => {
     if (workerUid === doc.data().uid) {
       currentWorker = doc.data();
-      docRef = doc.ref;  
+      docRef = doc.ref;
     }
   });
 
-
   await updateDoc(docRef, { hasNew: true });
-
 }
-// function ta3  notification 
+// function ta3  notification
 const notification = document.querySelector(".notify .not");
 const divvisble = document.querySelector(" .not1");
 function one() {
