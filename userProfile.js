@@ -149,7 +149,7 @@ function createDialogForm(user) {
 
   return form;
 }
-
+// notification
 const notification = document.querySelector(".notify .not");
 const divvisble = document.querySelector(" .not1");
 function one() {
@@ -176,3 +176,20 @@ logout.addEventListener('click', () => {
     console.error("Error signing out: ", error);
   });
 })
+
+// ta3 kalb
+let kalb = document.querySelector(".klb");
+
+function changeFillColor() {
+  let heartPath = document.querySelector(".heart-path");
+  let currentFill = heartPath.style.fill;
+  if (currentFill === "red") {
+    heartPath.style.fill = "black";
+    heartPath.style.stroke = "black";
+    heartPath.style.strokeWidth = "2";
+  } else {
+    heartPath.style.fill = "red";
+    heartPath.style.stroke = "none";
+  }
+}
+kalb.onclick = changeFillColor;

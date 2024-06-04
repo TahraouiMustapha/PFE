@@ -184,6 +184,23 @@ function one() {
   }
 }
 notification.onclick = one;
+
+// ta3 kalb
+let kalb = document.querySelector(".klb");
+
+function changeFillColor() {
+  let heartPath = document.querySelector(".heart-path");
+  let currentFill = heartPath.style.fill;
+  if (currentFill === "red") {
+    heartPath.style.fill = "black";
+    heartPath.style.stroke = "black";
+    heartPath.style.strokeWidth = "2";
+  } else {
+    heartPath.style.fill = "red";
+    heartPath.style.stroke = "none";
+  }
+}
+kalb.onclick = changeFillColor;
 // out ta3 profile
 const out = document.querySelector(".photo-profile img");
 const logout = document.querySelector(".logout");

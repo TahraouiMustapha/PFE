@@ -52,7 +52,7 @@ onAuthStateChanged(auth, async (user) => {
     });
     rech.addEventListener("click", function () {
       // iktb ta3 recherche
-      
+
       const searchBar = document.querySelector(".recherche");
       searchBar.addEventListener("keyup", () => {
         onkeyUpHandler(searchBar.value);
@@ -187,6 +187,34 @@ document.addEventListener("DOMContentLoaded", () => {
     updateImages();
   });
 });
+//trier
+
+function trierServices() {
+  var servicesContainer = document.querySelector('.top-services-main');
+  var services = servicesContainer.querySelectorAll('.service-card');
+
+  // Convertir la NodeList en tableau pour pouvoir utiliser la fonction sort()
+  var servicesArray = Array.from(services);
+
+  // Trier les services en fonction de la valeur de p dans la classe service-rate
+  servicesArray.sort(function(a, b) {
+    var noteA = parseFloat(a.querySelector('.service-rate p').textContent);
+    var noteB = parseFloat(b.querySelector('.service-rate p').textContent);
+    return noteB - noteA; // Inverser l'ordre de tri pour obtenir un ordre décroissant
+  });
+
+  // Supprimer les services existants du conteneur
+  servicesContainer.innerHTML = '';
+
+  // Ajouter les services triés dans le conteneur dans l'ordre décroissant
+  servicesArray.forEach(function(service) {
+    servicesContainer.appendChild(service);
+  });
+}
+
+// Appeler la fonction pour trier les services au chargement de la page ou lorsque vous le souhaitez
+trierServices();
+
 // end top service
 // start best sellers
 
