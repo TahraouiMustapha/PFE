@@ -52,6 +52,11 @@ onAuthStateChanged(auth, async (user) => {
     });
     rech.addEventListener("click", function () {
       // iktb ta3 recherche
+      
+      const searchBar = document.querySelector(".recherche");
+      searchBar.addEventListener("keyup", () => {
+        onkeyUpHandler(searchBar.value);
+      });
     });
 
     serv.forEach((service) => {
