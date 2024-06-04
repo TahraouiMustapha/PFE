@@ -48,6 +48,9 @@ onAuthStateChanged(auth, async (user) => {
         showClientInfo(currentUser);
       }
     });
+
+    ifThereNew(currentUser);
+
   } else {
     // User is signed out
   }
@@ -55,7 +58,7 @@ onAuthStateChanged(auth, async (user) => {
 
 const searchBar = document.getElementById("search-bar");
 searchBar.addEventListener("keyup", (e) => {
-  onkeyUpHandler(e.target.value);
+  onkeyUpHandler(e.targe.value);
 });
 
 const editBtn = document.querySelector(".editBtn");
@@ -66,6 +69,34 @@ editBtn.addEventListener("click", () => {
   //fill user info in our inputs
   dialog.appendChild(createDialogForm(currentUser));
 });
+
+
+function createMessage(worker) {
+  const myDiv = document.createElement('div');
+  const h2 = document.createElement('h2');
+  h2.textContent = 'Commande Status';
+
+  const p = document.createElement('p');
+  p.textContent = worker.firstName;
+
+  const btn = document.createElement('div');
+  btn.textContent = 'Accepted!';
+
+  const close = document.createElement('button');
+  close.textContent = 'close';
+  close.classList.add('closeBtn');
+  close.addEventListener('click', ()=>{
+    closeCommande();
+  })
+
+    myDiv.appendChild(h2);
+    myDiv.appendChild(p);
+    myDiv.appendChild(btn);
+    myDiv.appendChild(close);
+  
+    const divvisble1 = document.querySelector(".not1-container");
+    divvisble1.appendChild(myDiv);
+}
 
 function showClientInfo(user) {
   const infoSection = document.querySelector(".sec3");
@@ -149,17 +180,38 @@ function createDialogForm(user) {
 
   return form;
 }
+
+//func to check if there new
+async function ifThereNew(user) {
+  const jaras = document.querySelector(".jaras");
+
+  if (user.hasNew) {
+    jaras.setAttribute("id", "notificationIcon");
+    const divvisble1 = document.querySelector(".not1-container");
+    let commandeObj = await getCommandeObj(currentUser.uid);
+    const worker = await getWorkerObj(commandeObj.workerId);
+    console.log(worker);
+     createMessage(worker);
+  }
+}
 // notification
 const notification = document.querySelector(".notify .not");
 const divvisble = document.querySelector(" .not1");
+
 function one() {
+  const jaras = document.querySelector(".jaras");
+  jaras.removeAttribute("id");
   if (divvisble.style.display === "block") {
     divvisble.style.display = "none";
   } else {
     divvisble.style.display = "block";
   }
 }
-notification.onclick = one;
+
+notification.addEventListener("click", () => {
+  one();
+});
+
 // out ta3 profile
 const out = document.querySelector(".photo-profile img");
 const logout = document.querySelector(".logout");
@@ -193,3 +245,47 @@ function changeFillColor() {
   }
 }
 kalb.onclick = changeFillColor;
+
+
+async function getCommandeObj(userUid) {
+  const querySnapshot = await getDocs(collection(myDatabase, "projects"));
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().clientid) {
+      return doc.data();
+    }
+  }
+  return null;
+}
+
+async function closeCommande(clientId) {
+  const divvisble1 = document.querySelector(".not1-container");
+  divvisble1.innerHTML = "";
+
+  const clientDoc = await getClientDocByUid(clientId);
+  if (clientDoc) {
+    const clientRef = doc(myDatabase, "clients", clientDoc.id); 
+    await updateDoc(clientRef, {
+      hasNew: false
+    });
+  }
+}
+
+async function getClientDocByUid(uid) {
+  const workersQuery = query(collection(myDatabase, "clients"), where("uid", "==", uid));
+  const querySnapshot = await getDocs(workersQuery);
+  if (!querySnapshot.empty) {
+    const workerDoc = querySnapshot.docs[0]; // Assuming uid is unique, we take the first match
+    return workerDoc;
+  }
+  return null;
+}
+
+async function getWorkerObj(userUid) {
+  const querySnapshot = await getDocs(collection(myDatabase, "workers"));
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().uid) {
+      return doc.data();
+    }
+  }
+  return null;
+}

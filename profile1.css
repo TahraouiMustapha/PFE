@@ -407,7 +407,7 @@ a {
 }
 
 /* Accept button */
-.acceptBtn {
+.acceptBtn , .refuseBtn{
   padding: 5px 10px;
   font-size: 14px;
   color: white;
@@ -415,11 +415,16 @@ a {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-right: 12px;
 }
 
 /* Hover effect for the accept button */
-.acceptBtn:hover {
+.acceptBtn:hover{
   background-color: #45a049;
+}
+
+.refuseBtn:hover {
+  background-color: red;
 }
 
 /* end section */

@@ -191,6 +191,17 @@ async function getWorkerObj(userUid) {
   return null;
 }
 
+async function getClientObj(userUid) {
+  const querySnapshot = await getDocs(collection(myDatabase, "clients"));
+  console.log(userUid);
+  for (const doc of querySnapshot.docs) {
+    if (userUid === doc.data().uid) {
+      return doc.data();
+    }
+  }
+  return null;
+}
+
 async function getCommandeObj(userUid) {
   const querySnapshot = await getDocs(collection(myDatabase, "projects"));
   for (const doc of querySnapshot.docs) {
@@ -215,30 +226,65 @@ async function createCommande(commandeObj) {
     btn.textContent = 'Accept';
     btn.classList.add('acceptBtn');
     btn.addEventListener('click' ,()=>{
-      acceptCommande(commandeObj.workerId);
+      acceptCommande(commandeObj.workerId, commandeObj.clientid);
+    })
+
+    const btnRefuse = document.createElement('button');
+    btnRefuse.textContent = 'Refuse';
+    btnRefuse.classList.add('refuseBtn');
+    btnRefuse.addEventListener('click', ()=>{
+      refuseCommande(commandeObj.workerId);
     })
 
     myDiv.appendChild(h2);
     myDiv.appendChild(p);
     myDiv.appendChild(btn);
+    myDiv.appendChild(btnRefuse);
 
   return myDiv;
 }
 
 //function accept coomande
-async function acceptCommande(workerId) {
+async function acceptCommande(workerId, clientId) {
   const divvisble1 = document.querySelector(".not1-container");
   divvisble1.innerHTML = '';
   const myWorker = await getWorkerObj(workerId);
+  const myClient = await getClientObj(clientId);
 
   const workerDoc = await getWorkerDocByUid(workerId);
   if (workerDoc) {
     const workerRef = doc(myDatabase, "workers", workerDoc.id); // Get the document reference
     await updateDoc(workerRef, {
+      availability: false,
       hasNew: false
     });
   }
 }
+
+async function refuseCommande(workerId) {
+  const divvisble1 = document.querySelector(".not1-container");
+  divvisble1.innerHTML = '';
+  const myWorker = await getWorkerObj(workerId);
+
+  const workerDoc = await getWorkerDocByUid(workerId);
+  const clientDoc = await getClientDocByUid(clientId);
+
+  if (workerDoc) {
+    const workerRef = doc(myDatabase, "workers", workerDoc.id);
+    await updateDoc(workerRef, {
+      hasNew: false
+    });
+  }
+
+  if (clientDoc) {
+    const clientRef = doc(myDatabase, "clients", clientDoc.id); 
+    await updateDoc(clientRef, {
+      hasNew: false
+    });
+  }
+}
+
+
 
 async function getWorkerDocByUid(uid) {
   const workersQuery = query(collection(myDatabase, "workers"), where("uid", "==", uid));
@@ -249,6 +295,18 @@ async function getWorkerDocByUid(uid) {
   }
   return null;
 }
+
+async function getClientDocByUid(uid) {
+  const workersQuery = query(collection(myDatabase, "clients"), where("uid", "==", uid));
+  const querySnapshot = await getDocs(workersQuery);
+  if (!querySnapshot.empty) {
+    const workerDoc = querySnapshot.docs[0]; // Assuming uid is unique, we take the first match
+    return workerDoc;
+  }
+  return null;
+}
+
+
 
 const divvisble = document.querySelector(".not1");
 

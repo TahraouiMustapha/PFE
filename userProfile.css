@@ -74,6 +74,22 @@ header > .left {
   stroke: #011121;
 }
 
+.jaras {
+  position: relative;
+}
+
+#notificationIcon::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+}
+
 /* for result box under the search */
 .result-box {
   background-color: #e3e3e3;
@@ -138,6 +154,46 @@ header > .left {
   height: 32px;
   cursor: pointer;
 }
+
+/* Container for the notification content */
+.not1-container {
+  padding: 20px;
+}
+
+/* Individual item in the notification */
+.not1-container > div {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Title of each item */
+.not1-container h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Description or name of the item */
+.not1-container p {
+  margin: 0 0 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+.closeBtn{
+  padding: 5px 10px;
+  font-size: 14px;
+  color: white;
+  background-color: #011121;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
 .logout {
   display: none;
   position: absolute;
@@ -344,7 +400,7 @@ dialog .adresse {
   background-color: white;
   position: fixed;
   bottom: 700px;
-  left: 1050px;
+  left: 1120px;
   display: none;
   z-index: 30;
   border: 1px black solid;
